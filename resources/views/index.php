@@ -14,7 +14,8 @@
     <!-- CSS
   ================================================== -->
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Elegant icon font -->

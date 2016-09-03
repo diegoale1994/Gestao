@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lumino - Dashboard</title>
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/datepicker3.css" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('css/datepicker3.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}" />
+<script type="text/javascript" src="{{ URL::asset('js/lumino.glyphs.js') }}"></script>
 
 <!--Icons-->
-<script src="js/lumino.glyphs.js"></script>
+
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -52,7 +52,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li class="active"><a href="/admin/datasheet"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Planilla</a></li>
 			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
 			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
 			<li><a href="tables.html"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
@@ -88,14 +88,16 @@
 	</div><!--/.sidebar-->
 		
 	@yield('content')
+	<script type="text/javascript" src="{{ URL::asset('js/jquery-1.11.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/chart.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/chart-data.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/easypiechart.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/easypiechart-data.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
 	
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
+	
+	
 	<script>
 		$('#calendar').datepicker({
 		});
