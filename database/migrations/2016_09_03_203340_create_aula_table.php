@@ -19,7 +19,6 @@ class CreateAulaTable extends Migration {
 			$table->string('nombre',50);
 			$table->string('cant_equipos',2);
 			$table->string('cant_personas',2);
-			
 			$table->string('piso',1);
 			
 			$table->timestamps();

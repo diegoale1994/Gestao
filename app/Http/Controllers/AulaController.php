@@ -14,7 +14,8 @@ class AulaController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$aulas = \Gestao\aula::all();
+	return view('aula.index',compact('aulas'));
 	}
 
 	/**
@@ -22,9 +23,9 @@ class AulaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(Request $request)
+	public function create()
 	{
-		
+		return view('aula.create');
 	}
 
 	/**
@@ -32,9 +33,17 @@ class AulaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-	return "hola";
+	\Gestao\aula::create([
+'id' => $request['id_aula'],
+'nombre' => $request['nombre_aula'],
+'cant_equipos' => $request['cant_equipos'],
+'cant_personas' => $request['cant_personas'],
+'piso' => $request['aula_piso'],
+]);
+
+	return redirect('admin/aula')->with('message','store');
 	}
 
 	/**

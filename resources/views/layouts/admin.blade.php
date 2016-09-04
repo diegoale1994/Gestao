@@ -55,7 +55,7 @@
 			<li class="active"><a href="/admin/datasheet"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Planilla</a></li>
 			
 			<li class="parent ">
-				<a href="#">
+				<a href="/admin/aula">
 					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> AULAS
 				</a>
 				<ul class="children collapse" id="sub-item-1">
