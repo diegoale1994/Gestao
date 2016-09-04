@@ -22,9 +22,9 @@ class AulaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Request $request)
 	{
-		return view('aula.create');
+		
 	}
 
 	/**
