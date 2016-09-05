@@ -4,7 +4,9 @@ use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
+use Gestao\Aula;
+use Session;
+use Redirect;
 class AulaController extends Controller {
 
 	/**
@@ -14,7 +16,7 @@ class AulaController extends Controller {
 	 */
 	public function index()
 	{
-		$aulas = \Gestao\aula::all();
+		$aulas = aula::all();
 	return view('aula.index',compact('aulas'));
 	}
 
@@ -35,15 +37,15 @@ class AulaController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-	\Gestao\aula::create([
-'id' => $request['id_aula'],
-'nombre' => $request['nombre_aula'],
-'cant_equipos' => $request['cant_equipos'],
-'cant_personas' => $request['cant_personas'],
-'piso' => $request['aula_piso'],
+		aula::create([
+		'id' => $request['id'],
+		'nombre' => $request['nombre'],
+		'cant_equipos' => $request['cant_equipos'],
+		'cant_personas' => $request['cant_personas'],
+		'piso' => $request['piso'],
 ]);
 
-	return redirect('admin/aula')->with('message','store');
+	return redirect('admin/aula')->with('message','Aula Creada Correctamente');
 	}
 
 	/**
@@ -65,7 +67,8 @@ class AulaController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$aula = aula::find($id);
+		return view('aula.edit',['aula'=>$aula]);
 	}
 
 	/**
@@ -74,9 +77,14 @@ class AulaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$aula = aula::find($id);
+		$aula -> fill($request -> all());
+		$aula -> save();
+		Session::flash('message','Aula modificada!');
+		return Redirect::to('admin/aula');
+
 	}
 
 	/**

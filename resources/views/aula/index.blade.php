@@ -1,10 +1,9 @@
 @extends('layouts.admin')
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
-<?php $message=Session::get('message')?>
-@if ($message=='store')
+@if (Session::has('message'))
 	<div class="alert alert-success">
-  <strong>Aula Creada!</strong> Aula creada Correctamente ! 
+  {{ Session::get('message') }}
 </div>
 @endif
 <table class ="table">
@@ -22,6 +21,9 @@
 <th>{{ $aula ->	cant_personas }}</th>
 <th>{{ $aula -> cant_equipos }}</th>
 <th>{{ $aula -> piso }}</th>
+<th>
+	{!!link_to_route('admin.aula.edit', $title = 'Editar', $parameters = $aula->id, $attributes = ['class'=>'btn btn-primary'])!!}
+</th>
 </tbody>
 @endforeach
 </table>
