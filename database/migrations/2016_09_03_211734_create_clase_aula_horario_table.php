@@ -16,9 +16,10 @@ class CreateClaseAulaHorarioTable extends Migration {
 		{
 			$table->string('id_clase');
 			$table->string('id_aula')->nullable();;
-			$table->string('dia',15);
+			$table->string('dia',15)->nullable();
 			$table->string('hora_inicio',2);
 			$table->string('hora_final',2);
+			$table->date('fecha')->nullable();
 			$table->primary(['id_clase', 'dia']);
 			$table->foreign('id_clase')->references('id')->on('clase');
 		});

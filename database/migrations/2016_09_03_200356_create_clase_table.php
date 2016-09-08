@@ -17,10 +17,11 @@ class CreateClaseTable extends Migration {
 			$table->string('id');
 			$table->primary('id');
 			$table->string('nombre',50);
-			$table->string('creditos',1);
-			$table->string('semestre',2);
+			$table->string('grupo',10)->nullable();
+			$table->string('creditos',1)->nullable();
+			$table->string('semestre',2)->nullable();
 			$table->string('cant_estudiantes',2);
-			$table->text('requerimientos');
+			$table->text('requerimientos')->nullable();
 			
 			$table->timestamps();
 		});

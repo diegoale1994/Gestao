@@ -14,5 +14,6 @@ Route::get('admin',"FrontController@admin");
 Route::get('admin/datasheet',"FrontController@admin");
 Route::get('/',"FrontController@index");
 Route::Resource('admin/aula',"AulaController");
+Route::Resource('admin/clase',"ClaseController");
 
 

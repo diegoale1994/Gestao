@@ -95,7 +95,9 @@ class AulaController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		aula::destroy($id);
+		Session::flash('message','Aula eliminada!');
+		return Redirect::to('admin/aula');	
 	}
 
 }
