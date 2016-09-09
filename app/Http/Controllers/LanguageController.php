@@ -3,17 +3,19 @@
 namespace Gestao\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Session;
-use Redirect;
+use Config;
 use Gestao\Http\Requests;
-use Gestao\Persona;
-use Gestao\Http\Requests\LoginRequest;
 use Gestao\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
-class LoginController extends Controller
+class LanguageController extends Controller
 {
+    public function switchLang($lang)
+    {
+        Session::set('applocale', $lang);
+        return Redirect::back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,22 +42,9 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LoginRequest $request)
-    {        
-        if(Auth::attempt(['email'=> $request['email'],'password' => $request['password']])){
-            $persona = DB::table('persona')->where('email', '=', $request['email'])->get();
-            if($persona[0]->rol == '1' ){
-                return Redirect::to('admin');
-            }  
-        }
-        Session::flash('message-error',trans('messages.datosSonIncorrectos'));
-        return Redirect::to('/');
-    
-    }
-    public function logout(){
-        Auth::logout();
-        return Redirect::to('/');
-
+    public function store(Request $request)
+    {
+        //
     }
 
     /**

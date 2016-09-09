@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive styles-->
 	<link rel="stylesheet" href="css/responsive.css">
+    <!-- Language flags -->
+    <link rel="stylesheet" href="css/languages.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,6 +50,10 @@
 	<header id="header" role="banner" >
 		<nav class="navbar navbar-default navbar-fixed-top"  id="tf-menu">
 			<div class="container">
+                <div class="row">
+                <a class="page-scroll" href="{{ route('lang.switch', 'en') }}"><span class="lang-sm lang-lbl" lang="en"></span></a>
+                <a class="page-scroll" href="{{ route('lang.switch', 'es') }}"><span class="lang-sm lang-lbl" lang="es"></span></a>
+                </div>
 				<div class="row">
 					<!-- Logo start -->
 					<div class="navbar-header">
@@ -62,7 +68,8 @@
 						    	<img class="img-responsive" src="images/logo1.png" alt="logo">
 						    </a> 
 					    </div>                   
-					</div><!--/ Logo end -->
+					</div>
+                    <!--/ Logo end -->
 					<div class="collapse navbar-collapse clearfix navMenu" role="navigation">
 						<ul class="nav navbar-nav navbar-right">
 				            <li class="active"><a class="page-scroll" href="#slider-part" >Home</a></li>

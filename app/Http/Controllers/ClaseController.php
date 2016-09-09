@@ -19,7 +19,7 @@ class ClaseController extends Controller
      */
     public function index()
     {
-            $clases = Clase::all();
+    $clases = Clase::all();
     return view('clase.index',compact('clases'));
     }
 
@@ -51,7 +51,7 @@ class ClaseController extends Controller
         'requerimientos' => $request['requerimientos'],
 ]);
 
-        return redirect('admin/clase')->with('message','Clase Creada Correctamente');
+        return redirect('admin/clase')->with('message',trans('messages.claseCreadaCorrectamente'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ClaseController extends Controller
         $clase = clase::find($id);
         $clase -> fill($request -> all());
         $clase -> save();
-        Session::flash('message','Clase modificada!');
+        Session::flash('message',trans('messages.claseModificada'));
         return Redirect::to('admin/clase');
     }
 
@@ -102,7 +102,7 @@ class ClaseController extends Controller
     public function destroy($id)
     {
         clase::destroy($id);
-        Session::flash('message','Clase eliminada!');
+        Session::flash('message',trans('messages.claseEliminada'));
         return Redirect::to('admin/clase');  
     }
 }

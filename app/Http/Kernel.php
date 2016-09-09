@@ -14,6 +14,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\EncryptCookies',
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
+		'\Gestao\Http\Middleware\Language::class',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'Gestao\Http\Middleware\VerifyCsrfToken',
 	];

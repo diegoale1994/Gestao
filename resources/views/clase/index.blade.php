@@ -8,13 +8,13 @@
 @endif
 <table class ="table">
 <thead>
-	<th>Id</th>
-	<th>Nombre</th>
-	<th>Grupo</th>
-	<th>Creditos</th>
-	<th>Semestre</th>
-	<th>Cantidad de estudiantes</th>
-	<th>Requerimientos</th>
+	<th>{{ trans('messages.id') }}</th>
+	<th>{{ trans('messages.nombre') }}</th>
+	<th>{{ trans('messages.grupo') }}</th>
+	<th>{{ trans('messages.creditos') }}</th>
+	<th>{{ trans('messages.semestre') }}</th>
+	<th>{{ trans('messages.cantidadDeEstudiantes') }}</th>
+	<th>{{ trans('messages.requerimientos') }}</th>
 </thead>
 @foreach($clases as $clase)
 <tbody>
@@ -26,7 +26,7 @@
 <th>{{ $clase -> cant_estudiantes }}</th>
 <th>{{ $clase -> requerimientos }}</th>
 <th>
-	{!!link_to_route('admin.clase.edit', $title = 'Editar', $parameters = $clase->id, $attributes = ['class'=>'btn btn-primary'])!!}
+	{!!link_to_route('admin.clase.edit', $title = trans('messages.editar'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-primary'])!!}
 </th>
 </tbody>
 @endforeach

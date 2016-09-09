@@ -6,12 +6,12 @@
 	<table>
 	<tr>
 	<td>
-	{!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
+	{!!Form::submit(trans('messages.actualizar'),['class'=>'btn btn-primary'])!!}
 	{!!Form::close()!!}
 	</td>
 	<td>
 	{!!Form::open(['route'=>['admin.aula.destroy', $aula -> id],'method'=>'DELETE']) !!}
-	{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
+	{!!Form::submit(trans('messages.eliminar'),['class'=>'btn btn-danger'])!!}
 	{!!Form::close()!!}
 	</td>
 	</tr>

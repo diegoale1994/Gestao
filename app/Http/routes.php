@@ -13,6 +13,7 @@
 Route::get('admin',"FrontController@admin");
 Route::get('admin/datasheet',"FrontController@admin");
 Route::get('/',"FrontController@index");
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 Route::Resource('admin/aula',"AulaController");
 Route::Resource('admin/clase',"ClaseController");
 Route::Resource('login',"LoginController");

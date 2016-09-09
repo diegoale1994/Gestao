@@ -2,7 +2,7 @@
 
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
-
+use App;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller {
@@ -19,6 +19,14 @@ class FrontController extends Controller {
 	public function admin()
 	{
 			return view('admin.index');
+	}
+	public function langEspanol(){
+		App::setLocale('es');
+		return view('login');
+	}
+	public function langEnglish(){
+		App::setLocale('en');
+		return view('login');
 	}
 
 }

@@ -45,7 +45,7 @@ class AulaController extends Controller {
 		'piso' => $request['piso'],
 ]);
 
-	return redirect('admin/aula')->with('message','Aula Creada Correctamente');
+	return redirect('admin/aula')->with('message',trans('messages.aulaCreadaCorrectamente'));
 	}
 
 	/**
@@ -82,7 +82,7 @@ class AulaController extends Controller {
 		$aula = aula::find($id);
 		$aula -> fill($request -> all());
 		$aula -> save();
-		Session::flash('message','Aula modificada!');
+		Session::flash('message',trans('messages.aulaModificada'));
 		return Redirect::to('admin/aula');
 
 	}
@@ -96,7 +96,7 @@ class AulaController extends Controller {
 	public function destroy($id)
 	{
 		aula::destroy($id);
-		Session::flash('message','Aula eliminada!');
+		Session::flash('message',trans('messages.aulaEliminada'));
 		return Redirect::to('admin/aula');	
 	}
 
