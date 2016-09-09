@@ -27,6 +27,14 @@ class CreatePersonaTable extends Migration {
 			$table->foreign('programa_id')->references('id')->on('programa');
 			$table->timestamps();
 		});
+		DB::table('persona')->insert(
+        array(
+            'email' => 'mail@mail.com',
+            'password' => bcrypt('letmein'),
+            'programa_id' => 1,
+            'rol' => '1'
+        )
+    );
 	}
 
 	/**

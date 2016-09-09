@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,17 +92,7 @@
                             <img src="images/slider2.png" alt="" class="img-responsive">
                         </div>
                     </div>
-                    <div class="col-md-7 col-md-offset-1">
-                        <div class="slider-content ">
-                            <h1>Droplet</h1>
-                            <h2>get ready to see something awesome that will change your life.</h2>
-                            <ul class="top-link list-inline">
-                                <li><a href="#"><i class="fa fa-android"></i> Android</a></li>
-                                <li><a href="#"><i class="fa fa-apple"></i>Apple store</a></li>
-                                <li><a href="#"><i class="fa fa-windows"></i> Windows</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @yield('content')
                 </div>
             </div> <!-- row end  -->
         </div> <!-- container end  -->

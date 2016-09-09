@@ -18,6 +18,12 @@ class CreateProgramaTable extends Migration {
 			$table->string('nombre', 50);
 			$table->timestamps();
 		});
+		DB::table('programa')->insert(
+        array(
+            'nombre' => 'Ingenieria de sistemas'
+            )
+        );
+		
 	}
 
 	/**
