@@ -80,7 +80,7 @@
 
 			</li>
 			<li><a href="admin"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
+			<li><a href="/admin/algoritmo"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Algoritmo</a></li>
 			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
 			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
 			<li class="parent ">

@@ -14,6 +14,7 @@ return [
     'clases' => 'Classes',
     'crear' => 'Create',
     'id' => 'Id',
+    'establecerParametros' => 'Stablish parameters',
     'nombre' => 'Name',
     'cantidadDePersonas' => 'Number of people',
     'cantidadDeEquipos' => 'Number of PC\'s',

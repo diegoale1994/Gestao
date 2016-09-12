@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Gestao\Algorithm\Algoritmo;
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
-
+use Gestao\ClaseAulaHorario;
 class AlgoritmoController extends Controller
 {
     /**
@@ -16,9 +16,7 @@ class AlgoritmoController extends Controller
      */
     public function index()
     {
-        $algoritmo = new Algoritmo();
-        $bla= $algoritmo->asignacion();
-        return $bla;
+       return view('algoritmo.index');
     }
 
     /**
@@ -86,4 +84,10 @@ class AlgoritmoController extends Controller
     {
         //
     }
+    public function algorithm_step1(Request $request){
+    echo $request['fecha_inicio'];
+    echo $request['fecha_fin'];
+    echo $request['constante'];
+    }
+
 }

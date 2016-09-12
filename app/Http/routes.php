@@ -24,3 +24,4 @@ Route::Resource('logout',"LoginController@logout");
 Route::Resource('admin/algoritmo',"AlgoritmoController");
 
 
+Route::post('admin/algoritmo/algorithm_step1',['as'=>'admin.algoritmo.algorithm_step1', 'uses'=>'AlgoritmoController@algorithm_step1']);
