@@ -26,6 +26,10 @@
 	</div>
 	<div class="form-group">
 		{!!Form::label('requerimientos',trans('messages.requerimientos'))!!}
-		{!!Form::text('requirimientos',null,['class'=>'form-control'])!!}
+		{!!Form::text('requerimientos',null,['class'=>'form-control'])!!}
 	</div>
+        
+       
+
+
 	

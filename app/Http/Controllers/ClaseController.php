@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
 use Gestao\Clase;
+use Gestao\ClaseAulaHorario;
 use Session;
 use Redirect;
+use DB;
 
 class ClaseController extends Controller
 {
@@ -33,6 +35,10 @@ class ClaseController extends Controller
         return view('clase.create');
     }
 
+    public function createOcurrence($id){
+        return view('clase.create_ocurrence',['clase'=>$id]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,8 +56,16 @@ class ClaseController extends Controller
         'cant_estudiantes' => $request['cant_estudiantes'],
         'requerimientos' => $request['requerimientos'],
 ]);
+        
+       $this->calculateStoreOcurrence($request);
 
-        return redirect('admin/clase')->with('message',trans('messages.claseCreadaCorrectamente'));
+    return redirect('admin/clase')->with('message',trans('messages.claseCreadaCorrectamente'));
+        
+    }
+
+    public function storeOcurrence(Request $request){
+        $this->calculateStoreOcurrence($request);
+        return redirect('admin/clase')->with('message',trans('messages.ocurrenciaCreadaCorrectamente'));
     }
 
     /**
@@ -104,5 +118,51 @@ class ClaseController extends Controller
         clase::destroy($id);
         Session::flash('message',trans('messages.claseEliminada'));
         return Redirect::to('admin/clase');  
+    }
+
+    public function calculateStoreOcurrence($request){
+         $finalSemestre = strtotime("+ 30 day", time());
+
+        $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
+        if($diaSemanaActual == $request['dia']){
+            if($request['horaInicio']<= getDate(time())['hours']){
+                $request['dia'] = $request['dia'] + 7;
+            }
+
+        }
+        elseif($request['dia'] < $diaSemanaActual){
+            $request['dia'] = $request['dia'] + 7;
+        }
+        $difDias= $request['dia'] - $diaSemanaActual ;
+        $fechaEnHorario =strtotime("+".$difDias." day", time());
+
+        $fechaInicial = date_create(date("Y-m-d H:i:s", $fechaEnHorario));
+        $fechaFinal = date_create(date("Y-m-d H:i:s", $fechaEnHorario));
+
+        date_time_set($fechaInicial, $request['horaInicio'], 0);
+        date_time_set($fechaFinal, $request['horaFinal'], 0);
+
+        $fechaInicial= $fechaInicial->getTimestamp();
+        $fechaFinal= $fechaFinal->getTimestamp();
+        
+        if($request['ocurrencias']==0){
+            while($fechaInicial < $finalSemestre){
+                DB::table('clase_aula_horario')->insert(
+                    array('id_clase' => $request['id'],
+                         'hora_inicio' =>  getDate($fechaInicial)['hours'] ,
+                         'hora_final'=> getDate($fechaFinal)['hours'],
+                         'fecha'=> date("Y-m-d", $fechaInicial) )
+                );
+                $fechaInicial = strtotime("+7 day",$fechaInicial);  
+            }
+        }else{
+            DB::table('clase_aula_horario')->insert(
+                array('id_clase' => $request['id'],
+                    'hora_inicio' =>  getDate($fechaInicial)['hours'] ,
+                    'hora_final'=> getDate($fechaFinal)['hours'],
+                    'fecha'=> date("Y-m-d", $fechaInicial) )
+            );
+
+        }
     }
 }

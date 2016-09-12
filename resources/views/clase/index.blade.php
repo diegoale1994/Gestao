@@ -28,6 +28,9 @@
 <th>
 	{!!link_to_route('admin.clase.edit', $title = trans('messages.editar'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-primary'])!!}
 </th>
+<th>
+	{!!link_to_route('admin.clase.createocurrence', $title = trans('messages.anadirOcurrencia'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-info'])!!}
+</th>
 </tbody>
 @endforeach
 </table>

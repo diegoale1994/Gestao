@@ -32,11 +32,11 @@
 				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {!! Auth::user()->email !!} <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {!! Auth::user()->nombre1." ".Auth::user()->apellido1 !!} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {{  trans('messages.perfil')}}
-							</a></li>
-							<li><a href=""><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Opciones</a></li>
+							<li><a href="{{route('admin.perfil.edit', Auth::user()->id)}}" ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>{!! trans('messages.perfil') !!}</a>
+							</li>
+							<li><a href="#" ><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Opciones</a></li>
 							<li><a href="/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> {{  trans('messages.cerrarSesion')}}</a></li>
 						</ul>
 					</li>
@@ -63,16 +63,6 @@
 					<li>
 						<a class="" href="/admin/aula/create">
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans('messages.crear') }}
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
 						</a>
 					</li>
 				</ul>
@@ -149,7 +139,8 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
-	</script>	
+	</script>
+		
 
 </body>
 

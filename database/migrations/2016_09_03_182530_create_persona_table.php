@@ -23,6 +23,7 @@ class CreatePersonaTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->string('rol',1);
+			$table->string('telefono',10);
 			$table->rememberToken();
 			$table->foreign('programa_id')->references('id')->on('programa');
 			$table->timestamps();
