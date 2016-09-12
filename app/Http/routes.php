@@ -21,5 +21,6 @@ Route::Resource('admin/clase',"ClaseController");
 Route::Resource('admin/perfil',"PerfilController");
 Route::Resource('login',"LoginController");
 Route::Resource('logout',"LoginController@logout");
+Route::Resource('admin/algoritmo',"AlgoritmoController");
 
 
