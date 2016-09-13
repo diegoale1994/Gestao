@@ -25,6 +25,7 @@ return [
     'editar'=>'Editar',
     'aulaModificada' => 'Aula Modificada!',
     'aulaEliminada' => 'Aula Eliminada!',
+    'establecerParametros' => 'Establecer parametros',
     'registrar' => 'Registrar',
     'aulaCreadaCorrectamente' => 'Aula creada correctamente!',
     'claseModificada' => 'Clase Modificada!',
