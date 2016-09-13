@@ -2,35 +2,12 @@
 
 namespace Gestao\Algorithm;
 
+use Illuminate\Support\Facades\DB;
+
 class Algoritmo{
 
-public function asignacion(){
-	$aulas= array(
-	"aula6"=> 29,
-	"aula3" => 20,
-	"aula1" => 19,
-	"aula10" => 18,
-	"aula2" => 18,
-	"aula7" => 18,
-	"aula8" => 17,
-	"aula9" => 17,
-	"aula5" => 17,
-	"aula4" => 13
-	);
-$clases= array(
-	
-	"clase7" => 15,
-	"clase8" => 15,
-	"clase5" => 14,
-	"clase10" => 11,
-	"clase4" => 11,
-	"clase6" => 8
-	);
-
-//asignacion($aulas,$clases);
-
+public function asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal){
 	$resultados= array();
-	$ajuste= 0.03;
 	$i=0;
 	$j=0;
 	foreach($aulas as $aula_actual){
@@ -46,11 +23,12 @@ $clases= array(
 		$j=0;
 		$i++;		
 	}
-$this->metodoHungaro($resultados,$aulas,$clases);	
-return "ACABE";
+
+$this->metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$horafinal);	
+
 }
 
-public function metodoHungaro($resultados,$aulas,$clases){
+public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$horafinal){
 	$resultadosTemporal=$resultados;
 	$intentos=0;
 	$numMin=INF;
@@ -88,16 +66,12 @@ public function metodoHungaro($resultados,$aulas,$clases){
 			}
 		}
 	}
-	
-	print_r(count($resultados));
-	print_r("-----------------------------------");
-	print_r($resultadosTemporal);
-	$this->evaluar($resultadosTemporal,$intentos,$aulas,$clases);
+	$this->evaluar($resultadosTemporal,0,$aulas,$clases,$fecha,$horainicio,$horafinal);
 
 }
-public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
+public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal){
+	$resultadosTotal = array();
 	$temporalEvaluacion = $resultadosTemporal;
-	$asignados=0;
 	$i=0;
 	$j=0;
 	while($i<count($temporalEvaluacion) || $j<count($temporalEvaluacion[0])){
@@ -127,11 +101,19 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
 							for($x=0;$x<count($temporalEvaluacion[$i]);$x++){
 								$temporalEvaluacion[$i][$x]=INF;
 							}
-							print_r("-----------------------------------");
-							print_r($i);
-							print_r("->");
-							print_r($k);
-							$asignados++;
+							$a=0;
+							$b=0;
+
+							foreach($aulas as $aulakey=>$aula_actual){
+								foreach($clases as $clasekey=>$clase_actual){
+									if($a==$i &&  $b==$k){
+										$resultadosTotal[$aulakey]=$clasekey;
+									}
+									$b++;
+								}
+								$a++;
+								$b=0;
+							}
 							$cerosX=0;
 							$tachadosXX=0;
 							$tachandoX=false;
@@ -139,8 +121,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
 							$j=0;
 							$k=-1;
 						}else{
-							print_r("Reasignar");
-							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases);
+							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
 						}
 					}
 					
@@ -179,11 +160,18 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
 							for($x=0;$x<count($temporalEvaluacion[$i]);$x++){
 								$temporalEvaluacion[$i][$x]=INF;
 							}
-							print_r("-----------------------------------");
-							print_r($l);
-							print_r("->");
-							print_r($j);
-							$asignados++;
+							$a=0;
+							$b=0;
+							foreach($aulas as $aulakey=>$aula_actual){
+								foreach($clases as $clasekey=>$clase_actual){
+									if($a==$l &&  $b==$j){
+										$resultadosTotal[$aulakey]=$clasekey;
+									}
+									$b++;
+								}
+								$a++;
+								$b=0;
+							}
 							$cerosY=0;
 							$tachadosYY=0;
 							$tachandoY=false;
@@ -191,8 +179,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
 							$j=0;
 							$l=-1;
 						}else{
-							print_r("Reasignar");
-							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases);
+							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
 						}
 					}
 					
@@ -206,21 +193,33 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases){
 		}
 
 	}
-	if($asignados != count($resultadosTemporal[0])){
-		print_r("Un intento mas");
+	if(count($resultadosTotal) != count($resultadosTemporal[0])){
 		$intentos++;
 		if($intentos<10){
-			$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases);
+			$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
 		}else{
-			$this->minimoValor($temporalEvaluacion,$aulas,$clases);
+			print_r(count($resultadosTotal));
+			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
+			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
+			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
+			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
+			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
+			foreach($resultadosTotal as $aulaF=>$claseF){
+				DB::update("UPDATE clase_aula_horario 
+                         SET id_aula='$aulaF'
+                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and hora_final= '".$horafinal."' and fecha='".$fecha."'");
+       	 	}
 		}
 	}else{
-		print_r("Acabe");
-	}
-
+		foreach($resultadosTotal as $aulaF=>$claseF){
+			 DB::update("UPDATE clase_aula_horario 
+                         SET id_aula='$aulaF'
+                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and hora_final= '".$horafinal."' and fecha='".$fecha."'");
+       	 }
+	} 
 
 }
-public function minimoValor($temporalEvaluacion,$aulas,$clases){
+public function minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal){
 	$numMin = INF;
 	$tachando=false;
 	if(count($temporalEvaluacion) < count($temporalEvaluacion[0])){
@@ -237,10 +236,18 @@ public function minimoValor($temporalEvaluacion,$aulas,$clases){
 						for($x=0;$x<count($temporalEvaluacion[$i]);$x++){
 							$temporalEvaluacion[$i][$x]=INF;
 						}
-						print_r("-----------------------------------");
-						print_r($i);
-						print_r("->");
-						print_r($j);
+						$a=0;
+						$b=0;
+						foreach($aulas as $aulakey=>$aula_actual){
+							foreach($clases as $clasekey=>$clase_actual){
+								if($a==$i &&  $b==$j){
+									$resultadosTotal[$aulakey]=$clasekey;	
+								}
+								$b++;
+							}
+							$a++;
+							$b=0;
+						}
 						$i=0;
 						$j=-1;
 						$numMin=INF;
@@ -267,10 +274,18 @@ public function minimoValor($temporalEvaluacion,$aulas,$clases){
 						for($x=0;$x<count($temporalEvaluacion[$i]);$x++){
 							$temporalEvaluacion[$i][$x]=INF;
 						}
-						print_r("-----------------------------------");
-						print_r($i);
-						print_r("->");
-						print_r($j);
+						$a=0;
+						$b=0;
+						foreach($aulas as $aulakey=>$aula_actual){
+							foreach($clases as $clasekey=>$clase_actual){
+								if($a==$i &&  $b==$j){
+									$resultadosTotal[$aulakey]=$clasekey;
+								}
+								$b++;
+							}
+							$a++;
+							$b=0;
+						}
 						$i=-1;
 						$j=0;
 						$numMin=INF;
@@ -284,10 +299,9 @@ public function minimoValor($temporalEvaluacion,$aulas,$clases){
 			}
 		}
 	}
-	return "acabe";
-
+	return $resultadosTotal;
 }
-public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases){
+public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal){
 	$matrizTachados=array();
 	for($i=0;$i<count($resultadosTemporal);$i++){
 		$matrizTachados[$i]=array();
@@ -341,6 +355,6 @@ public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases){
 			}
 		}
 	}
-	$this->evaluar($resultadosTemporal,$intentos,$aulas,$clases);
+	$this->evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
 }
 }
