@@ -1,7 +1,7 @@
 <?php
 
 namespace Gestao\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Gestao\Algorithm\Algoritmo;
 use Gestao\Http\Requests;
@@ -85,10 +85,22 @@ class AlgoritmoController extends Controller
         //
     }
     public function algorithm_step1(Request $request){
-    echo $request['fecha_inicio'];
-    echo $request['fecha_fin'];
+    echo $request['fecha_inicio']."<br>";
+    echo $request['fecha_fin']."<br>";
     echo $request['constante'];
+    $fecha_ini = $request['fecha_inicio'];
+    $fecha_fin = $request['fecha_fin'];
+    $example = DB::table('clase_aula_horario')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->get();
+ 
+/*
+      foreach ($example as $ex) {
+if($ex->fecha >= $fecha_ini && $ex->fecha <= $fecha_fin){
+    echo $ex->fecha."<br>";
+}
+}
 
+*/
+/*
     $algoritmo = new Algoritmo();
 $aulas= array(
     "AUL006"=> 29,
@@ -116,6 +128,6 @@ $horainicio=7;
 $horafinal=9;
         $algoritmo->asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal);
         return "listo";
-    }
-
+    */
+}
 }
