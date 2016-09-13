@@ -88,6 +88,34 @@ class AlgoritmoController extends Controller
     echo $request['fecha_inicio'];
     echo $request['fecha_fin'];
     echo $request['constante'];
+
+    $algoritmo = new Algoritmo();
+$aulas= array(
+    "AUL006"=> 29,
+    "AUL003" => 20,
+    "AUL001" => 19,
+    "AUL010" => 18,
+    "AUL002" => 18,
+    "AUL007" => 18,
+    "AUL008" => 17,
+    "AUL009" => 17,
+    "AUL005" => 17,
+    "AUL004" => 13
+    );
+$clases= array(
+    "CLA1" => 30,
+    "CLA2" => 28,
+    "CLA3" => 20,
+    "CLA4" => 18,
+    "CLA5" => 12,
+    "CLA6" => 20
+    );
+$ajuste= 0.03;
+$fecha="2016-09-19";
+$horainicio=7;
+$horafinal=9;
+        $algoritmo->asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal);
+        return "listo";
     }
 
 }
