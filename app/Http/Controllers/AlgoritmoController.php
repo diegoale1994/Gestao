@@ -90,16 +90,19 @@ class AlgoritmoController extends Controller
     echo $request['constante'];
     $fecha_ini = $request['fecha_inicio'];
     $fecha_fin = $request['fecha_fin'];
-    $example = DB::table('clase_aula_horario')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->get();
- 
-/*
-      foreach ($example as $ex) {
-if($ex->fecha >= $fecha_ini && $ex->fecha <= $fecha_fin){
-    echo $ex->fecha."<br>";
-}
-}
+    $example = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
+            ->select('clase_aula_horario.*', 'clase.nombre')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->orderBy('clase.nombre')->get();
+          
 
-*/
+/*
+echo('<pre>');
+var_dump($example);
+echo('</pre>');
+
+
+
+//return view('algoritmo.step2',compact('example'));
+
 /*
     $algoritmo = new Algoritmo();
 $aulas= array(
