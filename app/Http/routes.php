@@ -13,6 +13,7 @@
 Route::get('admin',"FrontController@admin");
 Route::get('admin/datasheet',"FrontController@admin");
 Route::get('/',"FrontController@index");
+Route::get('admin/algoritmo/make_algoritmo','AlgoritmoController@algorithm_operation');
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 Route::get('admin/clase/{clase}/createocurrence',['as'=>'admin.clase.createocurrence', 'uses'=>'ClaseController@createOcurrence']);
 Route::post('admin/clase/createocurrence',['as'=>'admin.clase.storeocurrence', 'uses'=>'ClaseController@storeOcurrence']);
