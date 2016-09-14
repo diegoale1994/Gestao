@@ -49,7 +49,6 @@ public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$hor
 			}
 		}
 	}
-
 	for($j=0;$j<count($resultadosTemporal[0]);$j++){
 		$restando= false;
 		$numMin= INF;
@@ -60,7 +59,7 @@ public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$hor
 			if($restando){
 				$resultadosTemporal[$i][$j]=$resultadosTemporal[$i][$j]-$numMin;
 			}
-			if((($i+1) == count($resultadosTemporal[$i])) && !$restando){
+			if((($i+1) == count($resultadosTemporal)) && !$restando){
 				$restando=true;
 				$i=-1;
 			}
@@ -103,7 +102,6 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 							}
 							$a=0;
 							$b=0;
-
 							foreach($aulas as $aulakey=>$aula_actual){
 								foreach($clases as $clasekey=>$clase_actual){
 									if($a==$i &&  $b==$k){
@@ -149,7 +147,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 					if($temporalEvaluacion[$l][$j]==0){
 						$tachadosYX=0;
 						for($x=0;$x<count($temporalEvaluacion[$l]);$x++){
-							if($temporalEvaluacion[$x][$j]==INF){
+							if($temporalEvaluacion[$l][$x]==INF){
 								$tachadosYX=0;
 							}
 						}
@@ -157,8 +155,8 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 							for($x=0;$x<count($temporalEvaluacion);$x++){
 								$temporalEvaluacion[$x][$j]=INF;
 							}
-							for($x=0;$x<count($temporalEvaluacion[$i]);$x++){
-								$temporalEvaluacion[$i][$x]=INF;
+							for($x=0;$x<count($temporalEvaluacion[$l]);$x++){
+								$temporalEvaluacion[$l][$x]=INF;
 							}
 							$a=0;
 							$b=0;
@@ -168,6 +166,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 										$resultadosTotal[$aulakey]=$clasekey;
 									}
 									$b++;
+									
 								}
 								$a++;
 								$b=0;
@@ -195,14 +194,9 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 	}
 	if(count($resultadosTotal) != count($resultadosTemporal[0])){
 		$intentos++;
-		if($intentos<10){
+		if($intentos<2){
 			$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
 		}else{
-			print_r(count($resultadosTotal));
-			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
-			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
-			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
-			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
 			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
 			foreach($resultadosTotal as $aulaF=>$claseF){
 				DB::update("UPDATE clase_aula_horario 
@@ -303,23 +297,33 @@ public function minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal)
 }
 public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal){
 	$matrizTachados=array();
+	$tachadosX=array();
+	$tachadosY=array();
 	for($i=0;$i<count($resultadosTemporal);$i++){
 		$matrizTachados[$i]=array();
+		$tachadosX[$i]=0;
+
 		for($j=0;$j<count($resultadosTemporal[$i]);$j++){
 			$matrizTachados[$i][$j]=0;
+			$tachadosY[$j]=0;
 		}
 	}
-	for($cerosmin=(count($resultadosTemporal[0]) -1);$cerosmin>0;$cerosmin--){
+	$cerosmin=count($resultadosTemporal[0]) -1 ;
+	if(count($resultadosTemporal) - 1  > $cerosmin){
+		$cerosmin= count($resultadosTemporal) -1 ;
+	}
+	for($cerosmin;$cerosmin>0;$cerosmin--){
 		for($i=0;$i<count($resultadosTemporal);$i++){
 			$ceros=0;
 			for($j=0;$j<count($resultadosTemporal[$i]);$j++){
 				if($resultadosTemporal[$i][$j]==0 && $matrizTachados[$i][$j]==0){
 					$ceros++;
 				}
-				if(($j+1==count($resultadosTemporal[$i]))&& ($ceros>=$cerosmin)){
+				if(($j+1==count($resultadosTemporal[$i]))&& ($ceros>$cerosmin) && ($tachadosX[$i]==0)){
 					for($x=0;$x<count($matrizTachados[$i]);$x++){
 						$matrizTachados[$i][$x]++;
 					}
+					$tachadosX[$i]=INF;
 				}
 			}
 		}
@@ -329,10 +333,11 @@ public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fech
 				if($resultadosTemporal[$i][$j]==0 && $matrizTachados[$i][$j]==0){
 					$ceros++;
 				}
-				if(($i+1==count($resultadosTemporal))&& ($ceros>=$cerosmin)){
-					for($x=0;$x<count($matrizTachados[$i]);$x++){
+				if(($i+1==count($resultadosTemporal))&& ($ceros>$cerosmin) && ($tachadosY[$j]==0)){
+					for($x=0;$x<count($matrizTachados);$x++){
 						$matrizTachados[$x][$j]++;
 					}
+					$tachadosY[$j]=INF;
 				}
 			}
 		}

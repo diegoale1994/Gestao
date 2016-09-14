@@ -72,7 +72,14 @@ return [
     'telefono'=>'Telefono',
     'programa'=>'Programa',
     'lasContrasenasNoCoinciden'=>'Las contraseñas no coinciden',
-    'perfilModificado'=>'Perfil modificado!'
+    'perfilModificado'=>'Perfil modificado!',
+    'AsignarClasesDe'=>'',
+    'Hasta'=>'',
+    'horas'=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
     
 ];
 ?>
