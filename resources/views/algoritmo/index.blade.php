@@ -67,7 +67,10 @@
 </div>
 
 
-@if (isset($clases_por_asignar))
+
+</div>
+
+@if (session::has('clases_por_asignar'))
 
 	
 						<div class="col-md-6">
@@ -82,7 +85,7 @@
 	<th>{!! trans('messages.nombre') !!}</th>
 	<th>{!! trans('messages.fecha') !!}</th>
 </thead>
-@foreach($clases_por_asignar as $ex)
+@foreach(session::get('clases_por_asignar') as $ex)
 <tbody>
 <th><p>{{ $ex -> nombre }}</p></th>
 <th>{{ $ex -> fecha }}</th>
@@ -91,6 +94,7 @@
 </table>
 					</div>
 				</div>
+				<button type="button" class="btn btn-success" onclick = "location='/admin/algoritmo/make_algoritmo'">ASIGNAR!!</button>
 			</div>
 				
 				<div class="col-md-6">
@@ -110,6 +114,7 @@
 <th><p>{{ $au -> id }}</p></th>
 <th>{{ $au -> nombre }}</th>
 <th><th>
+
 	{!!link_to_route('admin.algoritmo.delete_aula', $title = trans('messages.eliminar'), $parameters = $au->id, $attributes = ['class'=>'btn btn-primary'])!!}
 </th></th>
 </tbody>
@@ -119,7 +124,5 @@
 				
 			
 @endif
-
-</div>
 </div>
 @stop
