@@ -23,7 +23,11 @@ a, a:hover, a:focus {
 h1, h2, h3, h4, h5, h6 {
 	color: #5f6468;
 }
-
+#resultados_clase_algoritmo {
+     overflow:scroll;
+     height:200px;
+   
+}
 h1 {
 	font-weight: 300;
 	font-size: 40px;
