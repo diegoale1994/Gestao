@@ -93,7 +93,7 @@
 </table>
 					</div>
 				</div>
-				<button type="button" class="btn btn-success" onclick = "location='/admin/algoritmo/make_algoritmo'">ASIGNAR!!</button>
+			<button type="button" class="btn btn-success" onclick = "ejecutaralgoritmopro()">ASIGNAR!!</button>
 			</div>
 				
 				<div class="col-md-6">

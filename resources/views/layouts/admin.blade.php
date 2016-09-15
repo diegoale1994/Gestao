@@ -119,6 +119,7 @@
 	<script type="text/javascript" src="{{ URL::asset('js/easypiechart.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/easypiechart-data.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
+
 	
 	
 	
@@ -140,7 +141,21 @@
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
 	</script>
-		
+
+		<script type="text/javascript">
+		function ejecutaralgoritmopro(){
+var answer = confirm("¿realmente desea imprimir estos datos?")
+	if (answer){
+		alert("Saliendo")
+		location='/admin/algoritmo/make_algoritmo';
+	}
+	else{
+		alert("Cancelado!")
+	}
+
+		}
+
+	</script>
 
 </body>
 

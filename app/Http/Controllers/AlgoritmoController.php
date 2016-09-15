@@ -85,28 +85,114 @@ class AlgoritmoController extends Controller
     public function algorithm_operation(){
         $clases_final = Session::get('clases_por_asignar');
         $aulas_final = Session::get('aulas_array');
+        $resultado = count(Session::get('aulas_array'));
+echo Session::get('constante')." constante";
+        echo "<br>";
+echo $resultado." Cantidad de aulas";
+echo "<br>";
+        echo Session::get('clases_por_asignar_count')." Cantidad de clases";
+        echo "<br>";
         echo('<pre>');
      var_dump($clases_final);
 echo('</pre>');
   echo('<pre>');
      var_dump($aulas_final);
 echo('</pre>');
-   
+
+
+            
+
+//return view('algoritmo.step2',compact('example'));
+
+
+    $algoritmo = new Algoritmo();
+$aulas= array(
+    "AUL006"=> 29,
+    "AUL003" => 20,
+    "AUL001" => 19,
+    "AUL010" => 18,
+    "AUL002" => 18,
+    "AUL007" => 18,
+    "AUL008" => 17,
+    "AUL009" => 17,
+    "AUL005" => 17,
+    "AUL004" => 13
+    );
+$clases= array(
+    "CLA1" => 30,
+    "CLA2" => 28,
+    "CLA3" => 20,
+    "CLA4" => 18,
+    "CLA5" => 12,
+    "CLA6" => 20
+    );
+$ajuste= 0.03;
+$fecha="2016-09-19";
+$horainicio=7;
+
+$clasesAAsignar= array();
+
+$fechaIni= session::get('algoritmo_fecha_inicio');
+$fechaFin= session::get('algoritmo_fecha_final');
+$fechaIni = strtotime($fechaIni);
+$fechaFin = strtotime($fechaFin);
+var_dump($fechaIni);
+var_dump($fechaFin);
+for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){
+    for ($hora=7; $hora<22 ; $hora++) { 
+        foreach ($clases_final as $claseActual) {
+            $arregloFechas= array();
+            $arregloAulas = array();
+            if(strtotime($claseActual->fecha) == $fechaIni){
+                if($claseActual->hora_inicio == $hora){
+                    $arregloFechas[$claseActual->id_clase] = $claseActual->cant_estudiantes;
+                }
+            }
+            $arregloAulasARemover =DB::select(DB::raw("select distinct(ca.id_aula) from clase_aula_horario ca where ca.hora_inicio <='".$hora."'and ca.hora_final >'".$hora."'and ca.fecha ='".date("Y-m-d",$fechaIni)."'"));
+            print_r(session::get('aulas_array'));
+            foreach (session::get('aulas_array') as $aula) {
+                $arregloAulas[$aula->id]=$aula->cant_equipos;
+                foreach ($arregloAulasARemover as $aula) {
+                    if($arregloAulas[$aula->id]==$aula->id){
+                        unset($arregloAulas[$aula->id]);
+                    }
+                }
+            }
+
+
+
+            print_r($arregloFechas);
+            print_r($arregloAulas);
+
+        }
     }
+}
+            print_r($arregloAulasARemover);
+
+
+        
+    $algoritmo->asignacion($aulas,$clases,$ajuste,$fecha,$horainicio);
+   
+}
     public function destroy($id)
     {
         //
     }
     public function algorithm_step1(Request $request){
-   
+   $constante = $request['constante'];
+
     $fecha_ini = $request['fecha_inicio'];
     $fecha_fin = $request['fecha_fin'];
     session::put('algoritmo_fecha_inicio', $fecha_ini);
     session::put('algoritmo_fecha_final', $fecha_fin);
+    session::put('constante', $constante);
     $clases_por_asignar = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
             ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->orderBy('clase.cant_estudiantes')->get(); 
+    $clases_por_asignar_count = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
+            ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->orderBy('clase.cant_estudiantes')->count();
              $aulas = DB::table('aula')->select('id', 'nombre')->get();
-    Session::put('aulas_array', $aulas);    
+    Session::put('aulas_array', $aulas); 
+     Session::put('clases_por_asignar_count', $clases_por_asignar_count);    
     Session::put('clases_por_asignar', $clases_por_asignar);    
     return view('algoritmo.step2', compact('clases_por_asignar'));
     

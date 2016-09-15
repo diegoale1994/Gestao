@@ -122,7 +122,6 @@ class ClaseController extends Controller
 
     public function calculateStoreOcurrence($request){
          $finalSemestre = strtotime("+ 30 day", time());
-
         $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
         if($diaSemanaActual == $request['dia']){
             if($request['horaInicio']<= getDate(time())['hours']){

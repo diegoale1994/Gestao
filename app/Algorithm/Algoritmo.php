@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class Algoritmo{
 
-public function asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal){
+public function asignacion($aulas,$clases,$ajuste,$fecha,$horainicio){
 	$resultados= array();
 	$i=0;
 	$j=0;
@@ -24,11 +24,11 @@ public function asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal)
 		$i++;		
 	}
 
-$this->metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$horafinal);	
+$this->metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio);	
 
 }
 
-public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$horafinal){
+public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio){
 	$resultadosTemporal=$resultados;
 	$intentos=0;
 	$numMin=INF;
@@ -65,10 +65,10 @@ public function metodoHungaro($resultados,$aulas,$clases,$fecha,$horainicio,$hor
 			}
 		}
 	}
-	$this->evaluar($resultadosTemporal,0,$aulas,$clases,$fecha,$horainicio,$horafinal);
+	$this->evaluar($resultadosTemporal,0,$aulas,$clases,$fecha,$horainicio);
 
 }
-public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal){
+public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio){
 	$resultadosTotal = array();
 	$temporalEvaluacion = $resultadosTemporal;
 	$i=0;
@@ -119,7 +119,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 							$j=0;
 							$k=-1;
 						}else{
-							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
+							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio);
 						}
 					}
 					
@@ -178,7 +178,7 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 							$j=0;
 							$l=-1;
 						}else{
-							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
+							$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio);
 						}
 					}
 					
@@ -195,20 +195,20 @@ public function evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$hor
 	if(count($resultadosTotal) != count($resultadosTemporal[0])){
 		$intentos++;
 		if($intentos<2){
-			$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
+			$this->reasignacion($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio);
 		}else{
 			$resultadosTotal= $this->minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal);
 			foreach($resultadosTotal as $aulaF=>$claseF){
 				DB::update("UPDATE clase_aula_horario 
                          SET id_aula='$aulaF'
-                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and hora_final= '".$horafinal."' and fecha='".$fecha."'");
+                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and fecha='".$fecha."'");
        	 	}
 		}
 	}else{
 		foreach($resultadosTotal as $aulaF=>$claseF){
 			 DB::update("UPDATE clase_aula_horario 
                          SET id_aula='$aulaF'
-                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and hora_final= '".$horafinal."' and fecha='".$fecha."'");
+                         where id_clase= '".$claseF."' and hora_inicio='".$horainicio."' and fecha='".$fecha."'");
        	 }
 	} 
 
@@ -295,7 +295,7 @@ public function minimoValor($temporalEvaluacion,$aulas,$clases,$resultadosTotal)
 	}
 	return $resultadosTotal;
 }
-public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal){
+public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio){
 	$matrizTachados=array();
 	$tachadosX=array();
 	$tachadosY=array();
@@ -360,6 +360,6 @@ public function reasignacion ($resultadosTemporal,$intentos,$aulas,$clases,$fech
 			}
 		}
 	}
-	$this->evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio,$horafinal);
+	$this->evaluar($resultadosTemporal,$intentos,$aulas,$clases,$fecha,$horainicio);
 }
 }
