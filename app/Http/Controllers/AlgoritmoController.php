@@ -147,7 +147,7 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
 
 
 
-                $arregloAulasARemover =DB::select(DB::raw("select distinct(ca.id_aula) from clase_aula_horario ca where ca.hora_inicio <='".$hora."'and ca.hora_final >'".$hora."'and ca.fecha ='".date("Y-m-d",$fechaIni)."'"));
+                $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where hora_inicio <'".$hora."' and fecha = '".date("Y-m-d",$fechaIni)."';");
                 
                
                 foreach (session::get('aulas_array') as $aula) {
@@ -167,23 +167,25 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
     
     }
 
-
+echo "<br>este es el arreglo de clases<br>";
            
                 echo '<pre>';
         var_dump($arregloFechas);
         echo  '</pre>';
+        echo "<br>este es el arreglo de aulas final<br>";
                  echo '<pre>';
         var_dump($arregloAulas);
         echo  '</pre>';
+        echo "<br>este es el arreglo de aulas que manda el usuario que debe usar<br>";
          echo '<pre>';
         var_dump(session::get('aulas_array'));
         echo  '</pre>';
-
+echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
         echo '<pre>';
         var_dump($arregloAulasARemover);
         echo  '</pre>';
-      //   $algoritmo = new Algoritmo();
-//$algoritmo->asignacion($arregloAulas,$arregloFechas,0.03,$fechaIni,$hora);
+    $algoritmo = new Algoritmo();
+$algoritmo->asignacion($arregloAulas,$arregloFechas,0.03,date("Y-m-d",$fechaIni),$hora);
     }
     $conta++;
 }
