@@ -146,8 +146,8 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
                 }}}
 
 
-
-                $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where hora_inicio <'".$hora."' and fecha = '".date("Y-m-d",$fechaIni)."';");
+             
+                $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." > hora_inicio and ".$hora." < hora_final and fecha ='".date("Y-m-d",$fechaIni)."'");
                 
                
                 foreach (session::get('aulas_array') as $aula) {
