@@ -144,17 +144,10 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
                     $arregloFechas[$claseActual->id_clase] = $claseActual->cant_estudiantes;
                       echo "<br>soy asignado ".$claseActual->nombre." -> ".$claseActual->id_clase;
                 }}}
-
-
-             
-                $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." > hora_inicio and ".$hora." < hora_final and fecha ='".date("Y-m-d",$fechaIni)."'");
-                
-               
+                $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." >= hora_inicio and ".$hora." < hora_final and fecha ='".date("Y-m-d",$fechaIni)."'");
                 foreach (session::get('aulas_array') as $aula) {
                 $arregloAulas[$aula->id]=$aula->cant_equipos;
-                
                  }
-
                 foreach($arregloAulas as $codigo=>$cant_estudiantes)
     {
                 foreach ($arregloAulasARemover as $aula1) {
@@ -162,14 +155,13 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
                         unset($arregloAulas[$codigo]);
                     }
                 }
-           
-
-    
     }
-
-echo "<br>este es el arreglo de clases<br>";
-           
-                echo '<pre>';
+    if(count ($arregloFechas) > 0){
+$algoritmo = new Algoritmo();
+$algoritmo->asignacion($arregloAulas,$arregloFechas,0.03,date("Y-m-d",$fechaIni),$hora);
+    }
+        echo "<br>este es el arreglo de clases<br>";
+        echo '<pre>';
         var_dump($arregloFechas);
         echo  '</pre>';
         echo "<br>este es el arreglo de aulas final<br>";
@@ -184,8 +176,7 @@ echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
         echo '<pre>';
         var_dump($arregloAulasARemover);
         echo  '</pre>';
-    $algoritmo = new Algoritmo();
-$algoritmo->asignacion($arregloAulas,$arregloFechas,0.03,date("Y-m-d",$fechaIni),$hora);
+    
     }
     $conta++;
 }
