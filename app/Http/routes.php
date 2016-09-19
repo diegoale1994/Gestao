@@ -11,7 +11,7 @@
 |
 */
 Route::get('admin',"DatasheetController@index");
-Route::get('admin/datasheet/{fecha_inicio}/{fecha_final?}',"DatasheetController@index");
+Route::get('admin/datasheet/{fecha_inicio?}/{fecha_final?}',"DatasheetController@index");
 Route::get('/',"FrontController@index");
 Route::get('admin/algoritmo/make_algoritmo','AlgoritmoController@algorithm_operation');
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);

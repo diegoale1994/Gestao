@@ -3,7 +3,7 @@
 namespace Gestao\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
 
@@ -14,10 +14,19 @@ class DatasheetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($fecha_inicio,$fecha_final=null)
+    public function index($fecha_inicio=null,$fecha_final=null)
     {
-        return $fecha_inicio." ".$fecha_final;
-  //return view('admin.index');
+       
+        //return $fecha_inicio." ".$fecha_final;
+        if($fecha_inicio == NULL and $fecha_final==NULL){
+             $aulas_names = DB::table('aula')->select('nombre')->get();
+            $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', date("Y/m/d"))->get();
+            return view('admin.index',compact('clases_today', 'aulas_names'));
+        }
+   
+ // return view('admin.index');
+
+
     }
 
     /**
