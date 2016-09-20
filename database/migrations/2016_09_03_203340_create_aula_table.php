@@ -26,7 +26,7 @@ class CreateAulaTable extends Migration {
 
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL001',
+            'id' => '1',
             'nombre' => 'Sala 01',
             'cant_equipos' => 19,
             'cant_personas' => 20,
@@ -35,7 +35,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL002',
+            'id' => '2',
             'nombre' => 'Sala 02',
             'cant_equipos' => 18,
             'cant_personas' => 20,
@@ -44,7 +44,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL003',
+            'id' => '3',
             'nombre' => 'Sala 03',
             'cant_equipos' => 20,
             'cant_personas' => 20,
@@ -53,7 +53,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL004',
+            'id' => '4',
             'nombre' => 'Sala 04',
             'cant_equipos' => 13,
             'cant_personas' => 20,
@@ -62,7 +62,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL005',
+            'id' => '5',
             'nombre' => 'Sala 05',
             'cant_equipos' => 17,
             'cant_personas' => 20,
@@ -71,7 +71,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL006',
+            'id' => '6',
             'nombre' => 'Sala 06',
             'cant_equipos' => 29,
             'cant_personas' => 20,
@@ -80,7 +80,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL007',
+            'id' => '7',
             'nombre' => 'Sala 07',
             'cant_equipos' => 18,
             'cant_personas' => 20,
@@ -89,7 +89,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL008',
+            'id' => '8',
             'nombre' => 'Sala 08',
             'cant_equipos' => 17,
             'cant_personas' => 20,
@@ -98,7 +98,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL009',
+            'id' => '9',
             'nombre' => 'Sala 09',
             'cant_equipos' => 17,
             'cant_personas' => 20,
@@ -107,7 +107,7 @@ class CreateAulaTable extends Migration {
     );
 	DB::table('aula')->insert(
         array(
-            'id' => 'AUL010',
+            'id' => '10',
             'nombre' => 'Sala 10',
             'cant_equipos' => 18,
             'cant_personas' => 20,
