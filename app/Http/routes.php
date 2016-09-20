@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+
+Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}',"ReservaController@reserva_clase");
 Route::get('admin',"DatasheetController@index");
 Route::get('admin/datasheet/{fecha_inicio?}/{fecha_final?}',"DatasheetController@index");
 Route::get('/',"FrontController@index");

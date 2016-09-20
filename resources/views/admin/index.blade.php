@@ -3,28 +3,48 @@
 @section('content')
 	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
-<table class="table">
-    <thead>
+<table class="table table-hover">
+    <thead class="thead-inverse">
         <tr>
-          
+      <th>#</th>
+      <td>Aula 1</td>
+      <td>Aula 2</td>
+      <td>Aula 3</td>
+      <td>Aula 4</td>
+      <td>Aula 5</td>
+      <td>Aula 6</td>
+      <td>Aula 7</td>
+      <td>Aula 8</td>
+      <td>Aula 9</td>
+      <td>Aula 10</td> 
         </tr>
     </thead>
     <tbody>
-    @for ($i = 1; $i <=10; $i++)
-    	{{-- expr --}}
-    
-        <tr>
-@for ($j = 7; $j < 22; $j++)
-	{{-- expr --}}
-
-      @foreach ($clases_today as $element)
-     @if (($element -> hora_inicio == $j) && ($element -> id == $i))
-     	 <td>{{ $element -> nombre }}</td>
-    @else
  
+      {{-- expr --}}
+    @for ($j = 7; $j < 22; $j++)
+        <tr>
+        <th scope="row">{{ $j }} - {{ $j + 1 }} </th>
+       @for ($i = 1; $i <=10; $i++)
+
+  
+<?php $a=0; ?>
+      @foreach ($clases_today as $element)
+     @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
+       <td>{{ $element -> nombre }}</td>
+     <?php $a++; ?>  
      @endif
       @endforeach
+@if ($a == 0)
+  <td>
+    
 
+<input type="button" value="Reservar" onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
+
+
+
+  </td>
+@endif
 @endfor
         </tr>
             
