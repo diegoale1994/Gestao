@@ -24,7 +24,7 @@
 {!!Form::date('fecha_inicio', Session::get('algoritmo_fecha_inicio'));!!}
 </div>
 <div class="col-lg-2">
-{!! Form::label('fecha_2', trans('messages.Hasta ')); !!}
+{!! Form::label('fecha_2', trans('messages.hasta')); !!}
 </div>
 <div class="col-lg-2">
 {!!Form::date('fecha_fin', Session::get('algoritmo_fecha_final'));!!}
@@ -94,7 +94,7 @@
 </table>
 					</div>
 				</div>
-	<button type="button" class="btn btn-success" onclick = "ejecutaralgoritmopro()">ASIGNAR!!</button>
+	<button type="button" class="btn btn-success" onclick = "ejecutaralgoritmopro()">{!! trans('messages.asignar') !!}</button>
 	
 			</div>
 				

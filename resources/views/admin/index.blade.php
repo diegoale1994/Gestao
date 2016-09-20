@@ -2,22 +2,53 @@
 
 @section('content')
 	
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
+<div class="form-group">
+{!!Form::label('mostrar',trans('messages.mostrarPor'))!!}
+{!! Form::select('tipo_mostrar', [trans('messages.dia'), trans('messages.semana')],null,['id'=>'tipo_mostrar']) !!}
+</div>
+<div id="Filtro dia" class="form-group">
+{!!Form::label('dia_semana',trans('messages.dia'))!!}
+{!! Form::select('dia_semana', [trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],null,['id'=>'dia_semana']) !!}
+</div>
+<div id="Filtro semana" class="form-group">
+{!!Form::label('no_sala',trans('messages.numeroSala'))!!}
+{!! Form::select('no_sala', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'],null,['id'=>'no_sala']) !!}
+
+<?php
+$diaSemanaActual= ((getDate(time())['wday'])+6)%7;
+$lunesSemana = date ("Y-m-d", strtotime("-".$diaSemanaActual." day", strtotime("now")));
+$finSemestre = date ("Y-m-d", strtotime("+30 day", strtotime("now")));
+
+while($lunesSemana <= $finSemestre){
+  $semanas[$lunesSemana]= $lunesSemana." ".trans('messages.al')." ".date ("Y-m-d", strtotime("+6 day", strtotime($lunesSemana)));
+  $lunesSemana = date ("Y-m-d", strtotime("+7 day", strtotime($lunesSemana)));
+}
+?>
+{!!Form::label('no_semana',trans('messages.semana'))!!}
+{!!Form::select('no_semana', $semanas,null,['id'=>'no_semana']) !!}
+</div>
+<div  class="form-group">
+<input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#dia_semana').val()+'/'+$('#no_sala').val()+'/'+$('#no_semana').val()">
+</div>
+
+
+
  @if($dia)
 <table class="table table-hover">
     <thead class="thead-inverse">
         <tr>
       <th>#</th>
-      <td>Aula 1</td>
-      <td>Aula 2</td>
-      <td>Aula 3</td>
-      <td>Aula 4</td>
-      <td>Aula 5</td>
-      <td>Aula 6</td>
-      <td>Aula 7</td>
-      <td>Aula 8</td>
-      <td>Aula 9</td>
-      <td>Aula 10</td> 
+      <td>{!! trans('messages.aula1') !!}</td>
+      <td>{!! trans('messages.aula2') !!}</td>
+      <td>{!! trans('messages.aula3') !!}</td>
+      <td>{!! trans('messages.aula4') !!}</td>
+      <td>{!! trans('messages.aula5') !!}</td>
+      <td>{!! trans('messages.aula6') !!}</td>
+      <td>{!! trans('messages.aula7') !!}</td>
+      <td>{!! trans('messages.aula8') !!}</td>
+      <td>{!! trans('messages.aula9') !!}</td>
+      <td>{!! trans('messages.aula10') !!}</td> 
         </tr>
     </thead>
     <tbody>
@@ -40,7 +71,7 @@
   <td>
     
 
-<input type="button" value="Reservar" onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
+<input type="button" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
 
 
 
@@ -60,12 +91,12 @@
     <thead class="thead-inverse">
       <tr>
       <th>#</th>
-      <td>Lunes</td>
-      <td>Martes</td>
-      <td>Miercoles</td>
-      <td>Jueves</td>
-      <td>Viernes</td>
-      <td>Sabado</td> 
+      <td>{!! trans('messages.lunes') !!}</td>
+      <td>{!! trans('messages.martes') !!}</td>
+      <td>{!! trans('messages.miercoles') !!}</td>
+      <td>{!! trans('messages.jueves') !!}</td>
+      <td>{!! trans('messages.viernes') !!}</td>
+      <td>{!! trans('messages.sabado') !!}</td> 
       </tr>
     </thead>
     <tbody>
@@ -84,7 +115,7 @@
       @endforeach
 @if ($a == 0)
   <td>
-<input type="button" value="Reservar" onClick="window.location.href='/admin/reserva/{{ $aula }}/{{ $j }}/{{ date ("Y-m-d", strtotime("+".$i." day", strtotime($fecha))) }}' ">
+<input type="button" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $aula }}/{{ $j }}/{{ date ("Y-m-d", strtotime("+".$i." day", strtotime($fecha))) }}' ">
 
 
 

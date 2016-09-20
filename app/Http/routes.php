@@ -14,7 +14,7 @@
 
 Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}',"ReservaController@reserva_clase");
 Route::get('admin',"DatasheetController@index");
-Route::get('admin/datasheet/{fecha_inicio?}/{fecha_final?}',"DatasheetController@index");
+Route::get('admin/datasheet/{tipo_mostrar?}/{dia_semana?}/{no_sala?}/{no_semana?}',"DatasheetController@index");
 Route::get('/',"FrontController@index");
 Route::get('admin/algoritmo/make_algoritmo','AlgoritmoController@algorithm_operation');
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);

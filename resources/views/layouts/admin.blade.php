@@ -53,7 +53,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="/admin/datasheet"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Planilla</a></li>
+			<li class="active"><a href="/admin/datasheet"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> {{ trans('messages.planilla') }}</a></li>
 			
 			<li class="parent ">
 				<a href="/admin/aula">
