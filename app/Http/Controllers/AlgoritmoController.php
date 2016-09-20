@@ -200,10 +200,10 @@ echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
     session::put('algoritmo_fecha_final', $fecha_fin);
     session::put('constante', $constante);
     $clases_por_asignar = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
-            ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->get(); 
+            ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->orderBy('clase.cant_estudiantes','desc')->get(); 
     $clases_por_asignar_count = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
             ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->whereBetween('fecha', [$fecha_ini, $fecha_fin])->wherenull('id_aula')->orderBy('clase.cant_estudiantes')->count();
-             $aulas = DB::table('aula')->select('id', 'nombre', 'cant_equipos')->get();
+             $aulas = DB::table('aula')->select('id', 'nombre', 'cant_equipos')->orderBy('cant_equipos','desc')->get();
     Session::put('aulas_array', $aulas); 
      Session::put('clases_por_asignar_count', $clases_por_asignar_count);    
     Session::put('clases_por_asignar', $clases_por_asignar);    
