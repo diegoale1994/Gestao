@@ -100,6 +100,8 @@ return [
     'opcionesGenerales'=>'Opciones generales',
     'inicioSemestre'=>'Inicio de semestre',
     'finSemestre'=>'Fin de semestre',
+    'peticion'=>'Peticiones',
+    'algoritmo'=>'Algoritmo',
     
 ];
 ?>
