@@ -17,7 +17,6 @@ class ReservaController extends Controller
   $fecha = str_replace("-","/",$fecha);
   echo "fecha-> ".$fecha." hora inicio -> ".$hora_inicio." aula ->".$aula;
         $clases_sin_asignar = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->select('clase_aula_horario.*', 'clase.nombre')->where('fecha', '=', $fecha)->where('id_aula', '=', $aula)->get();
-       
 $hora_apta=array();
 $cont=100;
 $conti=0;
@@ -37,5 +36,15 @@ if($conti==0){
 }
 echo "estas son las horas maximas".$cont;
 
+    }
+    public function desreserva_clase($hora_inicio, $fecha, $id_clase,$uri_anterior){
+     $fecha = str_replace("-","/",$fecha);
+       $uri_anterior = str_replace("-","/",$uri_anterior);
+         /*DB::update("UPDATE clase_aula_horario 
+                         SET id_aula='NULL'
+                         where id_clase= '".$id_clase."' and fecha='".$fecha."' and hora_inicio='".$hora_inicio."'");
+         //return redirect('admin/algoritmo');
+*/
+        return redirect($uri_anterior);
     }
 }

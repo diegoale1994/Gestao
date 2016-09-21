@@ -71,7 +71,16 @@ while($lunesSemana <= $finSemestre){
 <?php $a=0; ?>
       @foreach ($clases_today as $element)
      @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
-       <td>{{ $element -> nombre }}</td>
+       <td>{{ $element -> nombre }}
+       <?php 
+        $uri= $_SERVER["REQUEST_URI"];
+        $uri = str_replace ("/", "-", $uri);
+       ?>
+       <input type="button" class="btn btn-danger" value="x" onClick="window.location.href='/admin/desreserva/{{ $j }}/{{ $fecha }}/{{ $element->id_clase }}/{{ $uri }}'">
+       
+       
+        </td>
+       
      <?php $a++; ?>  
      @endif
       @endforeach
@@ -79,7 +88,7 @@ while($lunesSemana <= $finSemestre){
   <td>
     
 
-<input type="button" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
+<input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
 
 
 
