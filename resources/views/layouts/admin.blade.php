@@ -119,7 +119,7 @@
 	<script type="text/javascript" src="{{ URL::asset('js/easypiechart.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/easypiechart-data.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
-
+	<script type="text/javascript" src="{{ URL::asset('js/home_made.js') }}"></script>
 	
 	
 	

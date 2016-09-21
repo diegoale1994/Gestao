@@ -3,15 +3,22 @@
 @section('content')
 	
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
+<br>
+<div class="panel panel-default">
+  <div class="panel-body">
+   
+
 <div class="form-group">
 {!!Form::label('mostrar',trans('messages.mostrarPor'))!!}
 {!! Form::select('tipo_mostrar', [trans('messages.dia'), trans('messages.semana')],null,['id'=>'tipo_mostrar']) !!}
 </div>
+<div id='opciondia'>
 <div id="Filtro dia" class="form-group">
 {!!Form::label('dia_semana',trans('messages.dia'))!!}
-{!! Form::select('dia_semana', [trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],null,['id'=>'dia_semana']) !!}
+{!! Form::select('dia_semana',[trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],null,['id'=>'dia_semana']) !!}
 </div>
-<div id="Filtro semana" class="form-group">
+</div>
+<div id="opcionsemana" class="form-group">
 {!!Form::label('no_sala',trans('messages.numeroSala'))!!}
 {!! Form::select('no_sala', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'],null,['id'=>'no_sala']) !!}
 
@@ -31,10 +38,12 @@ while($lunesSemana <= $finSemestre){
 <div  class="form-group">
 <input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#dia_semana').val()+'/'+$('#no_sala').val()+'/'+$('#no_semana').val()">
 </div>
-
+ </div>
+</div>
 
 
  @if($dia)
+ <h1>Seleccionado: {{ $nombre_dia }}</h1>
 <table class="table table-hover">
     <thead class="thead-inverse">
         <tr>
@@ -87,6 +96,7 @@ while($lunesSemana <= $finSemestre){
 </table>
 @endif
  @if(!$dia)
+  <h1>Seleccionado: Aula: {{ $aula }} del {{ $nombre_dia1 }} al {{ $nombre_dia2 }}</h1>
 <table class="table table-hover">
     <thead class="thead-inverse">
       <tr>
