@@ -19,28 +19,14 @@ class CreateClaseTable extends Migration {
 			$table->string('nombre',50);
 			$table->string('grupo',10)->nullable();
 			$table->string('creditos',1)->nullable();
+			$table->string('id_docente')->nullable();
 			$table->string('semestre',2)->nullable();
 			$table->string('cant_estudiantes',2);
 			$table->text('requerimientos')->nullable();
 			
 			$table->timestamps();
 		});
-		$cantidad=10;
-	for ($i=0; $i < 200 ; $i++) {
-	if($cantidad>28){
-		$cantidad=10;
-	}	
-	$cantidad=$cantidad + 2;
-	$id="CLA".$i; 
-	DB::table('clase')->insert(
-        array(
-            'id' => $id,
-            'nombre' => 'Clase'.$i,
-            'cant_estudiantes' => $cantidad
-        )
-    );
-
-	}
+		
 	
 
 	}

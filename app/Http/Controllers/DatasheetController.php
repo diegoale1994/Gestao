@@ -25,6 +25,7 @@ class DatasheetController extends Controller
                $nombre_dia = obtenernombre($fecha);
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', $fecha)->get();
             
+            
        return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia' ));
         }
         elseif($tipo_mostrar==0){

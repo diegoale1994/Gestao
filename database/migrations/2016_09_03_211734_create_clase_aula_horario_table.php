@@ -23,27 +23,7 @@ class CreateClaseAulaHorarioTable extends Migration {
 			$table->foreign('id_clase')->references('id')->on('clase')->onDelete('cascade');;
 			$table->text('observaciones')->nullable();
 		});
-		$i=0;
- $date = '2016-09-19';
- $end_date = '2016-11-30';
- 
- while (strtotime($date) <= strtotime($end_date)) {
- 	for ($j=7; $j <20 ; $j++) { 
- 		DB::table('clase_aula_horario')->insert(
-        array(
-            'id_clase' => 'CLA'.$i,
-            'hora_inicio'=> $j,
-            'hora_final' => $j+2,
-            'fecha' => $date
-        )
-    );
- 		if ($i>198) {
- 			$i=0;
- 		}
- 		$i++;
- 	}
-      $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
- }
+
 	}
 
 	/**

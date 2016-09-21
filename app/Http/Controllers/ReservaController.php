@@ -13,10 +13,29 @@ class ReservaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function reserva_clase($clase, $hora_inicio, $fecha){
+    public function reserva_clase($aula, $hora_inicio, $fecha){
   $fecha = str_replace("-","/",$fecha);
-  echo $fecha;
-        $clases_sin_asignar = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->select('clase_aula_horario.*', 'clase.nombre')->where('fecha', '=', $fecha)->get();
-        //return view('reserva.index');
+  echo "fecha-> ".$fecha." hora inicio -> ".$hora_inicio." aula ->".$aula;
+        $clases_sin_asignar = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->select('clase_aula_horario.*', 'clase.nombre')->where('fecha', '=', $fecha)->where('id_aula', '=', $aula)->get();
+       
+$hora_apta=array();
+$cont=100;
+$conti=0;
+foreach ($clases_sin_asignar as $element) {
+    
+    if($element -> hora_inicio > $hora_inicio){
+        $aux = $element -> hora_inicio - $hora_inicio;
+        $conti++;
+        if($aux < $cont){
+        $cont = $aux;
+        }
+
+    }
+}
+if($conti==0){
+    $cont =  22 - $hora_inicio ;
+}
+echo "estas son las horas maximas".$cont;
+
     }
 }
