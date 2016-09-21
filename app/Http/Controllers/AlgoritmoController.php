@@ -96,39 +96,11 @@ echo "<br>";
              echo '<pre>';
         var_dump($clases_final);
         echo  '</pre>';
-
-//return view('algoritmo.step2',compact('example'));
-
-/*
-    $algoritmo = new Algoritmo();
-$aulas= array(
-    "AUL006"=> 29,
-    "AUL003" => 20,
-    "AUL001" => 19,
-    "AUL010" => 18,
-    "AUL002" => 18,
-    "AUL007" => 18,
-    "AUL008" => 17,
-    "AUL009" => 17,
-    "AUL005" => 17,
-    "AUL004" => 13
-    );
-$clases= array(
-    "CLA1" => 30,
-    "CLA2" => 28,
-    "CLA3" => 20,
-    "CLA4" => 18,
-    "CLA5" => 12,
-    "CLA6" => 20
-    );
-$ajuste= 0.03;
-$fecha="2016-09-19";
-$horainicio=7;
-*/
 $clasesAAsignar= array();
 
 $fechaIni= session::get('algoritmo_fecha_inicio');
 $fechaFin= session::get('algoritmo_fecha_final');
+$algoritmoConstante=session::get('constante');
 $fechaIni = strtotime($fechaIni);
 $fechaFin = strtotime($fechaFin);
 $conta=1;
@@ -158,7 +130,7 @@ for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
     }
     if(count ($arregloFechas) > 0){
 $algoritmo = new Algoritmo();
-$algoritmo->asignacion($arregloAulas,$arregloFechas,0.03,date("Y-m-d",$fechaIni),$hora);
+$algoritmo->asignacion($arregloAulas,$arregloFechas,$algoritmoConstante,date("Y-m-d",$fechaIni),$hora);
     }
         echo "<br>este es el arreglo de clases<br>";
         echo '<pre>';
@@ -181,10 +153,6 @@ echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
     $conta++;
 }
            
-
-
-        
-   // $algoritmo->asignacion($aulas,$clases,$ajuste,$fecha,$horainicio);
    
 }
     public function destroy($id)
@@ -211,40 +179,6 @@ echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
     
     
   
-
-
-
-//return view('algoritmo.step2',compact('example'));
-
-/*
-    $algoritmo = new Algoritmo();
-$aulas= array(
-    "AUL006"=> 29,
-    "AUL003" => 20,
-    "AUL001" => 19,
-    "AUL010" => 18,
-    "AUL002" => 18,
-    "AUL007" => 18,
-    "AUL008" => 17,
-    "AUL009" => 17,
-    "AUL005" => 17,
-    "AUL004" => 13
-    );
-$clases= array(
-    "CLA1" => 30,
-    "CLA2" => 28,
-    "CLA3" => 20,
-    "CLA4" => 18,
-    "CLA5" => 12,
-    "CLA6" => 20
-    );
-$ajuste= 0.03;
-$fecha="2016-09-19";
-$horainicio=7;
-$horafinal=9;
-        $algoritmo->asignacion($aulas,$clases,$ajuste,$fecha,$horainicio,$horafinal);
-        return "listo";
-    */
 }
 public function delete_aula($id){
    

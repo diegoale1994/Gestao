@@ -23,6 +23,7 @@ Route::post('admin/clase/createocurrence',['as'=>'admin.clase.storeocurrence', '
 Route::Resource('admin/aula',"AulaController");
 Route::Resource('admin/clase',"ClaseController");
 Route::Resource('admin/perfil',"PerfilController");
+Route::Resource('admin/opciones',"OpcionesGeneralesController");
 Route::Resource('login',"LoginController");
 Route::Resource('logout',"LoginController@logout");
 Route::Resource('admin/algoritmo',"AlgoritmoController");

@@ -5,6 +5,7 @@ namespace Gestao\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Gestao\Http\Requests;
+use Gestao\Constante;
 use Gestao\Http\Controllers\Controller;
 use Session;
 class DatasheetController extends Controller
@@ -18,6 +19,8 @@ class DatasheetController extends Controller
 
     public function index($tipo_mostrar=null,$dia_semana=null,$no_sala=null,$no_semana=null)
     {
+       $finSemestre=Constante::where('id','=','FINSEM')->first();
+       $finSemestre=$finSemestre -> valor;
        $dia=true;
         if($tipo_mostrar == NULL){
             $dia=true;
@@ -25,7 +28,7 @@ class DatasheetController extends Controller
                $nombre_dia = obtenernombre($fecha);
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', $fecha)->get();
             
-       return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia' ));
+       return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','finSemestre' ));
         }
         elseif($tipo_mostrar==0){
             $dia=true;
@@ -34,7 +37,7 @@ class DatasheetController extends Controller
             $fecha = date ("Y-m-d", strtotime("-".$diferenciaDias." day", strtotime("now")));
              $nombre_dia = obtenernombre($fecha);
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', $fecha)->get();
-            return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','tipo_mostrar' ));
+            return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','tipo_mostrar','finSemestre' ));
 
         }else{
 
@@ -48,7 +51,7 @@ class DatasheetController extends Controller
 
 
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '>=', $fecha)->where('fecha','<',date ("Y-m-d", strtotime("+7 day", strtotime($fecha))))->where('id_aula','=',$aula)->get();
-             return view('admin.index',compact('clases_today','aula', 'fecha','dia','nombre_dia1','nombre_dia2','aula','tipo_mostrar' ));
+             return view('admin.index',compact('clases_today','aula', 'fecha','dia','nombre_dia1','nombre_dia2','aula','tipo_mostrar','finSemestre' ));
         }
     }
 

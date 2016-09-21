@@ -36,7 +36,7 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="{{route('admin.perfil.edit', Auth::user()->id)}}" ><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>{!! trans('messages.perfil') !!}</a>
 							</li>
-							<li><a href="#" ><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Opciones</a></li>
+							<li><a href="/admin/opciones" ><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> {{ trans('messages.opcionesGenerales')}}</a></li>
 							<li><a href="/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> {{  trans('messages.cerrarSesion')}}</a></li>
 						</ul>
 					</li>
