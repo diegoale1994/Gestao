@@ -1,3 +1,4 @@
++
 <?php
 
 return [
@@ -15,7 +16,7 @@ return [
     'crear' => 'Crear',
     'id' => 'Id',
     'Configuracion' => 'Configuracion',
-    'fechas' => 'fechas',
+    'fechas' => 'Fechas',
     'ConstanteDeAsignacion' => 'Constante de asignacion',
     'nombre' => 'Nombre',
     'cantidadDePersonas' => 'Cantidad de personas',
