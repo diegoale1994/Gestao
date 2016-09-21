@@ -23,8 +23,8 @@
 {!! Form::select('no_sala', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'],null,['id'=>'no_sala']) !!}
 
 <?php
-$diaSemanaActual= ((getDate(time())['wday'])+6)%7;
-$lunesSemana = date ("Y-m-d", strtotime("-".$diaSemanaActual." day", strtotime("now")));
+$inicioSemestreDia= ((getDate(strtotime($inicioSemestre))['wday'])+6)%7;
+$lunesSemana = date ("Y-m-d", strtotime("-".$inicioSemestreDia." day", strtotime($inicioSemestre)));
 $semanas=array();
 while($lunesSemana <= $finSemestre){
   $semanas[$lunesSemana]= $lunesSemana." ".trans('messages.al')." ".date ("Y-m-d", strtotime("+6 day", strtotime($lunesSemana)));

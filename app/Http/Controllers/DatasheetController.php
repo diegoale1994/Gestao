@@ -21,6 +21,10 @@ class DatasheetController extends Controller
     {
        $finSemestre=Constante::where('id','=','FINSEM')->first();
        $finSemestre=$finSemestre -> valor;
+
+       $inicioSemestre=Constante::where('id','=','INISEM')->first();
+       $inicioSemestre=$inicioSemestre -> valor;
+
        $dia=true;
         if($tipo_mostrar == NULL){
             $dia=true;
@@ -28,7 +32,7 @@ class DatasheetController extends Controller
                $nombre_dia = obtenernombre($fecha);
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', $fecha)->get();
             
-       return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','finSemestre' ));
+       return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','finSemestre','inicioSemestre' ));
         }
         elseif($tipo_mostrar==0){
             $dia=true;
@@ -37,7 +41,7 @@ class DatasheetController extends Controller
             $fecha = date ("Y-m-d", strtotime("-".$diferenciaDias." day", strtotime("now")));
              $nombre_dia = obtenernombre($fecha);
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '=', $fecha)->get();
-            return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','tipo_mostrar','finSemestre' ));
+            return view('admin.index',compact('clases_today', 'aulas_names', 'fecha','dia','nombre_dia','tipo_mostrar','finSemestre','inicioSemestre' ));
 
         }else{
 
@@ -51,7 +55,7 @@ class DatasheetController extends Controller
 
 
             $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '>=', $fecha)->where('fecha','<',date ("Y-m-d", strtotime("+7 day", strtotime($fecha))))->where('id_aula','=',$aula)->get();
-             return view('admin.index',compact('clases_today','aula', 'fecha','dia','nombre_dia1','nombre_dia2','aula','tipo_mostrar','finSemestre' ));
+             return view('admin.index',compact('clases_today','aula', 'fecha','dia','nombre_dia1','nombre_dia2','aula','tipo_mostrar','finSemestre','inicioSemestre' ));
         }
     }
 
