@@ -25,8 +25,7 @@
 <?php
 $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
 $lunesSemana = date ("Y-m-d", strtotime("-".$diaSemanaActual." day", strtotime("now")));
-$finSemestre = date ("Y-m-d", strtotime("+30 day", strtotime("now")));
-
+$semanas=array();
 while($lunesSemana <= $finSemestre){
   $semanas[$lunesSemana]= $lunesSemana." ".trans('messages.al')." ".date ("Y-m-d", strtotime("+6 day", strtotime($lunesSemana)));
   $lunesSemana = date ("Y-m-d", strtotime("+7 day", strtotime($lunesSemana)));

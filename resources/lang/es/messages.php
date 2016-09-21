@@ -96,6 +96,9 @@ return [
     'aula8'=>'Aula 8',
     'aula9'=>'Aula 9',
     'aula10'=>'Aula 10',
+    'opcionesGenerales'=>'Opciones generales',
+    'inicioSemestre'=>'Inicio de semestre',
+    'finSemestre'=>'Fin de semestre',
     
 ];
 ?>

@@ -97,5 +97,8 @@ return [
     'aula8'=>'Classroom 8',
     'aula9'=>'Classroom 9',
     'aula10'=>'Classroom 10',
+    'opcionesGenerales'=>'General options',
+     'inicioSemestre'=>'Start of semestre',
+    'finSemestre'=>'End of semestre',
 ];
 ?>

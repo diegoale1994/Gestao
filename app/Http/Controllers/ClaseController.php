@@ -8,6 +8,7 @@ use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
 use Gestao\Clase;
 use Gestao\ClaseAulaHorario;
+use Gestao\Constante;
 use Session;
 use Redirect;
 use DB;
@@ -121,7 +122,7 @@ class ClaseController extends Controller
     }
 
     public function calculateStoreOcurrence($request){
-         $finalSemestre = strtotime("+ 30 day", time());
+         $finalSemestre = Constante::where('id','=','FINSEM')->first();
         $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
         if($diaSemanaActual == $request['dia']){
             if($request['horaInicio']<= getDate(time())['hours']){
@@ -143,6 +144,7 @@ class ClaseController extends Controller
 
         $fechaInicial= $fechaInicial->getTimestamp();
         $fechaFinal= $fechaFinal->getTimestamp();
+        $finalSemestre=strtotime($finalSemestre->valor);
         
         if($request['ocurrencias']==0){
             while($fechaInicial < $finalSemestre){
