@@ -56,8 +56,9 @@ DB::raw('clase_aula_horario.*,clase.grupo, clase.nombre, aula.id,null as nombre1
                 $nombre_dia2 = date ("Y-m-d", strtotime("+7 day", strtotime($fecha)));
                 $nombre_dia2 =obtenernombre($nombre_dia2);
 
-
-            $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select('clase_aula_horario.*', 'clase.nombre', 'aula.id')->where('fecha', '>=', $fecha)->where('fecha','<',date ("Y-m-d", strtotime("+7 day", strtotime($fecha))))->where('id_aula','=',$aula)->get();
+            $clases_sin_profe = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->select(DB::raw('clase_aula_horario.*, clase.nombre,clase.grupo, aula.id,null as nombre1,null as apellido1'))->where('fecha', '>=', $fecha)->where('fecha','<',date ("Y-m-d", strtotime("+7 day", strtotime($fecha))))->where('id_aula','=',$aula)->whereNull('id_docente');
+                
+            $clases_today = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->join('aula', 'clase_aula_horario.id_aula', '=', 'aula.id')->join('persona', 'clase.id_docente', '=', 'persona.id')->select('clase_aula_horario.*', 'clase.nombre','clase.grupo', 'aula.id','persona.nombre1','persona.apellido1')->where('fecha', '>=', $fecha)->where('fecha','<',date ("Y-m-d", strtotime("+7 day", strtotime($fecha))))->where('id_aula','=',$aula)->union($clases_sin_profe)->get();
             $semana=$fecha;
             $numeroSala=$aula;
              return view('admin.index',compact('clases_today','aula', 'fecha','dia','nombre_dia1','nombre_dia2','aula','tipo_mostrar','finSemestre','inicioSemestre','semana','numeroSala' ));
