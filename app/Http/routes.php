@@ -12,9 +12,9 @@
 */
 
 Route::get('admin/desreserva/{hora_inicio}/{fecha}/{id_clase}/{uri_anterior}',"ReservaController@desreserva_clase");
-Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}',"ReservaController@reserva_clase");
+Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}/{uri_anterior}',"ReservaController@reserva_clase");
 Route::get('admin',"DatasheetController@index");
-Route::get('admin/datasheet/{tipo_mostrar?}/{aula_semana?}/{fecha_dia?}',"DatasheetController@index");
+Route::get('admin/datasheet/{tipo_mostrar?}/{dia_semana?}/{no_sala?}/{no_semana?}',"DatasheetController@index");
 Route::get('/',"FrontController@index");
 Route::get('admin/algoritmo/make_algoritmo','AlgoritmoController@algorithm_operation');
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
@@ -22,6 +22,7 @@ Route::get('admin/clase/{clase}/createocurrence',['as'=>'admin.clase.createocurr
 Route::post('admin/clase/createocurrence',['as'=>'admin.clase.storeocurrence', 'uses'=>'ClaseController@storeOcurrence']);
 Route::Resource('admin/aula',"AulaController");
 Route::Resource('admin/clase',"ClaseController");
+Route::Resource('admin/reserva',"ReservaController");
 Route::Resource('admin/perfil',"PerfilController");
 Route::Resource('admin/peticion',"PeticionController");
 Route::Resource('admin/opciones',"OpcionesGeneralesController");

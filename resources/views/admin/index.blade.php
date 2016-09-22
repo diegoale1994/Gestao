@@ -98,9 +98,12 @@ while($lunesSemana <= $finSemestre){
       @endforeach
 @if ($a == 0)
   <td>
-    
+    <?php 
+        $uri= $_SERVER["REQUEST_URI"];
+        $uri = str_replace ("/", "-", $uri);
+       ?>
 
-<input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}' ">
+<input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}/{{ $uri }}' ">
 
 
 
