@@ -12,17 +12,20 @@
 {!!Form::label('mostrar',trans('messages.mostrarPor'))!!}
 {!! Form::select('tipo_mostrar', [trans('messages.dia'), trans('messages.semana')],null,['id'=>'tipo_mostrar']) !!}
 </div>
-<div id='opciondia'>
-<div id="Filtro dia" class="form-group">
-{!!Form::label('dia_semana',trans('messages.dia'))!!}
-{!! Form::select('dia_semana',[trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],null,['id'=>'dia_semana']) !!}
-</div>
-</div>
-<div id="opcionsemana" class="form-group">
-{!!Form::label('no_sala',trans('messages.numeroSala'))!!}
-{!! Form::select('no_sala', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'],null,['id'=>'no_sala']) !!}
-
 <?php
+
+if(!isset($semana)){
+  $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
+  $semana = date ("Y-m-d", strtotime("-".$diaSemanaActual." day", strtotime("now")));
+}
+if(!isset($diaSemana)){
+   $diaSemana= ((getDate(time())['wday'])+6)%7;
+}
+if(!isset($numeroSala)){
+  $numeroSala=1;
+}
+
+
 $inicioSemestreDia= ((getDate(strtotime($inicioSemestre))['wday'])+6)%7;
 $lunesSemana = date ("Y-m-d", strtotime("-".$inicioSemestreDia." day", strtotime($inicioSemestre)));
 $semanas=array();
@@ -31,11 +34,20 @@ while($lunesSemana <= $finSemestre){
   $lunesSemana = date ("Y-m-d", strtotime("+7 day", strtotime($lunesSemana)));
 }
 ?>
-{!!Form::label('no_semana',trans('messages.semana'))!!}
-{!!Form::select('no_semana', $semanas,null,['id'=>'no_semana']) !!}
+<div id='opciondia'>
+<div id="Filtro dia" class="form-group">
+{!!Form::label('dia_semana',trans('messages.dia'))!!}
+{!! Form::select('dia_semana',[trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],$diaSemana,['id'=>'dia_semana']) !!}
+{!!Form::select('no_semana_dia', $semanas,$semana,['id'=>'no_semana_dia']) !!}
+<input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#dia_semana').val()+'/'+$('#no_semana_dia').val()">
 </div>
-<div  class="form-group">
-<input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#dia_semana').val()+'/'+$('#no_sala').val()+'/'+$('#no_semana').val()">
+</div>
+<div id="opcionsemana" class="form-group">
+{!!Form::label('no_sala',trans('messages.numeroSala'))!!}
+{!! Form::select('no_sala', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'],$numeroSala,['id'=>'no_sala']) !!}
+{!!Form::label('no_semana',trans('messages.semana'))!!}
+{!!Form::select('no_semana', $semanas,$semana,['id'=>'no_semana']) !!}
+<input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#no_sala').val()+'/'+$('#no_semana').val()">
 </div>
  </div>
 </div>
@@ -71,7 +83,7 @@ while($lunesSemana <= $finSemestre){
 <?php $a=0; ?>
       @foreach ($clases_today as $element)
      @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
-       <td>{{ $element -> nombre }}
+       <td>{{ $element -> nombre }} - {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}
        <?php 
         $uri= $_SERVER["REQUEST_URI"];
         $uri = str_replace ("/", "-", $uri);

@@ -14,7 +14,7 @@
 Route::get('admin/desreserva/{hora_inicio}/{fecha}/{id_clase}/{uri_anterior}',"ReservaController@desreserva_clase");
 Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}',"ReservaController@reserva_clase");
 Route::get('admin',"DatasheetController@index");
-Route::get('admin/datasheet/{tipo_mostrar?}/{dia_semana?}/{no_sala?}/{no_semana?}',"DatasheetController@index");
+Route::get('admin/datasheet/{tipo_mostrar?}/{aula_semana?}/{fecha_dia?}',"DatasheetController@index");
 Route::get('/',"FrontController@index");
 Route::get('admin/algoritmo/make_algoritmo','AlgoritmoController@algorithm_operation');
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
