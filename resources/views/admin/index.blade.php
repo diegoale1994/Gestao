@@ -83,7 +83,7 @@ while($lunesSemana <= $finSemestre){
 <?php $a=0; ?>
       @foreach ($clases_today as $element)
      @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
-       <td>{{ $element -> nombre }} - {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}
+       <td>{{ $element -> nombre }} - {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}
        <?php 
         $uri= $_SERVER["REQUEST_URI"];
         $uri = str_replace ("/", "-", $uri);
@@ -139,7 +139,7 @@ while($lunesSemana <= $finSemestre){
 <?php $a=0; ?>
       @foreach ($clases_today as $element)
      @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> fecha == date ("Y-m-d", strtotime("+".$i." day", strtotime($fecha)))))
-       <td>{{ $element -> nombre }}</td>
+       <td>{{ $element -> nombre }}- {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}</td>
      <?php $a++; ?>  
      @endif
       @endforeach
