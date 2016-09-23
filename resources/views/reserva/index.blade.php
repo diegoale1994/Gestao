@@ -9,9 +9,12 @@
 $clases = array();
 
 foreach ($clase_sin_aula as $element){
- 		$clases[$element->id] = $element -> nombre ;
+ 		$clases[$element->id] = $element -> nombre;
  	}
 ?>
+@if (count($clase_sin_aula)<=0)
+	<h2>Parece que no hay clases que asignar para este momento!</h2>
+@else
 {!!Form::open(['route'=>'admin.reserva.store', 'method'=>'POST'])!!}
 	{!! Form::hidden('fecha', $fecha )!!}
 	{!! Form::hidden('aula', $aula )!!}
@@ -22,6 +25,8 @@ foreach ($clase_sin_aula as $element){
 	{!!Form::close()!!}
 
 
+  
+  @endif
   </div>
   <div class="panel-body">
 {!!Form::open(['route'=>'admin.reserva.store', 'method'=>'POST'])!!}
@@ -47,6 +52,7 @@ foreach ($clase_sin_aula as $element){
 		{!!Form::label('semestre',trans('messages.semestre'))!!}
 		{!!Form::number('semestre',null,['class'=>'form-control','min'=>'1','max'=>'12'])!!}
 	</div>
+	{!! Form::hidden('fecha', $fecha )!!}
 	<div class="form-group">
 		{!!Form::label('cant_estudiantes',trans('messages.cantidadDeEstudiantes'))!!}
 		{!!Form::number('cant_estudiantes',null,['class'=>'form-control','min'=>'1','required'])!!}
@@ -55,6 +61,26 @@ foreach ($clase_sin_aula as $element){
 		{!!Form::label('requerimientos',trans('messages.requerimientos'))!!}
 		{!!Form::text('requerimientos',null,['class'=>'form-control'])!!}
 	</div>
+	<div class="form-group">
+    	{!!Form::label('horario',trans('messages.horario'))  !!}
+    </div>
+    <div class="form-group">
+    	{!!Form::label('dia',trans('messages.diaDeLaSemana'))!!}
+    	{!! Form::select('dia', [trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')]) !!}
+    </div>
+    <div class="form-group">
+    	{!!Form::label('horaInicio',trans('messages.horaInicial'))!!}
+    	{!!Form::number('horaInicio',$hora_inicio,['class'=>'form-control','min'=>'7','max'=>'21','disabled'])!!}
+    </div>
+    <div class="form-group">	
+    	{!!Form::label('horaFinal',trans('messages.horaFinal'))!!}
+
+    	{!!Form::number('horaFinal',$hora_inicio +1,['class'=>'form-control','min'=>$hora_inicio +1,'max'=>$hora_inicio + $cont,'required'])!!}
+    </div>
+    <div class="form-group">
+    {!!Form::label('ocurrencias',trans('messages.ocurrencias'))!!}
+    {!! Form::select('ocurrencias', [trans('messages.todoElSemestre'), trans('messages.unaSolaVes')]) !!}
+    </div>
 {!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-primary'])!!}
 	{!!Form::close()!!}
 

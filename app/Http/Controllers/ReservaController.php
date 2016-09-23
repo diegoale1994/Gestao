@@ -34,11 +34,11 @@ foreach ($clases_sin_asignar as $element) {
 if($conti==0){
     $cont =  22 - $hora_inicio ;
 }
-echo "estas son las horas maximas".$cont;
+echo $cont;
+$clase_sin_aula =DB::select("SELECT nombre, clase_aula_horario.*, id from clase_aula_horario, clase Where clase.id=clase_aula_horario.id_clase and fecha ='".$fecha."' and hora_inicio = '".$hora_inicio."' and id_aula is NULL and hora_final - hora_inicio <= ".$cont."");
 
-$clase_sin_aula= DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')->select('clase_aula_horario.*', 'clase.nombre', 'clase.id')->where('fecha', '=', $fecha)->where('hora_inicio', '=', $hora_inicio)->where('id_aula', '=', NULL)->get();
 
-return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inicio','uri_anterior'));
+return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inicio','uri_anterior','cont'));
 
 }
 
@@ -54,7 +54,7 @@ return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inici
        $uri_anterior = str_replace("-","/",$uri_anterior);
 
          DB::update("UPDATE clase_aula_horario 
-                         SET id_aula='NULL'
+                         SET id_aula=NULL
                          where id_clase= '".$id_clase."' and fecha='".$fecha."' and hora_inicio='".$hora_inicio."'");
                          $uri_anterior_a= substr($uri_anterior, 0, - 10);
                         
@@ -72,8 +72,8 @@ public function store(Request $request)
         $fecha = $request['fecha'];
           $clase = $request['clase'];
             $hora_inicio = $request['hora_inicio'];
-          $fecha_n = str_replace("/","-",$fecha);
-        
+         $uri_anterior = str_replace("-","/",$uri_anterior);
+        $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
          DB::update("UPDATE clase_aula_horario 
                          SET id_aula='$aula' where fecha = '".$fecha."' and id_clase ='".$clase."' and hora_inicio='".$hora_inicio."'");
          $uri_anterior = substr($uri_anterior, 0, - 10);

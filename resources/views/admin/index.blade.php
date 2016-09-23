@@ -75,7 +75,14 @@ while($lunesSemana <= $finSemestre){
  
       {{-- expr --}}
     @for ($j = 7; $j < 22; $j++)
-        <tr>
+<?php $hora = date("G");?>
+    @if ($hora == $j)
+  <tr bgcolor='#58ACFA'>
+    @else
+<tr>
+    @endif
+ 
+       
         <th scope="row">{{ $j }} - {{ $j + 1 }} </th>
        @for ($i = 1; $i <=10; $i++)
 
@@ -134,7 +141,13 @@ while($lunesSemana <= $finSemestre){
     </thead>
     <tbody>
     @for ($j = 7; $j < 22; $j++)
-        <tr>
+       <?php $hora = date("G");?>
+    @if ($hora == $j)
+  <tr bgcolor='#58ACFA'>
+    @else
+<tr>
+    @endif
+        
         <th scope="row">{{ $j }} - {{ $j + 1 }} </th>
        @for ($i = 0; $i < 6; $i++)
 
@@ -142,15 +155,31 @@ while($lunesSemana <= $finSemestre){
 <?php $a=0; ?>
       @foreach ($clases_today as $element)
      @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> fecha == date ("Y-m-d", strtotime("+".$i." day", strtotime($fecha)))))
-       <td>{{ $element -> nombre }}- {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}</td>
+       <td>{{ $element -> nombre }}- {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}
+         <?php 
+        $uri= $_SERVER["REQUEST_URI"];
+        $uri = str_replace ("/", "-", $uri);
+       ?>
+       <?php 
+$nuevafecha = strtotime ( '+'.$i.' day' , strtotime ( $fecha ) ) ;
+$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+       ?>
+ <input type="button" class="btn btn-danger" value="x" onClick="window.location.href='/admin/desreserva/{{ $j }}/{{ $nuevafecha }}/{{ $element->id_clase }}/{{ $uri }}'">
+
+       </td>
      <?php $a++; ?>  
      @endif
       @endforeach
 @if ($a == 0)
   <td>
-<input type="button" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $aula }}/{{ $j }}/{{ date ("Y-m-d", strtotime("+".$i." day", strtotime($fecha))) }}' ">
+<?php 
+$nuevafecha = strtotime ( '+'.$i.' day' , strtotime ( $fecha ) ) ;
+$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
+        $uri= $_SERVER["REQUEST_URI"];
+        $uri = str_replace ("/", "-", $uri);
+       ?>
 
-
+<input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $aula }}/{{ $j }}/{{ $nuevafecha }}/{{ $uri }}' ">
 
   </td>
 @endif
