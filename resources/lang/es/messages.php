@@ -101,6 +101,10 @@ return [
     'finSemestre'=>'Fin de semestre',
     'peticion'=>'Peticiones',
     'algoritmo'=>'Algoritmo',
-    
+    'clase'=>'Clase',
+    'responsable'=>'Responsable',
+    'ocurrenciaEliminadaCorrectamente'=>'Ocurrencia Eliminada Correctamente',
+    'irAHorario'=>'Ir a horario',
+    'eliminarOcurrencia'=>'Eliminar Ocurrencia',
 ];
 ?>
