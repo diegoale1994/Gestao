@@ -10,7 +10,7 @@
 <thead>
 	<th>{{ trans('messages.clase') }}</th>
 	<th>{{ trans('messages.fecha') }}</th>
-	<th>{{ trans('messages.horaInicio') }}</th>
+	<th>{{ trans('messages.horaInicial') }}</th>
 	<th>{{ trans('messages.horaFinal') }}</th>
 	<th>{{ trans('messages.responsable') }}</th>
 </thead>

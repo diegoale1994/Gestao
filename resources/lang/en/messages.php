@@ -102,5 +102,10 @@ return [
     'finSemestre'=>'End of semestre',
     'peticion'=>'Petitions',
     'algoritmo'=>'Algorithm',
+    'clase'=>'Class',
+    'responsable'=>'Responsible',
+    'ocurrenciaEliminadaCorrectamente'=>'Ocurrence deleted correctly',
+    'irAHorario'=>'Go to form',
+    'eliminarOcurrencia'=>'Delete ocurrence',
 ];
 ?>
