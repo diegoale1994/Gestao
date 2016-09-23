@@ -5,6 +5,7 @@ namespace Gestao\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect;
+use Gestao\ClaseAulaHorario;
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
 
@@ -17,13 +18,20 @@ class PeticionController extends Controller
      */
     public function index()
     {
-        $peticiones = DB::table('clase_aula_horario')->join('clase','clase_aula_horario.id_clase','=','clase.id')->join('persona','clase_aula_horario.id_persona','=','persona.id')->select('clase_aula_horario.*','clase.nombre','persona.nombre1','persona.apellido1')->whereNotNull('id_persona')->get();
+        $peticiones = DB::table('clase_aula_horario')->join('clase','clase_aula_horario.id_clase','=','clase.id')->join('persona','clase_aula_horario.id_persona','=','persona.id')->select('clase_aula_horario.*','clase.nombre','persona.nombre1','persona.apellido1')->whereNotNull('id_persona')->whereNull('id_aula')->get();
         return view('peticion.index',compact('peticiones'));
     }
 
     public function irAHorario($fecha){
+        $diaSemana= ((getDate(strtotime($fecha))['wday'])+6)%7;
+        $fechaLunes = date ("Y-m-d", strtotime("-".$diaSemana." day", strtotime($fecha)));
 
-        return redirect('admin/datasheet/'.$diaSemana.'/'.$fechaLunes);
+        return redirect('admin/datasheet/0/'.$diaSemana.'/'.$fechaLunes);
+    }
+
+    public function eliminarPeticion($fecha,$id_clase){
+        DB::table('clase_aula_horario')->where('fecha','=',$fecha)->where('id_clase','=',$id_clase)->delete();
+        return redirect('admin/peticion')->with('message',trans('messages.ocurrenciaEliminadaCorrectamente'));
     }
 
     /**

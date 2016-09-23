@@ -22,8 +22,11 @@
 <th>{{ $peticion -> hora_final }}</th>
 <th>{{ $peticion -> nombre1." ".$peticion-> apellido1 }}</th>
 <th>
-	<input type="button" class="btn btn-success" value={!! trans('messages.irAHorario') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha ?>' " class="btn btn-success">
+	<input type="button" class="btn btn-success" value={!! trans('messages.irAHorario') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha ?>' ">
 
+</th>
+<th>
+<input type="button" class="btn btn-danger" value={!! trans('messages.eliminarOcurrencia') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha.'/'.$peticion -> id_clase ?>' ">
 </th>
 </tbody>
 @endforeach
