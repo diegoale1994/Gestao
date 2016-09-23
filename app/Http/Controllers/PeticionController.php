@@ -17,8 +17,13 @@ class PeticionController extends Controller
      */
     public function index()
     {
-        $peticiones = DB::table('clase_aula_horario')->join('clase','clase_aula_horario.id_clase','=','clase')->join('persona','clase_aula_horario.id_persona','=','persona.id')->select('clase_aula_horario.*','persona.nombre1','persona.apellido1')->whereNotNull('id_persona')->get();
+        $peticiones = DB::table('clase_aula_horario')->join('clase','clase_aula_horario.id_clase','=','clase.id')->join('persona','clase_aula_horario.id_persona','=','persona.id')->select('clase_aula_horario.*','clase.nombre','persona.nombre1','persona.apellido1')->whereNotNull('id_persona')->get();
         return view('peticion.index',compact('peticiones'));
+    }
+
+    public function irAHorario($fecha){
+
+        return redirect('admin/datasheet/'.$diaSemana.'/'.$fechaLunes);
     }
 
     /**

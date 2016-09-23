@@ -8,7 +8,7 @@
 @endif
 <table class ="table">
 <thead>
-	<th>{{ trans('messages.idClase') }}</th>
+	<th>{{ trans('messages.clase') }}</th>
 	<th>{{ trans('messages.fecha') }}</th>
 	<th>{{ trans('messages.horaInicio') }}</th>
 	<th>{{ trans('messages.horaFinal') }}</th>
@@ -16,13 +16,14 @@
 </thead>
 @foreach($peticiones as $peticion)
 <tbody>
-<th>{{ $aula -> id }}</th>
-<th>{{ $aula -> nombre }}</th>
-<th>{{ $aula ->	cant_personas }}</th>
-<th>{{ $aula -> cant_equipos }}</th>
-<th>{{ $aula -> piso }}</th>
+<th>{{ $peticion -> nombre }}</th>
+<th>{{ $peticion -> fecha }}</th>
+<th>{{ $peticion ->	hora_inicio }}</th>
+<th>{{ $peticion -> hora_final }}</th>
+<th>{{ $peticion -> nombre1." ".$peticion-> apellido1 }}</th>
 <th>
-	{!!link_to_route('admin.aula.edit', $title = trans('messages.editar'), $parameters = $aula->id, $attributes = ['class'=>'btn btn-primary'])!!}
+	<input type="button" class="btn btn-success" value={!! trans('messages.irAHorario') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha ?>' " class="btn btn-success">
+
 </th>
 </tbody>
 @endforeach
