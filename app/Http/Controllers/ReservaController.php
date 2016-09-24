@@ -55,7 +55,7 @@ return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inici
 
          DB::update("UPDATE clase_aula_horario 
                          SET id_aula=NULL
-                         where id_clase= '".$id_clase."' and fecha='".$fecha."' and hora_inicio='".$hora_inicio."'");
+                         where id_clase= '".$id_clase."' and fecha='".$fecha."'");
                          $uri_anterior_a= substr($uri_anterior, 0, - 10);
                         
                         $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
