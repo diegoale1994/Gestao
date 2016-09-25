@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::post('admin/reserva/store2',['as'=>'admin.reserva.store2', 'uses'=>'ReservaController@store2']);
 Route::get('admin/desreserva/{hora_inicio}/{fecha}/{id_clase}/{uri_anterior}',"ReservaController@desreserva_clase");
 Route::get('admin/reserva/{aula}/{hora_inicio}/{fecha}/{uri_anterior}',"ReservaController@reserva_clase");
 Route::get('admin/peticion/{fecha}',"PeticionController@irAHorario");

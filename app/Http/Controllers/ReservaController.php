@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Gestao\Http\Requests;
 use Gestao\Http\Controllers\Controller;
-
+use Gestao\Clase;
+use Gestao\ClaseAulaHorario;
 class ReservaController extends Controller
 {
     /**
@@ -36,7 +37,6 @@ if($conti==0){
 }
 echo $cont;
 $clase_sin_aula =DB::select("SELECT nombre, clase_aula_horario.*, id from clase_aula_horario, clase Where clase.id=clase_aula_horario.id_clase and fecha ='".$fecha."' and hora_inicio = '".$hora_inicio."' and id_aula is NULL and hora_final - hora_inicio <= ".$cont."");
-
 
 return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inicio','uri_anterior','cont'));
 
@@ -78,6 +78,36 @@ public function store(Request $request)
                          SET id_aula='$aula' where fecha = '".$fecha."' and id_clase ='".$clase."' and hora_inicio='".$hora_inicio."'");
          $uri_anterior = substr($uri_anterior, 0, - 10);
         return redirect($uri_anterior.$fecha_n);
+
+        }
+
+        public function store2(Request $request)
+    {
+        $fecha= $request['fecha'];
+        $fecha = str_replace("-","/",$fecha);
+        $uri_anterior= $request['uri'];
+        $uri_anterior = str_replace("-","/",$uri_anterior);
+$fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+ $uri_anterior = substr($uri_anterior, 0, - 10);
+    clase::create([
+        'id' => $request['id'],
+        'nombre' => $request['nombre'],
+        'grupo' => $request['grupo'],
+        'creditos' => $request['creditos'],
+        'semestre' => $request['semestre'],
+        'cant_estudiantes' => $request['cant_estudiantes'],
+        'requerimientos' => $request['requerimientos'],
+]);
+     claseaulahorario::create([
+        'id_clase' => $request['id'],
+        'id_aula' => $request['aula'],
+        'hora_inicio' => $request['horaInicio'],
+        'hora_final' => $request['horaFinal'],
+        'fecha' => $request['fecha'],
+        
+]);
+
+return redirect($uri_anterior.$fecha_n);
 
         }
  
