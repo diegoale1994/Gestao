@@ -2,6 +2,11 @@
 
 $(document).ready(function() {
 
+if ( $("#msg") ) {
+   $("#msg").delay(2000).fadeOut("slow");
+    
+}
+
 
 $("#form_2").submit(function() {
    

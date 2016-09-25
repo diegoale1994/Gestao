@@ -89,6 +89,9 @@ class ClaseController extends Controller
     public function edit($id)
     {
         $clase = clase::find($id);
+                if (! $clase) {
+        abort(404);
+}
         return view('clase.edit',['clase'=>$clase]);
     }
 

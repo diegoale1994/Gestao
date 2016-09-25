@@ -50,6 +50,11 @@ while($lunesSemana <= $finSemestre){
 <input type="button" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#no_sala').val()+'/'+$('#no_semana').val()">
 </div>
  </div>
+ @if (Session::has('message'))
+  <div id = 'msg' class="alert alert-success">
+  {{ Session::get('message') }}
+</div>
+@endif
 </div>
 
 

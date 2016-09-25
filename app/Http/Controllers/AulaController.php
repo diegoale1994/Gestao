@@ -68,6 +68,9 @@ class AulaController extends Controller {
 	public function edit($id)
 	{
 		$aula = aula::find($id);
+		if (! $aula) {
+		abort(404);
+}
 		return view('aula.edit',['aula'=>$aula]);
 	}
 

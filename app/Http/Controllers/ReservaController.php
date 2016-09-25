@@ -62,7 +62,7 @@ return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inici
           
 
 
-        return redirect($uri_anterior_a.$fecha_n);
+        return redirect($uri_anterior_a.$fecha_n)->with('message',trans('messages.claseEliminadaCorrectamente'));
     }
 
 public function store(Request $request)
@@ -77,7 +77,7 @@ public function store(Request $request)
          DB::update("UPDATE clase_aula_horario 
                          SET id_aula='$aula' where fecha = '".$fecha."' and id_clase ='".$clase."' and hora_inicio='".$hora_inicio."'");
          $uri_anterior = substr($uri_anterior, 0, - 10);
-        return redirect($uri_anterior.$fecha_n);
+        return redirect($uri_anterior.$fecha_n)->with('message',trans('messages.claseAsignadaCorrectamente'));
 
         }
 
@@ -107,7 +107,7 @@ $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
         
 ]);
 
-return redirect($uri_anterior.$fecha_n);
+return redirect($uri_anterior.$fecha_n)->with('message',trans('messages.claseAsignadaYCreadaCorrectamente'));
 
         }
  
