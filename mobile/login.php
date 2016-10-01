@@ -1,10 +1,10 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $con = mysqli_connect("localhost", "root", "", "Gestao");
- 
+   
 $email = $_POST["correo"];
    $password = $_POST["password"];
+   require_once('base.php');
       // $email = 'diego.fc.1@hotmail.com';
 //   $password = '$2y$10$e/fIkZpaM907f7K6LI.2auNzfAQcyXP6F7GHYge8.tkzP2vujtHTa';
     $statement = mysqli_prepare($con, "SELECT id, nombre1, apellido1, email FROM persona WHERE email = ? AND password = ?");
