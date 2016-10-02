@@ -33,7 +33,7 @@ class CreatePersonaTable extends Migration {
             'email' => 'mail@mail.com',
             'password' => bcrypt('letmein'),
             'programa_id' => 1,
-            'rol' => '1'
+            'rol' => 'M'
         )
     );
 		DB::table('persona')->insert(
@@ -41,7 +41,7 @@ class CreatePersonaTable extends Migration {
             'email' => 'diego.fc.1@hotmail.com',
             'password' => bcrypt('hangar18'),
             'programa_id' => 1,
-            'rol' => '1'
+            'rol' => 'M'
         )
     );
 	}

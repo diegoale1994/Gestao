@@ -44,7 +44,7 @@ class LoginController extends Controller
     {        
         if(Auth::attempt(['email'=> $request['email'],'password' => $request['password']])){
             $persona = DB::table('persona')->where('email', '=', $request['email'])->get();
-            if($persona[0]->rol == '1' ){
+            if($persona[0]->rol == 'M' ){
                 return Redirect::to('admin');
             }  
         }
