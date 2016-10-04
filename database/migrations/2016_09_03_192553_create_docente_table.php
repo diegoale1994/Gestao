@@ -21,6 +21,7 @@ class CreateDocenteTable extends Migration {
 			$table->string('twiter',100);
 			$table->string('foto',255);
 			$table->text('descripcion');
+			$table->text('activo',1);
 			$table->foreign('persona_id')->references('id')->on('persona');
 			$table->timestamps();
 		});

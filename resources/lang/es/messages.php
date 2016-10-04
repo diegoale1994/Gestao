@@ -60,7 +60,7 @@ return [
     'horaFinal'=>'Hora final',
     'ocurrencias'=>'Ocurrencias',
     'todoElSemestre'=>'Todo el semestre',
-    'unaSolaVes'=>'Una sola ves',
+    'unaSolaVes'=>'Una sola vez',
     'ocurrenciaCreadaCorrectamente' => 'Ocurrencia creada correctamente',
     'anadirOcurrencia' => 'Añadir Ocurrencia',
     'nombre1'=>'Primer nombre',
