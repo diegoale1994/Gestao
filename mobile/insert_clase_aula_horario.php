@@ -43,7 +43,7 @@ require_once('base.php');
 	
 	$final = mysqli_query($con, $query);
 	if(!$final){
-        echo $id_clase." ".$hora_inicio." ".$hora_final." ".$fecha." ".$id_persona;
+        echo 'No se pudo realizar la peticion de reserva';
     }else{
     	 echo 'Reserva creada en pendiente a asignacion';
     }
