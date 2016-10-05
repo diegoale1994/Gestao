@@ -5,30 +5,47 @@ if($_SERVER["REQUEST_METHOD"]=='POST'){
 
 require_once('base.php');
 
-	createPerson();
+	$id_clase = $_POST['id_clase'];
+	$id_persona = $_POST['id_persona'];
+	$dia_semana = $_POST['dia_semana'];
+	$hora_inicio=$_POST['hora_inicio'];
+	$hora_final=$_POST['hora_final'];
 
 
-}
+    $diaSemanaActual= ((getDate(time())['wday'])+6)%7;
+        if($diaSemanaActual == $dia_semana){
+            if($hora_inicio <= getDate(time())['hours']){
+                $dia_semana = $dia_semana + 7;
+            }
 
+        }
+        elseif($dia_semana < $diaSemanaActual){
+            $dia_semana = $dia_semana + 7;
+        }
+        $difDias= $dia_semana - $diaSemanaActual ;
+        $fechaEnHorario =strtotime("+".$difDias." day", time());
 
-function createPerson(){
-	global $con;
-	$nombre1 = $_POST['nombre1'];
-	$apellido1 = $_POST['apellido1'];
-	$password = sha1($_POST['password']);
+        $fechaInicial = date_create(date("Y-m-d H:i:s", $fechaEnHorario));
+        $fechaFinal = date_create(date("Y-m-d H:i:s", $fechaEnHorario));
 
+        date_time_set($fechaInicial, $hora_inicio, 0);
+        date_time_set($fechaFinal, $hora_final, 0);
 
-	$correo = $_POST['correo'];
-	$rol = $_POST['rol'];
-	//$programa = $_POST['programa'];
+        $fechaInicial= $fechaInicial->getTimestamp();
+        $fechaFinal= $fechaFinal->getTimestamp();
+        
+        $hora_inicio = getDate($fechaInicial)['hours'] ;
+        $hora_final = getDate($fechaFinal)['hours'];
+        $fecha= date("Y-m-d", $fechaInicial);
+
  
-	$query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa_id) VALUES ('$nombre1','$apellido1','$correo','$password','$rol', '1')";
+	$query = "INSERT INTO clase_aula_horario(id_clase,hora_inicio,hora_final,fecha,id_persona) VALUES ('$id_clase','$hora_inicio','$hora_final','$fecha','$id_persona')";
 	
 	$final = mysqli_query($con, $query);
 	if(!$final){
-        echo 'tu email ya esta registrado';
+        echo $id_clase." ".$hora_inicio." ".$hora_final." ".$fecha." ".$id_persona;
     }else{
-    	 echo 'Registro Exitoso';
+    	 echo 'Reserva creada en pendiente a asignacion';
     }
 
 	mysqli_close($con);

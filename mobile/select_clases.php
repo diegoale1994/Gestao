@@ -16,9 +16,9 @@ $id_persona = $_POST["id_persona"];
     $response = array();
     
     while(mysqli_stmt_fetch($statement)){
-        $response[$id_clase] = $nombre;
+        $response[] = array("id_clase"=>$id_clase,"nombre"=>$nombre);
     }
     
-    echo json_encode($response);
+    echo json_encode(array('response'=>$response));
 }
 ?>
