@@ -6,7 +6,7 @@ $id_persona = $_POST["id_persona"];
 
    require_once('base.php');
 
-    $statement = mysqli_prepare($con, "SELECT id_clase, nombre FROM estudiante_clase JOIN clase ON id_clase=id WHERE id_persona = ?");
+    $statement = mysqli_prepare($con, "SELECT id, nombre FROM clase  WHERE id_docente = ?");
     mysqli_stmt_bind_param($statement, "i", $id_persona);
     mysqli_stmt_execute($statement);
     
