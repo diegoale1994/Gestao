@@ -38,6 +38,10 @@ if($conti==0){
 echo $cont;
 $clase_sin_aula =DB::select("SELECT nombre, clase_aula_horario.*, id from clase_aula_horario, clase Where clase.id=clase_aula_horario.id_clase and fecha ='".$fecha."' and hora_inicio = '".$hora_inicio."' and id_aula is NULL and hora_final - hora_inicio <= ".$cont."");
 
+
+
+
+
 return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inicio','uri_anterior','cont'));
 
 }

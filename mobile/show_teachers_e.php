@@ -3,9 +3,7 @@
 if($_SERVER['REQUEST_METHOD']=='POST'){
    
 $id_persona = $_POST["id_profesor"];
-
    require_once('base.php');
-
     $statement = mysqli_prepare($con, "SELECT nombre1 , nombre2 , apellido1, apellido2, email, telefono, codigo, facebook, twiter, foto, descripcion FROM persona JOIN docente ON id=persona_id WHERE id = ?");
      mysqli_stmt_bind_param($statement, "s", $id_persona);
     mysqli_stmt_execute($statement);
@@ -18,31 +16,25 @@ $id_persona = $_POST["id_profesor"];
     while(mysqli_stmt_fetch($statement)){
         if($nombre2==null){
             $nombre2 = "";
-        }
-         if($apellido2==null){
+        }if($apellido2==null){
             $apellido2 = "";
-        }
-         if($telefono==null){
+        }if($telefono==null){
             $telefono = "";
-        }
-         if($codigo==null){
+        }if($codigo==null){
             $codigo = "";
-        }
-         if($facebook==null){
+        }if($facebook==null){
             $facebook = "";
-        }
-         if($twiter==null){
+        }if($twiter==null){
             $twiter = "";
-        }
-         if($foto==null){
+        }if($foto==null){
             $foto = "";
-        }
-         if($descripcion==null){
+        }if($descripcion==null){
             $descripcion = "";
         }
         $response[] = array("nombre1"=>$nombre1,"nombre2"=>$nombre2,"apellido1"=>$apellido1,"apellido2"=>$apellido2,"email"=>$email,"telefono"=>$telefono,"codigo"=>$codigo,"facebook"=>$facebook,"twiter"=>$twiter,"foto"=>$foto,"descripcion"=>$descripcion);
     }
-    
-    echo json_encode(array('response'=>$response));
+
+
+   echo json_encode(array('response'=>$response));
 }
 ?>
