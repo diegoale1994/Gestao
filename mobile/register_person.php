@@ -31,7 +31,14 @@ $query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa
 	if(!$final){
         echo 'tu email ya esta registrado';
     }else{
-    	 echo 'Registro Exitoso';
+    	if($rol=="D"){
+    		$query = "INSERT INTO docente(persona_id) SELECT id FROM persona WHERE email='$correo'";
+			$final = mysqli_query($con, $query);
+    	}elseif($rol=="E"){
+    		$query = "INSERT INTO estudiante(persona_id) SELECT id FROM persona WHERE email='$correo'";
+			$final = mysqli_query($con, $query);
+    	}
+    	echo 'Registro Exitoso';
     }
 
 	mysqli_close($con);
