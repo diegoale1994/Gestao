@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
    
    require_once('base.php');
 
-    $statement = mysqli_prepare($con, "SELECT  id ,nombre1, apellido1 FROM persona where rol = 'D'");
+    $statement = mysqli_prepare($con, "SELECT  id ,nombre1, apellido1 FROM persona where rol = 'D' and estado = 'A'");
    
     mysqli_stmt_execute($statement);
     

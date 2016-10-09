@@ -21,8 +21,11 @@ function createPerson(){
 	$correo = $_POST['correo'];
 	$rol = $_POST['rol'];
 	//$programa = $_POST['programa'];
- 
-	$query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa_id) VALUES ('$nombre1','$apellido1','$correo','$password','$rol', '1')";
+ 	if($rol == 'E'){
+$query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa_id, estado) VALUES ('$nombre1','$apellido1','$correo','$password','$rol', '1', 'A')";
+ 	}else{
+ 		$query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa_id, estado) VALUES ('$nombre1','$apellido1','$correo','$password','$rol', '1','N')";
+ 	}
 	
 	$final = mysqli_query($con, $query);
 	if(!$final){
