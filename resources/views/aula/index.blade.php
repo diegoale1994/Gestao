@@ -22,7 +22,7 @@
 <th>{{ $aula -> cant_equipos }}</th>
 <th>{{ $aula -> piso }}</th>
 <th>
-	{!!link_to_route('admin.aula.edit', $title = trans('messages.editar'), $parameters = $aula->id, $attributes = ['class'=>'btn btn-primary'])!!}
+	{!!Form::open(['route'=>['admin.profesores.destroy', $aula -> id],'method'=>'DELETE']) !!}
 </th>
 </tbody>
 @endforeach

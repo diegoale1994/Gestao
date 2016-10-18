@@ -81,7 +81,7 @@
 			</li>
 			<li><a href="/admin/peticion"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>{{ trans('messages.peticion') }}</a></li>
 			<li><a href="/admin/algoritmo"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>{{ trans('messages.algoritmo') }}</a></li>
-			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
+			<li><a href="/admin/profesores"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg>{{ trans('messages.profesores') }}</a></li>
 			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
 			<li class="parent ">
 				<a href="#">
