@@ -44,7 +44,6 @@ class AulaController extends Controller {
 		'cant_personas' => $request['cant_personas'],
 		'piso' => $request['piso'],
 ]);
-
 	return redirect('admin/aula')->with('message',trans('messages.aulaCreadaCorrectamente'));
 	}
 
