@@ -7,10 +7,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
    require_once('base.php');
    if($rol == "D"){
-        $statement = mysqli_prepare($con, "SELECT  id ,nombre, grupo FROM clase WHERE id_docente is null");
+        $statement = mysqli_prepare($con, "SELECT  id ,nombre, IFNULL(grupo,'Sin grupo') FROM clase WHERE id_docente is null");
     
     }elseif($rol == "E"){
-        $statement = mysqli_prepare($con, "SELECT  id ,nombre, grupo FROM clase WHERE id NOT IN (SELECT id_clase FROM estudiante_clase WHERE id_persona=?)");
+        $statement = mysqli_prepare($con, "SELECT  id ,nombre, IFNULL(grupo,'Sin grupo') FROM clase WHERE id NOT IN (SELECT id_clase FROM estudiante_clase WHERE id_persona=?)");
         mysqli_stmt_bind_param($statement, "i", $id_persona);
     }
 
