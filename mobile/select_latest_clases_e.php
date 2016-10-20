@@ -9,8 +9,8 @@ $fecha_hoy = date('Y/m/d');
 $fecha_final = strtotime($fecha_hoy."+ 8 days");
 $fecha_final = date("Y/m/d",$fecha_final);
 
-
-    $query = "SELECT hora_inicio, hora_final, clase.nombre nombre_clase, aula.nombre nombre_aula, fecha from clase_aula_horario, clase, aula where aula.id = clase_aula_horario.id_aula and clase.id = clase_aula_horario.id_clase and fecha >= '$fecha_hoy' and fecha <= '$fecha_final' and clase.id_docente = $id_persona order by fecha asc LIMIT 3";
+mysqli_query($con, "SET lc_time_names = 'es_ES'" ); 
+    $query = "SELECT hora_inicio, hora_final, clase.nombre nombre_clase, aula.nombre nombre_aula, DATE_FORMAT(fecha,'%W %d de %M') AS fecha from clase_aula_horario, clase, aula where aula.id = clase_aula_horario.id_aula and clase.id = clase_aula_horario.id_clase and fecha >= '$fecha_hoy' and fecha <= '$fecha_final' and clase.id_docente = $id_persona order by clase_aula_horario.fecha asc LIMIT 3";
     $result = mysqli_query($con, $query);
     $number_of_rows = mysqli_num_rows($result);
     $response  = array();

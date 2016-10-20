@@ -7,7 +7,7 @@ $rol = $_POST["rol"];
 
    require_once('base.php');
 if($rol == "D"){
-    $statement = mysqli_prepare($con, "SELECT count(*) FROM persona JOIN docente ON id = persona_id  WHERE id = ? AND nombre1 <> '' AND apellido1 <> '' AND email <> '' AND telefono <> '' AND facebook <> '' AND descripcion <> ''");
+    $statement = mysqli_prepare($con, "SELECT count(*) FROM persona JOIN docente ON id = persona_id  WHERE id = ? AND nombre1 <> '' AND apellido1 <> '' AND email <> '' AND telefono <> '' AND descripcion <> ''");
     mysqli_stmt_bind_param($statement, "i", $id_persona);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);

@@ -28,9 +28,21 @@ $query = "INSERT INTO persona(nombre1, apellido1, email, password, rol, programa
  	}
 	
 	$final = mysqli_query($con, $query);
+    $id_insertado = mysqli_insert_id($con);
 	if(!$final){
-        echo 'tu email ya esta registrado';
+        echo 'Tu email ya esta registrado';
     }else{
+        if($rol == 'E'){
+            $query= "INSERT INTO estudiante(persona_id) VALUES ('$id_insertado')";
+        }else{
+            $query= "INSERT INTO docente(persona_id) VALUES ('$id_insertado')";
+        }
+
+        $final = mysqli_query($con, $query);
+        if(!$final){
+            echo 'Error';
+        }
+
     	$query = "SELECT id from persona where email = '$correo'";
     	$result = mysqli_query($con, $query);
     $number_of_rows = mysqli_num_rows($result);
