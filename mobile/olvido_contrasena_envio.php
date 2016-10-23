@@ -1,10 +1,11 @@
 <?php
 
 
-
 require_once('base.php');
 
-$email="efrobayo@gmail.com";
+
+
+$email='efrobayo@gmail.com';
 	
 	
 	$codigo = sprintf('%04d', rand(0,9999));
@@ -27,14 +28,13 @@ mail($email, $subject, $message, $headers);
 
 	
 	$final = mysqli_query($con, $query);
-	if(!$final){
-        echo 'El correo no se encuentra registrado';
+	if(mysqli_affected_rows($con)==0){
+        echo 'El correo no se encuentra registrado'.'0';
     }else{
-    	 echo 'Revisa tu correo e ingresa el codigo proporcionado';
+    	 echo 'Revisa tu correo e ingresa el codigo proporcionado'.'1';
     }
 
 	mysqli_close($con);
 	
-
 
 ?>
