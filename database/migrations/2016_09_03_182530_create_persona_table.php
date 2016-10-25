@@ -25,6 +25,7 @@ class CreatePersonaTable extends Migration {
 			$table->string('rol',1);
 			$table->string('estado',1);
 			$table->string('telefono',10);
+			$table->string('cell_token',400);
 			$table->rememberToken();
 			$table->foreign('programa_id')->references('id')->on('programa');
 			$table->timestamps();

@@ -34,6 +34,6 @@ Route::Resource('login',"LoginController");
 Route::Resource('logout',"LoginController@logout");
 Route::Resource('admin/algoritmo',"AlgoritmoController");
 Route::get('admin/algoritmo/{algoritmo}/delete_aula', ['as'=>'admin.algoritmo.delete_aula', 'uses'=>'AlgoritmoController@delete_aula']);
-
+Route::post('mobile/m_login',['as'=>'mobile.m_login', 'uses'=>'MobileController@login']);
 
 Route::post('admin/algoritmo/algorithm_step1',['as'=>'admin.algoritmo.algorithm_step1', 'uses'=>'AlgoritmoController@algorithm_step1']);
