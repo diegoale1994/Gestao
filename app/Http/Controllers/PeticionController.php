@@ -25,7 +25,6 @@ class PeticionController extends Controller
     public function irAHorario($fecha){
         $diaSemana= ((getDate(strtotime($fecha))['wday'])+6)%7;
         $fechaLunes = date ("Y-m-d", strtotime("-".$diaSemana." day", strtotime($fecha)));
-
         return redirect('admin/datasheet/0/'.$diaSemana.'/'.$fechaLunes);
     }
 

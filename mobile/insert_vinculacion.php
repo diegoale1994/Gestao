@@ -66,7 +66,7 @@ if($rol == "D"){
         }
     }
 
-$message = array("message" => "Docente registrado en tu clase de: ".$clase_n);
+$message = array("message" => "Docente registrado en : ".$clase_n);
 	$message_status = send_notification($tokens, $message);
 	
 }
