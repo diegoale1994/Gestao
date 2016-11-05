@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lumino - Dashboard</title>
+<title>Gestao - Web</title>
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('css/datepicker3.css') }}" />
 <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('css/dataTables.min.css') }}" />
 <script type="text/javascript" src="{{ URL::asset('js/lumino.glyphs.js') }}"></script>
+<link rel="stylesheet" href="{{ URL::asset('css/bootstrap-table.css') }}" />
 
 <!--Icons-->
 
@@ -29,7 +31,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Gestao</span>Web</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {!! Auth::user()->nombre1." ".Auth::user()->apellido1 !!} <span class="caret"></span></a>
@@ -53,60 +55,13 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="/admin/datasheet"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> {{ trans('messages.planilla') }}</a></li>
-			
-			<li class="parent ">
-				<a href="/admin/aula">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> {{ trans('messages.aulas') }}
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="/admin/aula/create">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans('messages.crear') }}
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li class= "parent"><a href="/admin/clase">
-				<span data-toggle="collapse" href="#sub-item-2"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
-				{{ trans('messages.clases') }}</a>
-			<ul class="children collapse" id="sub-item-2">
-					<li>
-						<a class="" href="/admin/clase/create">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> {{ trans('messages.crear') }}
-						</a>
-					</li>
-				</ul>	
-
-			</li>
-			<li><a href="/admin/peticion"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>{{ trans('messages.peticion') }}</a></li>
-			<li><a href="/admin/algoritmo"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>{{ trans('messages.algoritmo') }}</a></li>
-			<li><a href="/admin/profesores"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg>{{ trans('messages.profesores') }}</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			<li id="menu1" name="menu1"><a href="/admin/datasheet"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>{{ trans('messages.planilla') }}</a></li>
+			<li id="menu2" name="menu2"><a href="/admin/aula"><svg class="glyph stroked location pin"><use xlink:href="#stroked-location-pin"/></svg>	<s</span> {{ trans('messages.aulas') }}</a></li>
+			<li id="menu3" name="menu3"><a href="/admin/clase"><svg class="glyph stroked app window with content"><use xlink:href="#stroked-app-window-with-content"/></svg>{{ trans('messages.clases') }}</a></li>
+			<li id="menu4" name="menu4"><a href="/admin/peticion"><svg class="glyph stroked empty message"><use xlink:href="#stroked-empty-message"/></svg>	{{ trans('messages.peticion') }}</a></li>
+			<li id="menu5" name="menu5"><a href="/admin/algoritmo"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg>{{ trans('messages.algoritmo') }}</a></li>
+			<li id="menu6" name="menu6"><a href="/admin/profesores"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg>{{ trans('messages.profesores') }}</a></li>			
+			<li role="presentation" class="divider"></li>			
 		</ul>
 
 	</div><!--/.sidebar-->
@@ -120,31 +75,14 @@
 	<script type="text/javascript" src="{{ URL::asset('js/easypiechart-data.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('js/home_made.js') }}"></script>
-	
-	
-	
-	<script>
-		$('#calendar').datepicker({
-		});
+	<script type="text/javascript" src="{{ URL::asset('js/bootstrap-table.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/dataTables.min.js') }}"></script>
 
-		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-		        $(this).find('em:first').toggleClass("glyphicon-minus");      
-		    }); 
-		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>
-
-		<script type="text/javascript">
+	<!-- Si no funciona algo del calendario, lq uite el datepicker-->
+	
+	<script type="text/javascript">
 		function ejecutaralgoritmopro(){
-var answer = confirm("¿realmente desea imprimir estos datos?")
+		var answer = confirm("¿realmente desea imprimir estos datos?")
 	if (answer){
 		alert("Saliendo")
 		location='/admin/algoritmo/make_algoritmo';
@@ -155,6 +93,57 @@ var answer = confirm("¿realmente desea imprimir estos datos?")
 
 		}
 
+	</script>
+	<!--<script type="text/javascript">		
+			for (var i = 1; i <= 10; i++) {
+				console.log("entro"+i);
+				$("menu"+i).Click(function(){
+					console.log("entro");
+					var clase=$("menu"+i).attr("name");
+					sessionStorage.setItem("clase", clase);
+
+				})
+			};
+			var active= sessionStorage.getItem("clase");
+			$("#"+active).addClass("Active");
+			
+	</script>-->
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			
+			var clase="";
+			$("#menu1").click(function(){
+				clase=$("#menu1").attr("name");
+			    sessionStorage.setItem("clase", clase);		
+				});
+			$("#menu2").click(function(){
+				clase=$("#menu2").attr("name");
+			    sessionStorage.setItem("clase", clase);
+				});
+			$("#menu3").click(function(){
+				clase=$("#menu3").attr("name");
+			    sessionStorage.setItem("clase", clase);		
+				});
+			$("#menu4").click(function(){
+				clase=$("#menu4").attr("name");
+			    sessionStorage.setItem("clase", clase);		
+				});
+			$("#menu5").click(function(){
+				clase=$("#menu5").attr("name");
+			    sessionStorage.setItem("clase", clase);		
+				});
+			$("#menu6").click(function(){
+				clase=$("#menu6").attr("name");
+			    sessionStorage.setItem("clase", clase);		
+				});
+			var active= sessionStorage.getItem("clase");
+			$("#"+active).addClass("active");
+		});
+	</script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			
+		})
 	</script>
 
 </body>

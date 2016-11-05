@@ -38,6 +38,14 @@ class CreatePersonaTable extends Migration {
             'rol' => 'M'
         )
     );
+	DB::table('persona')->insert(
+        array(
+            'email' => 'anieto@mail.com',
+            'password' => bcrypt('12345'),
+            'programa_id' => 1,
+            'rol' => 'M'
+        )
+    );
 		DB::table('persona')->insert(
         array(
             'email' => 'diego.fc.1@hotmail.com',

@@ -18,4 +18,4 @@
 	<div class="form-group">
 		{!!Form::label('aula_piso',trans('messages.piso'))!!}
 		{!!Form::number('piso',null,['class'=>'form-control','min'=>'1','max'=>'2','required'])!!}
-	</div>
+</div>

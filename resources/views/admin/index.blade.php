@@ -59,76 +59,102 @@ while($lunesSemana <= $finSemestre){
 
 
  @if($dia)
- <h1>Seleccionado: {{ $nombre_dia }}</h1>
-<table class="table table-hover">
-    <thead class="thead-inverse">
-        <tr>
-      <th>#</th>
-      <td>{!! trans('messages.aula1') !!}</td>
-      <td>{!! trans('messages.aula2') !!}</td>
-      <td>{!! trans('messages.aula3') !!}</td>
-      <td>{!! trans('messages.aula4') !!}</td>
-      <td>{!! trans('messages.aula5') !!}</td>
-      <td>{!! trans('messages.aula6') !!}</td>
-      <td>{!! trans('messages.aula7') !!}</td>
-      <td>{!! trans('messages.aula8') !!}</td>
-      <td>{!! trans('messages.aula9') !!}</td>
-      <td>{!! trans('messages.aula10') !!}</td> 
-        </tr>
-    </thead>
-    <tbody>
- 
-      {{-- expr --}}
-    @for ($j = 7; $j < 22; $j++)
-<?php $hora = date("G");?>
-    @if ($hora == $j)
-  <tr bgcolor='#58ACFA'>
-    @else
-<tr>
-    @endif
- 
-       
-        <th scope="row">{{ $j }} - {{ $j + 1 }} </th>
-       @for ($i = 1; $i <=10; $i++)
-
-  
-<?php $a=0; ?>
-      @foreach ($clases_today as $element)
-     @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
-       <td>{{ $element -> nombre }} - {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}
-       <?php 
-        $uri= $_SERVER["REQUEST_URI"];
-        $uri = str_replace ("/", "-", $uri);
-       ?>
-       <input type="button" class="btn btn-danger" value="x" onClick="window.location.href='/admin/desreserva/{{ $j }}/{{ $fecha }}/{{ $element->id_clase }}/{{ $uri }}'">
-       
-       
-        </td>
-       
-     <?php $a++; ?>  
-     @endif
-      @endforeach
-@if ($a == 0)
-  <td>
-    <?php 
-        $uri= $_SERVER["REQUEST_URI"];
-        $uri = str_replace ("/", "-", $uri);
-       ?>
-
-<input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}/{{ $uri }}' ">
-
-
-
-  </td>
-@endif
-@endfor
-        </tr>
-            
-            @endfor
-           
+ <h1></h1>
+ <div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-3">
+            {!!Form::label('mostrar',trans('messages.mostrarPor'))!!}
+            {!! Form::select('tipo_mostrar', [trans('messages.dia'), trans('messages.semana')],null,['id'=>'tipo_mostrar']) !!}
+          </div>
+          <div class="col-md-4">
+            {!!Form::label('dia_semana',trans('messages.dia'))!!}
+            {!! Form::select('dia_semana',[trans('messages.lunes'), trans('messages.martes'),trans('messages.miercoles'),trans('messages.jueves'),trans('messages.viernes'),trans('messages.sabado')],$diaSemana,['id'=>'dia_semana']) !!}
+            {!!Form::select('no_semana_dia', $semanas,$semana,['id'=>'no_semana_dia']) !!}
+            <input type="button" class="btn btn-success" value={!! trans('messages.mostrar') !!} onClick="window.location.href='/admin/datasheet/'+$('#tipo_mostrar').val()+'/'+$('#dia_semana').val()+'/'+$('#no_semana_dia').val()">
+          </div>
+          <div class="col-md-5">
+            <center>Seleccionado: {{ $nombre_dia }}</center>
+          </div>
+        </div>
         
-    </tbody>
-</table>
+      </div>
+      <div class="panel-body">
+        <table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table table-hover">
+            <thead class="thead-inverse">
+                <tr>
+              <th >Hora</th>
+              <th>{!! trans('messages.aula1') !!}</th>
+              <th>{!! trans('messages.aula2') !!}</th>
+              <th>{!! trans('messages.aula3') !!}</th>
+              <th>{!! trans('messages.aula4') !!}</th>
+              <th>{!! trans('messages.aula5') !!}</th>
+              <th>{!! trans('messages.aula6') !!}</th>
+              <th>{!! trans('messages.aula7') !!}</th>
+              <th>{!! trans('messages.aula8') !!}</th>
+              <th>{!! trans('messages.aula9') !!}</th>
+              <th>{!! trans('messages.aula10') !!}</th> 
+                </tr>
+            </thead>
+            <tbody>
+         
+              {{-- expr --}}
+            @for ($j = 7; $j < 22; $j++)
+            <?php $hora = date("G");?>
+            @if ($hora == $j)
+              <tr bgcolor='#58ACFA'>
+                @else
+            <tr>
+                @endif
+         
+               
+                <td scope="row">{{ $j }} - {{ $j + 1 }} </td>
+               @for ($i = 1; $i <=10; $i++)
+
+          
+              <?php $a=0; ?>
+              @foreach ($clases_today as $element)
+             @if (($element -> hora_inicio <= $j) && ($element -> hora_final > $j) && ($element -> id == $i))
+               <td>{{ $element -> nombre }} - {{ $element -> nombre1 }} {{ " " }}{{ $element -> apellido1 }}{{ " - " }}{{ $element -> grupo }}
+               <?php 
+                $uri= $_SERVER["REQUEST_URI"];
+                $uri = str_replace ("/", "-", $uri);
+               ?>
+               <input type="button" class="btn btn-danger" value="x" onClick="window.location.href='/admin/desreserva/{{ $j }}/{{ $fecha }}/{{ $element->id_clase }}/{{ $uri }}'">
+               
+               
+                </td>
+               
+             <?php $a++; ?>  
+             @endif
+              @endforeach
+        @if ($a == 0)
+          <td>
+            <?php 
+                $uri= $_SERVER["REQUEST_URI"];
+                $uri = str_replace ("/", "-", $uri);
+               ?>
+
+        <input type="button" class="btn btn-success" value={!! trans('messages.reservar') !!} onClick="window.location.href='/admin/reserva/{{ $i }}/{{ $j }}/{{ $fecha }}/{{ $uri }}' ">
+
+
+
+          </td>
+        @endif
+        @endfor
+                </tr>
+                    
+                    @endfor
+                   
+                
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
 @endif
  @if(!$dia)
   <h1>Seleccionado: Aula: {{ $aula }} del {{ $nombre_dia1 }} al {{ $nombre_dia2 }}</h1>

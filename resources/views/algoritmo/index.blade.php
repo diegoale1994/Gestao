@@ -1,12 +1,17 @@
 @extends('layouts.admin')
 @section('content')
 
-<br>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">	
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+		<li class="active" id="form_name" name="rol" duplicate="name">Asignar Clase</li>
+	</ol>
+</div><br>	
 	<div class="col-md-12">
 		<div class="panel panel-info">
 					<div class="panel-heading">
-						{{ trans('messages.Configuracion') }}
+						<center>{{ trans('messages.Configuracion') }}</center>
 					</div>
 					<div class="panel-body">
 					<table></table>

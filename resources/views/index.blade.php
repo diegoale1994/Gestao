@@ -112,8 +112,8 @@
     	<div class="container">
     		<div class="row">
     			<div class="heading-inner text-center">
-    				<h2 class="sec-title">welcome to <span>droplet</span></h2>
-    				<p>Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.</p>
+    				<h2 class="sec-title">Bienvenido a <span>Gestao</span></h2>
+    				<p>Aplicación de Gestión de Recursos Físicos.</p>
     			</div>
     		</div> <!-- heading row end -->
 			<div class="row">
@@ -123,8 +123,8 @@
 							<div class="about-inner ">
 	                            <i class="icon icon-adjustments"></i>
 	                            <div class="about-content">
-	                                <h4>Friendly support</h4>
-	                                <p> Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.</p>
+	                                <h4>Asignación Inteligente</h4>
+	                                <p>Contamos con un algoritmo a la medida, asignamos Recursos como se debe.</p>
 	                            </div>
 	                        </div>
 						</div>
@@ -132,8 +132,8 @@
 							<div class="about-inner ">
 	                            <i class="icon icon-heart"></i>
 	                            <div class="about-content">
-	                                <h4>awesome features</h4>
-	                                <p> Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.</p>
+	                                <h4>Fácil de usar</h4>
+	                                <p>Intuitiva, Ágil, Sorprendentemente útil.</p>
 	                            </div>
 	                        </div>
 						</div>
@@ -150,8 +150,8 @@
 							<div class="about-inner ">
 	                            <i class="icon icon-lightbulb"></i>
 	                            <div class="about-content">
-	                                <h4>Creative content</h4>
-	                                <p> Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.</p>
+	                                <h4>Innovador</h4>
+	                                <p>Aplicamos la realidad aumentada, para apoyar los procesos Informativos de las salas de Cómputo.</p>
 	                            </div>
 	                        </div>
 						</div>
@@ -159,8 +159,8 @@
 							<div class="about-inner ">
 	                            <i class="icon icon-presentation"></i>
 	                            <div class="about-content">
-	                                <h4>Responsive design</h4>
-	                                <p> Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.</p>
+	                                <h4>Multiplataforma</h4>
+	                                <p>Una aplicación Web-Móvil a alcance de todos</p>
 	                            </div>
 	                        </div>
 						</div>
@@ -176,9 +176,9 @@
 		<div class="container">
 			<div class="row">
     			<div class="heading-inner text-center">
-    				<h2 class="sec-title">why <span>choose</span> us</h2>
+    				<h2 class="sec-title">¿Por qué <span>Elegirnos?</span></h2>
                      
-    				<p>Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.</p>
+    				<p>La innovación social se vive ahora, aquí algunas de nuestras funciones.</p>
     			</div>
     		</div> <!-- heading row end -->
 			<div class="row">
@@ -190,9 +190,9 @@
                             </div>
     						
     						<div class="feature-content">
-    							<h3>Unique features</h3>
-    							<p>Odit temporibus, reprehenderit eum.</p>
-    							<a href="#" class="read-more">Read more</a>
+    							<h3>Solcitud de Salas de Cómputo</h3>
+    							<p>Como estudiante o docente, usted puede solicitar salas, en cualquier momento. ¡Asi es! en cualquier momento.</p>
+    							
     						</div>
     					</div>
     				</div> <!-- item1 end -->
@@ -202,9 +202,9 @@
     						  <i class="icon icon-genius"></i>
                             </div>
     						<div class="feature-content">
-    							<h3>Powerful code</h3>
-    							<p>Odit temporibus, reprehenderit eum.</p>
-    							<a href="#" class="read-more">Read more</a>
+    							<h3>Asignación Eficaz</h3>
+    							<p>Con tan solo unos clicks, asignaremos las salas de todo un semestre, mas de 10 programas, mas de 100 horas de clase.</p>
+    							
     						</div>
     					</div>
     				</div> <!-- item2 end -->
@@ -214,9 +214,9 @@
     						  <i class="icon icon-presentation"></i>
                             </div>
     						<div class="feature-content">
-    							<h3>Creative Design</h3>
-    							<p>Odit temporibus, reprehenderit eum.</p>
-    							<a href="#" class="read-more">Read more</a>
+    							<h3>Información Útil</h3>
+    							<p>El apoyo de la realidad aumentada es una herramienta veraz, al momento de visualizar la información que requiere usuario final.</p>
+    							
     						</div>
     					</div>
     				</div> <!-- item3 end -->
@@ -226,9 +226,9 @@
     						  <i class="icon icon-tools"></i>
                             </div>
     						<div class="feature-content">
-    							<h3>Friendly Support</h3>
-    							<p>Odit temporibus, reprehenderit eum.</p>
-    							<a href="#" class="read-more">Read more</a>
+    							<h3>Fácil</h3>
+    							<p>Lo más complicado que debes ahcer, es ¡Usar tu cámara!</p>
+    							
     						</div>
     					</div>
     				</div> <!-- item4 end -->
@@ -502,8 +502,8 @@
 			<div class="row">
 				<div class="col-md-7 wow fadeInLeft" data-wow-delay=".3s">
 					<div class="download-inner text-left">
-						<h2> <span>download</span> the App </h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum pariatur, quam, cumque similique dignissimos cupiditate deserunt consequatur vitae, voluptas illo quos fuga nisi blanditiis ex dolore beatae odio eligendi neque.</p>
+						<h2> <span>Descarga </span> Gestao App </h2>
+						<p>Disponible en Google Play Store.</p>
 
 						<div class="btn-container">
 							<a href="#"><i class="fa fa-android"></i></a>
