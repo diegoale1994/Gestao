@@ -25,9 +25,10 @@
 						<th>{{ trans('messages.apellido') }}</td>
 						<th>{{ trans('messages.correo') }}</td>
 						<th>{{ trans('messages.estado') }}</td>
-					</thead>
+						<th>Acciones</th>
+					</thead><tbody>
 					@foreach($profesores as $profesor)
-					<tbody>
+					
 						<td>{{ $profesor -> nombre1 }}</td>
 						<td>{{ $profesor -> apellido1 }}</td>
 						<td>{{ $profesor ->	email }}</td>
@@ -50,8 +51,8 @@
 						@endif
 							
 						</td>
-					</tbody>
-					@endforeach
+					
+					@endforeach</tbody>
 				</table>
 			</div>
 		</div>

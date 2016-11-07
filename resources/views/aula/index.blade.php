@@ -75,7 +75,9 @@
 						<th>{{ trans('messages.cantidadDePersonas') }}</th>
 						<th>{{ trans('messages.cantidadDeEquipos') }}</th>
 						<th>{{ trans('messages.piso') }}</th>
-						<th>Acciones</th>
+						<th >Actualizar</th>
+						<th>Eliminar</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -86,9 +88,12 @@
 						<td>{{ $aula ->	cant_personas }}</td>
 						<td>{{ $aula -> cant_equipos }}</td>
 						<td>{{ $aula -> piso }}</td>
-						<td>
-							{!!Form::open(['route'=>['admin.profesores.destroy', $aula -> id],'method'=>'DELETE']) !!}
-						</td>
+						<td>{!!link_to_route('admin.aula.edit', $title = trans('messages.editar'), $parameters = $aula->id, $attributes = ['class'=>'btn btn-warning '])!!}</td>
+						<td>{!!Form::open(['route'=>['admin.aula.destroy', $aula -> id],'method'=>'DELETE']) !!}
+						{!!Form::submit(trans('messages.eliminar'),['class'=>'btn btn-danger '])!!}
+						{!!Form::close()!!}</td>
+						
+						
 					</tr>				
 				@endforeach
 				</tbody>

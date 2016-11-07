@@ -26,7 +26,7 @@ Route::Resource('admin/aula',"AulaController");
 Route::Resource('admin/clase',"ClaseController");
 Route::Resource('admin/reserva',"ReservaController");
 Route::Resource('admin/perfil',"PerfilController");
-Route::Resource('admin/profesores',"profesorController");
+Route::Resource('admin/profesores',"ProfesorController");
 Route::Resource('admin/peticion',"PeticionController");
 Route::get('admin/profesores/aprobar/{id}',"ProfesorController@aprobar");
 Route::Resource('admin/opciones',"OpcionesGeneralesController");

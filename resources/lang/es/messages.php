@@ -2,6 +2,7 @@
 
 return [
     'GESTAO' => 'GESTAO',
+    'profesores' => 'Profesores',
     'ingresaAdministrador' => 'Ingresa administrador',
     'correo' => 'Correo',
     'ingresaCorreo' => 'Ingresa tu correo',
@@ -15,7 +16,7 @@ return [
     'crear' => 'Crear',
     'id' => 'Id',
     'Configuracion' => 'Configuracion',
-    'fechas' => 'Fechas',
+    'fechas' => 'Ingrese el rango de Fechas',
     'ConstanteDeAsignacion' => 'Constante de asignacion',
     'nombre' => 'Nombre',
     'cantidadDePersonas' => 'Cantidad de personas',

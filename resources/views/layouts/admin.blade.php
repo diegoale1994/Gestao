@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style=" background-color:#0E3D38">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
@@ -48,7 +48,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 		
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="background-color:#D5CA3D">
 		<form role="search">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search">

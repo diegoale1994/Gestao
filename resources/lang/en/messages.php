@@ -2,6 +2,7 @@
 
 return [
     'GESTAO' => 'GESTAO',
+    'profesores' => 'Teachers',
     'ingresaAdministrador' => 'Enter administrative',
     'correo' => 'Email',
     'ingresaCorreo' => 'Enter your email address',
@@ -18,7 +19,7 @@ return [
     'horas'=>'Hours',
     'id' => 'Id',
     'ConstanteDeAsignacion' => 'Constant of assignment',
-    'fechas' => 'Dates',
+    'fechas' => 'Enter the range of dates',
     'VerCalendarioAcademico' => 'View academic calendar',
     'establecerParametros' => 'Stablish parameters',
     'nombre' => 'Name',
