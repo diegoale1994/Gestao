@@ -28,7 +28,7 @@
 						<th>Acciones</th>
 					</thead><tbody>
 					@foreach($profesores as $profesor)
-					
+						<tr>
 						<td>{{ $profesor -> nombre1 }}</td>
 						<td>{{ $profesor -> apellido1 }}</td>
 						<td>{{ $profesor ->	email }}</td>
@@ -51,7 +51,7 @@
 						@endif
 							
 						</td>
-					
+					</tr>
 					@endforeach</tbody>
 				</table>
 			</div>

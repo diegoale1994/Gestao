@@ -45,16 +45,18 @@
 			<div class="panel-heading">
 			{!! trans('messages.clases') !!}
 			</div>
-			<div class="panel panel-body" id ="resultados_clase_algoritmo">
+			<div class="panel panel-body" id ="">
 				<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="" data-sort-order="desc" class="table table-striped">
 					<thead>
 						<th>{!! trans('messages.nombre') !!}</th>
 						<th>{!! trans('messages.fecha') !!}</th>
 					</thead>
 					<tbody>
-						@foreach(session::get('clases_por_asignar') as $ex)					
+						@foreach(session::get('clases_por_asignar') as $ex)
+						<tr>					
 							<td><p>{{ $ex -> nombre }}</p></td>
-							<td>{{ $ex -> fecha }}</td>					
+							<td>{{ $ex -> fecha }}</td>
+						</tr>					
 						@endforeach
 					</tbody>
 				</table>
@@ -73,15 +75,17 @@
 			<div class="panel-body">
 				<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="" data-sort-order="desc" class="table table-striped">
 					<thead>
-						<th>{!! trans('messages.id') !!}</th>
+						
 						<th>{!! trans('messages.nombre') !!}</th>
 						<th>Acciones</th>
 					</thead>
 					<tbody>
-					@foreach(Session::get('aulas_array') as $au)			
-						<td><p>{{ $au -> id }}</p></td>
+					@foreach(Session::get('aulas_array') as $au)	
+						<tr>	
+						
 						<td>{{ $au -> nombre }}</td>
-						<td>{!!link_to_route('admin.algoritmo.delete_aula', $title = trans('messages.eliminar'), $parameters = $au->id, $attributes = ['class'=>'btn btn-primary'])!!}</td>			
+						<td>{!!link_to_route('admin.algoritmo.delete_aula', $title = trans('messages.eliminar'), $parameters = $au->id, $attributes = ['class'=>'btn btn-primary'])!!}</td>	
+						</tr>			
 					@endforeach
 					</tbody>
 				</table>

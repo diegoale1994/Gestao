@@ -29,22 +29,21 @@
 						<th>Acciones</th>
 						<th>Acciones</th>
 					</thead>
-					@foreach($peticiones as $peticion)
 					<tbody>
+					@foreach($peticiones as $peticion)
+					<tr>				
 						<td>{{ $peticion -> nombre }}</td>
 						<td>{{ $peticion -> fecha }}</td>
 						<td>{{ $peticion ->	hora_inicio }}</td>
 						<td>{{ $peticion -> hora_final }}</td>
 						<td>{{ $peticion -> nombre1." ".$peticion-> apellido1 }}</td>
-						<td>
-							<input type="button" class="btn btn-success" value={!! trans('messages.irAHorario') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha ?>' ">
-
-						</td>
+						<td><input type="button" class="btn btn-success" value={!! trans('messages.irAHorario') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha ?>' "></td>
 						<td>
 						<input type="button" class="btn btn-danger" value={!! trans('messages.eliminarOcurrencia') !!} onClick="window.location.href='/admin/peticion/<?php echo $peticion -> fecha.'/'.$peticion -> id_clase ?>' ">
 						</td>
-					</tbody>
+					</tr>						
 					@endforeach
+					</tbody>
 				</table>
 			</div>
 		</div>
