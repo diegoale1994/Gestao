@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Droplet -App landing page</title>
+    <title>Gestao Web</title>
 
     <!-- Mobile Specific Metas
   ================================================== -->
@@ -65,21 +65,19 @@
 					    </button>
 					    <div class="navbar-brand">
 						    <a href="#" class="page-scroll">
-						    	<img class="img-responsive" src="images/logo1.png" alt="logo">
+						    	
 						    </a> 
 					    </div>                   
 					</div>
                     <!--/ Logo end -->
 					<div class="collapse navbar-collapse clearfix navMenu" role="navigation">
 						<ul class="nav navbar-nav navbar-right">
-				            <li class="active"><a class="page-scroll" href="#slider-part" >Home</a></li>
-				            <li><a class="page-scroll" href="#feature" >Features</a></li>
-				            <li><a class="page-scroll" href="#process" >Process</a></li>
-				            <li><a class="page-scroll" href="#about" >About</a></li>
+				            <li class="active"><a class="page-scroll" href="#slider-part" >Inicio</a></li>
+				            <li><a class="page-scroll" href="#feature" >Acerca de</a></li>
+				            <li><a class="page-scroll" href="#process" >¿Como funciona?</a></li>
 				            <li><a class="page-scroll" href="#overview" >Screenshots</a></li>
-				            <li><a class="page-scroll" href="#benefit" >Benefit</a></li>
-				            <li><a class="page-scroll" href="#pricing" >pricing</a></li>
-				            <li><a class="page-scroll" href="#contact" >Contact</a></li>
+				            <li><a class="page-scroll" href="#benefit" >Beneficios</a></li>
+				            <li><a class="page-scroll" href="#contact" >Contacto</a></li>
 				        </ul>
 	      			</div><!--/ Navigation end -->
 				</div><!--/ Row end -->
@@ -99,7 +97,7 @@
                             <img src="images/slider2.png" alt="" class="img-responsive">
                         </div>
                     </div>
-                    @yield('content')
+                   
                 </div>
             </div> <!-- row end  -->
         </div> <!-- container end  -->
@@ -581,9 +579,9 @@
 		<div class="container">
 			<div class="col-md-12">
     			<div class="heading-inner text-center">
-    				<h2 class="sec-title">be  <span>Connected</span></h2>
+    				<h2 class="sec-title">Permanece  <span>Connectado</span></h2>
                     <div class="line-btm c-white"></div>
-    				<p>Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.</p>
+    				<p>Tus opiniones son importantes para nosotros</p>
     			</div>
     		</div> <!-- heading row end -->
 
@@ -593,32 +591,32 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label > name</label>
-									<input type="text" class="form-control" placeholder="your name">
+									<label > Nombre</label>
+									<input type="text" class="form-control" placeholder="Tu nombre">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label > Email</label>
-									<input type="text" class="form-control" placeholder="your email">
+									<input type="text" class="form-control" placeholder="Tu email">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label > Subject</label>
-									<input type="text" class="form-control" placeholder="subject">
+									<label > Asunto</label>
+									<input type="text" class="form-control" placeholder="¿Que quieres contarnos?">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<label > mesaage</label>
-									<textarea name="" id="" cols="30" rows="8" class="form-control" placeholder="message"></textarea>
+									<label > Mensaje</label>
+									<textarea name="" id="" cols="30" rows="8" class="form-control" placeholder="¡Cuentanos!"></textarea>
 								</div>
 							</div>
 						</div> <!-- row end -->
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<button class="btn btn-default">Submit message</button>
+								<button class="btn btn-default">Enviar</button>
 							</div>
 						</div>
 					</form>
@@ -635,30 +633,29 @@
 				<div class="col-md-12">
 					<div class="footer-content text-center">
 						<a href="#slider-part" class="page-scroll logo-title">
-							<img src="images/blackbg.png" alt="" class="img-responsive">
+							
 						</a>
 						<ul class="footer-socail list-inline">
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>							
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>                           
 						</ul>
+                    @yield('content')
 					</div>
+                    <hr>
 					<hr>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="copyright">
-								<p>&copy; copyright reserved to <span>Themeturn</span> - 2015</p>
+								<br><p>&copy; copyright  <span>Gestao</span> - 2016</p>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="copyright">
-								<p class="pull-right">Designed and developed by <span>Themeturn</span></p>
+								<br><p class="pull-right">Designed and developed by <span>Andrés Nieto - Diego Franco - Edward Robayo</span></p>
 							</div>
-						</div>
+						</div> 
 					</div>
 				</div>
 			</div> <!-- row end  -->
