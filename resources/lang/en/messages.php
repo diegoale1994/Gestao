@@ -3,6 +3,9 @@
 return [
     'GESTAO' => 'GESTAO',
     'profesores' => 'Teachers',
+    'apellido'=>'Last name',
+    'estado'=>'Status',
+    'aprobado'=>'Approved',
     'ingresaAdministrador' => 'Enter administrative',
     'correo' => 'Email',
     'ingresaCorreo' => 'Enter your email address',

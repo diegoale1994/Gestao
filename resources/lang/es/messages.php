@@ -2,6 +2,9 @@
 
 return [
     'GESTAO' => 'GESTAO',
+    'apellido'=>'Apellido',
+    'estado'=>'Estado',
+    'aprobado'=>'Aprobado',
     'profesores' => 'Profesores',
     'ingresaAdministrador' => 'Ingresa administrador',
     'correo' => 'Correo',

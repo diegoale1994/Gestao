@@ -1,11 +1,11 @@
 <?php
 
-
+if($_SERVER["REQUEST_METHOD"]=='POST'){
 require_once('base.php');
 
 
 
-$email='efrobayo@gmail.com';
+$email= $_POST['correo'];
 	
 	
 	$codigo = sprintf('%04d', rand(0,9999));
@@ -35,6 +35,6 @@ mail($email, $subject, $message, $headers);
     }
 
 	mysqli_close($con);
-	
+}	
 
 ?>

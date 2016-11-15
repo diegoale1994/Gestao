@@ -10,9 +10,8 @@ require_once('base.php');
 if ($estado==0) {
     $response  = array();
    $fecha_hoy = date('Y/m/d');
-     $minuto_actual = date("i");
+    $minuto_actual = date("i");
     $hora_actual = date("G");
-     //$hora_actual="8";
     $response  = array();
    
      $day = array("Domingo,", "Lunes,", "Martes,", "Miércoles,", "Jueves,", "Viernes," ,"Sábado,");
@@ -26,10 +25,8 @@ if ($estado==0) {
 echo json_encode(array('response'=>$response));
 }
 if ($estado==1) {
-      $fecha_hoy = date('Y/m/d');
-    //$fecha_hoy = "2016/10/24";
+ $fecha_hoy = date('Y/m/d');
     $hora_actual = date("G");
-//$hora_actual='8';
     $aula = $_POST["aula"];
      $query = "SELECT clase_aula_horario.* ,clase.grupo, clase.nombre, aula.id, null as nombre1 ,null as apellido1 FROM clase_aula_horario JOIN clase ON clase_aula_horario.id_clase = clase.id JOIN aula ON clase_aula_horario.id_aula = aula.id WHERE fecha = '$fecha_hoy' and hora_final > $hora_actual and id_aula = $aula and id_docente IS NULL UNION SELECT clase_aula_horario.* ,clase.grupo, clase.nombre, aula.id, persona.nombre1 ,persona.apellido1 FROM clase_aula_horario JOIN clase ON clase_aula_horario.id_clase = clase.id JOIN aula ON clase_aula_horario.id_aula = aula.id JOIN persona ON clase.id_docente = persona.id WHERE fecha = '$fecha_hoy' and hora_final > $hora_actual  and id_aula = $aula Order by hora_inicio asc";
      $result = mysqli_query($con, $query);

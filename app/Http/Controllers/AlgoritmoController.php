@@ -82,92 +82,86 @@ class AlgoritmoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function algorithm_operation(){
-        $clases_final = Session::get('clases_por_asignar');
-        $aulas_final = Session::get('aulas_array');
-        $resultado = count(Session::get('aulas_array'));
-echo Session::get('constante')." constante";
-        echo "<br>";
-echo $resultado." Cantidad de aulas";
-echo "<br>";
-        echo Session::get('clases_por_asignar_count')." Cantidad de clases";
-        echo "<br>";
-     
-             echo '<pre>';
-        var_dump($clases_final);
-        echo  '</pre>';
-$clasesAAsignar= array();
-
-$fechaIni= session::get('algoritmo_fecha_inicio');
-$fechaFin= session::get('algoritmo_fecha_final');
-$algoritmoConstante=session::get('constante');
-$fechaIni = strtotime($fechaIni);
-$fechaFin = strtotime($fechaFin);
-$conta=1;
-for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){echo "Dia: ".$conta."<br>";
-    
-    for ($hora=7; $hora<22 ; $hora++) {echo "<br>hora de: ".$hora."<br>"; 
-       
-   
+public function algorithm_operation(){
+    $clases_final = Session::get('clases_por_asignar');
+    $aulas_final = Session::get('aulas_array');
+    $resultado = count(Session::get('aulas_array'));
+    echo 0.03;
+    echo "<br>";
+    echo $resultado." Cantidad de aulas";
+    echo "<br>";
+    echo Session::get('clases_por_asignar_count')." Cantidad de clases";
+    echo "<br>";
+    echo '<pre>';
+    var_dump($clases_final);
+    echo  '</pre>';
+    $clasesAAsignar= array();
+    $fechaIni= session::get('algoritmo_fecha_inicio');
+    $fechaFin= session::get('algoritmo_fecha_final');
+    $algoritmoConstante=0.03;
+    $fechaIni = strtotime($fechaIni);
+    $fechaFin = strtotime($fechaFin);
+    $conta=1;
+    for($fechaIni;$fechaIni<=$fechaFin;$fechaIni+=86400){
+        $clasesFecha= array();
+        echo "Dia: ".$conta."<br>";
         foreach ($clases_final as $claseActual) {
+            
             if(strtotime($claseActual->fecha) == $fechaIni){
-                if($claseActual->hora_inicio == $hora){ 
-                     $arregloAulasARemover=array();
-    $arregloAulas=array();
-                 $arregloFechas= array(); 
+                 DB::update("UPDATE clase_aula_horario 
+                         SET id_aula=null
+                         where fecha='".date('Y-m-d', $fechaIni)."'");
+                $clasesFecha = DB::table('clase_aula_horario')->join('clase', 'clase_aula_horario.id_clase', '=', 'clase.id')
+                ->select('clase_aula_horario.*', 'clase.nombre', 'clase.cant_estudiantes')->where('fecha',  date('Y-m-d', $fechaIni))->orderBy('clase.cant_estudiantes','desc')->get();
+            
+            }
+        }
+        for ($hora=7; $hora<22 ; $hora++) {
+            echo "<br>hora de: ".$hora."<br>"; 
+            $arregloFechas= array();
+            $arregloAulasARemover=array();
+            $arregloAulas=array();
+            foreach ($clasesFecha as $claseActual) {
+                if($claseActual->hora_inicio == $hora){  
                     $arregloFechas[$claseActual->id_clase] = $claseActual->cant_estudiantes;
-$arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." >= hora_inicio and ".$claseActual->hora_final." > hora_inicio and fecha ='".date("Y-m-d",$fechaIni)."'");
-
-
-$arregloAulasARemover1 =DB::select("select id_aula from clase_aula_horario where ".$hora." <= hora_inicio and ".$claseActual->hora_final." > hora_inicio and fecha ='".date("Y-m-d",$fechaIni)."'");
-$arregloAulasARemover = array_merge($arregloAulasARemover, $arregloAulasARemover1);    
-     echo "<br>este es el arreglo de clases<br>";
-        echo '<pre>';
-        var_dump($arregloFechas);
-        echo  '</pre>';
-foreach (session::get('aulas_array') as $aula) {
+                    echo "<br>soy asignado ".$claseActual->nombre." -> ".$claseActual->id_clase;
+                }
+            }
+            $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." >= hora_inicio and ".$hora." < hora_final and fecha ='".date("Y-m-d",$fechaIni)."'");
+            foreach (session::get('aulas_array') as $aula) {
                 $arregloAulas[$aula->id]=$aula->cant_equipos;
-                 }
-                foreach($arregloAulas as $codigo=>$cant_estudiantes)
-    {
+            }
+            foreach($arregloAulas as $codigo=>$cant_estudiantes)
+            {
                 foreach ($arregloAulasARemover as $aula1) {
                     if($codigo==$aula1->id_aula){
                         unset($arregloAulas[$codigo]);
                     }
                 }
+            }
+            if(count ($arregloFechas) > 0){
+                $algoritmo = new Algoritmo();
+                $algoritmo->asignacion($arregloAulas,$arregloFechas,$algoritmoConstante,date("Y-m-d",$fechaIni),$hora);
+            }
+            echo "<br>este es el arreglo de clases<br>";
+            echo '<pre>';
+            var_dump($arregloFechas);
+            echo  '</pre>';
+            echo "<br>este es el arreglo de aulas final<br>";
+            echo '<pre>';
+            var_dump($arregloAulas);
+            echo  '</pre>';
+            echo "<br>este es el arreglo de aulas que manda el usuario que debe usar<br>";
+            echo '<pre>';
+            var_dump(session::get('aulas_array'));
+            echo  '</pre>';
+            echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
+            echo '<pre>';
+            var_dump($arregloAulasARemover);
+            echo  '</pre>';
+        }
+        $conta++;
     }
-     echo "<br>este es el arreglo de aulas final<br>";
-                 echo '<pre>';
-        var_dump($arregloAulas);
-        echo  '</pre>';
-        echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
-        echo '<pre>';
-        var_dump($arregloAulasARemover);
-        echo  '</pre>';
-    if(count ($arregloFechas) > 0){
-$algoritmo = new Algoritmo();
-$algoritmo->asignacion($arregloAulas,$arregloFechas,$algoritmoConstante,date("Y-m-d",$fechaIni),$hora);
-    }
-
-
-                      echo "<br>soy asignado ".$claseActual->nombre." -> ".$claseActual->id_clase;
-                }}}
-                
-                
-    
-       
-       
-        echo "<br>este es el arreglo de aulas que manda el usuario que debe usar<br>";
-         echo '<pre>';
-        var_dump(session::get('aulas_array'));
-        echo  '</pre>';
-
-    
-    }
-    $conta++;
-}
-           
-   
 }
     public function destroy($id)
     {
