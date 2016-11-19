@@ -3,6 +3,8 @@
 return [
     'GESTAO' => 'GESTAO',
     'apellido'=>'Apellido',
+    'codigoDeClaseRepetido' => 'Codigo o nombre de clase repetidos! clase no creada !',
+    'codigoDeAulaRepetido' => 'Codigo o nombre de aula repetidos! aula no creada !',
     'estado'=>'Estado',
     'aprobado'=>'Aprobado',
     'profesores' => 'Profesores',

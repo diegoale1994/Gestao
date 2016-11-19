@@ -56,17 +56,22 @@ return view('reserva.index', compact('clase_sin_aula','fecha','aula','hora_inici
     public function desreserva_clase($hora_inicio, $fecha, $id_clase,$uri_anterior){
      $fecha = str_replace("-","/",$fecha);
        $uri_anterior = str_replace("-","/",$uri_anterior);
+ $fecha_n = "";
 
+if (strlen($uri_anterior)==16) {
+    # code...
+}else{
+    $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+    $uri_anterior = substr($uri_anterior, 0, - 10);
+}
          DB::update("UPDATE clase_aula_horario 
                          SET id_aula=NULL
                          where id_clase= '".$id_clase."' and fecha='".$fecha."'");
-                         $uri_anterior_a= substr($uri_anterior, 0, - 10);
-                        
-                        $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+                         
           
 
 
-        return redirect($uri_anterior_a.$fecha_n)->with('message',trans('messages.claseEliminadaCorrectamente'));
+        return redirect($uri_anterior.$fecha_n)->with('message',trans('messages.claseEliminadaCorrectamente'));
     }
 
 public function store(Request $request)
@@ -76,11 +81,18 @@ public function store(Request $request)
         $fecha = $request['fecha'];
           $clase = $request['clase'];
             $hora_inicio = $request['hora_inicio'];
-         $uri_anterior = str_replace("-","/",$uri_anterior);
-        $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+             $uri_anterior = str_replace("-","/",$uri_anterior);
+        $fecha_n = "";
+
+if (strlen($uri_anterior)==16) {
+    # code...
+}else{
+    $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+    $uri_anterior = substr($uri_anterior, 0, - 10);
+}
          DB::update("UPDATE clase_aula_horario 
                          SET id_aula='$aula' where fecha = '".$fecha."' and id_clase ='".$clase."' and hora_inicio='".$hora_inicio."'");
-         $uri_anterior = substr($uri_anterior, 0, - 10);
+        
 
 $tokens = array();
              $profesor_token = DB::table('persona')->select('cell_token')->join('clase_aula_horario','clase_aula_horario.id_persona','=','persona.id')->where('fecha', $fecha)->where('id_clase', $clase)->where('hora_inicio', $hora_inicio)->get();
@@ -99,11 +111,19 @@ $tokens = array();
         $fecha = str_replace("-","/",$fecha);
         $uri_anterior= $request['uri'];
         $uri_anterior = str_replace("-","/",$uri_anterior);
-$fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
- $uri_anterior = substr($uri_anterior, 0, - 10);
+        $fecha_n = "";
+
+if (strlen($uri_anterior)==16) {
+    # code...
+}else{
+    $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
+    $uri_anterior = substr($uri_anterior, 0, - 10);
+}
+ 
+try { 
     clase::create([
         'id' => $request['id'],
-        'nombre' => $request['nombre'],
+        'nombre' => ucwords($request['nombre']),
         'grupo' => $request['grupo'],
         'creditos' => $request['creditos'],
         'semestre' => $request['semestre'],
@@ -118,7 +138,8 @@ $fecha_n = str_replace("/","-",substr($uri_anterior,- 10));
         'fecha' => $request['fecha'],
         
 ]);
-
+} catch(\Illuminate\Database\QueryException $ex){ return redirect($uri_anterior.$fecha_n)->with('message',trans('messages.codigoDeClaseRepetido'));
+}
 return redirect($uri_anterior.$fecha_n)->with('message',trans('messages.claseAsignadaYCreadaCorrectamente'));
 
         }

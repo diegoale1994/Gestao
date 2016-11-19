@@ -70,15 +70,15 @@ foreach ($clase_sin_aula as $element){
   
     <div class="form-group">
     	{!!Form::label('horaInicio',trans('messages.horaInicial'))!!}
-    	{!!Form::number('horaInicio',$hora_inicio,['class'=>'form-control','min'=>'7','max'=>'21', 'readonly'=>"readonly"])!!}
+    	{!!Form::number('horaInicio',$hora_inicio,['class'=>'form-control rese_hora_inicio','min'=>'7','max'=>'21', 'readonly'=>"readonly"])!!}
     </div>
     <div class="form-group">	
     	{!!Form::label('horaFinal',trans('messages.horaFinal'))!!}
 
-    	{!!Form::number('horaFinal',$hora_inicio +1,['class'=>'form-control','min'=>$hora_inicio +1,'max'=>$hora_inicio + $cont,'required'])!!}
+    	{!!Form::number('horaFinal',$hora_inicio +1,['class'=>'form-control rese_hora_final','min'=>$hora_inicio +1,'max'=>$hora_inicio + $cont,'required'])!!}
     </div>
     
-{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-primary'])!!}
+{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-primary btn_rese'])!!}
 	{!!Form::close()!!}
 
   </div>

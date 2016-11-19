@@ -1,7 +1,11 @@
-
+<div id='aula_error_div'>
+<div class="alert alert-warning">
+  					<strong>{!!Form::label('errors_aula','')!!}</strong> 
+					</div>
+					</div>
 <div class="form-group">
 		{!!Form::label('nombre',trans('messages.codigoDeAula'))!!}
-		{!!Form::text('id',null,['class'=>'form-control','required'])!!}
+		{!!Form::text('id',null,['class'=>'form-control','required','disabled'])!!}
 	</div>
 	<div class="form-group">
 		{!!Form::label('nombre_aula',trans('messages.nombreDeLaAula'))!!}
@@ -9,6 +13,8 @@
 	</div>
 	<div class="form-group">
 		{!!Form::label('cant_personas',trans('messages.cantidadDePersonas'))!!}
+		
+		
 		{!!Form::number('cant_personas',null,['class'=>'form-control','min'=>'1','required'])!!}
 	</div>
 	<div class="form-group">
@@ -17,5 +23,5 @@
 	</div>
 	<div class="form-group">
 		{!!Form::label('aula_piso',trans('messages.piso'))!!}
-		{!!Form::number('piso',null,['class'=>'form-control','min'=>'1','max'=>'2','required'])!!}
+		{!!Form::number('piso',null,['class'=>'form-control aula_piso','min'=>'1','max'=>'2','required'])!!}
 </div>

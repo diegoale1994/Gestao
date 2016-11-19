@@ -15,13 +15,14 @@
 					{!!Form::label('nombre_aula',trans('messages.nombreDeLaAula'))!!}
 					{!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>trans('messages.ejemSalaI'),'required'])!!}
 				</div>
+
 				<div class="form-group">
 					{!!Form::label('cant_personas',trans('messages.cantidadDePersonas'))!!}
-					{!!Form::number('cant_personas',null,['class'=>'form-control','min'=>'1','required'])!!}
+					{!!Form::number('cant_personas',null,['class'=>'form-control','min'=>'1','max'=>'45','required'])!!}
 				</div>
 				<div class="form-group">
 					{!!Form::label('cant_equipos',trans('messages.cantidadDeEquipos'))!!}
-					{!!Form::number('cant_equipos',null,['class'=>'form-control','min'=>'1','required'])!!}
+					{!!Form::number('cant_equipos',null,['class'=>'form-control','min'=>'1','max'=>'40','required'])!!}
 				</div>
 				<div class="form-group">
 					{!!Form::label('aula_piso',trans('messages.piso'))!!}
@@ -63,9 +64,11 @@
 <div class="row">
 <div class="col-lg-12">
 	<div class="panel panel-default">
+	
 		<div class="panel-heading">
 			<a type="button" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal"  data-target="#new"> </a>
 		</div>
+		
 		<div class="panel panel-body">
 			<table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" class="table table-hover">
 				<thead>

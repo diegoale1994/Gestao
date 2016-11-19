@@ -20,7 +20,7 @@
 			<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-2">
-			<center>{!!Form::submit(trans('messages.actualizar'),['class'=>'btn btn-warning'])!!}
+			<center>{!!Form::submit(trans('messages.actualizar'),['class'=>'btn btn-warning btn_actu'])!!}
 			{!!Form::close()!!}</center>
 			</div>
 			<div class="col-md-2">

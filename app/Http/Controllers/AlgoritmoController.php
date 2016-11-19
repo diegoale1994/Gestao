@@ -86,15 +86,6 @@ public function algorithm_operation(){
     $clases_final = Session::get('clases_por_asignar');
     $aulas_final = Session::get('aulas_array');
     $resultado = count(Session::get('aulas_array'));
-    echo 0.03;
-    echo "<br>";
-    echo $resultado." Cantidad de aulas";
-    echo "<br>";
-    echo Session::get('clases_por_asignar_count')." Cantidad de clases";
-    echo "<br>";
-    echo '<pre>';
-    var_dump($clases_final);
-    echo  '</pre>';
     $clasesAAsignar= array();
     $fechaIni= session::get('algoritmo_fecha_inicio');
     $fechaFin= session::get('algoritmo_fecha_final');
@@ -117,14 +108,14 @@ public function algorithm_operation(){
             }
         }
         for ($hora=7; $hora<22 ; $hora++) {
-            echo "<br>hora de: ".$hora."<br>"; 
+            
             $arregloFechas= array();
             $arregloAulasARemover=array();
             $arregloAulas=array();
             foreach ($clasesFecha as $claseActual) {
                 if($claseActual->hora_inicio == $hora){  
                     $arregloFechas[$claseActual->id_clase] = $claseActual->cant_estudiantes;
-                    echo "<br>soy asignado ".$claseActual->nombre." -> ".$claseActual->id_clase;
+                   
                 }
             }
             $arregloAulasARemover =DB::select("select id_aula from clase_aula_horario where ".$hora." >= hora_inicio and ".$hora." < hora_final and fecha ='".date("Y-m-d",$fechaIni)."'");
@@ -143,25 +134,11 @@ public function algorithm_operation(){
                 $algoritmo = new Algoritmo();
                 $algoritmo->asignacion($arregloAulas,$arregloFechas,$algoritmoConstante,date("Y-m-d",$fechaIni),$hora);
             }
-            echo "<br>este es el arreglo de clases<br>";
-            echo '<pre>';
-            var_dump($arregloFechas);
-            echo  '</pre>';
-            echo "<br>este es el arreglo de aulas final<br>";
-            echo '<pre>';
-            var_dump($arregloAulas);
-            echo  '</pre>';
-            echo "<br>este es el arreglo de aulas que manda el usuario que debe usar<br>";
-            echo '<pre>';
-            var_dump(session::get('aulas_array'));
-            echo  '</pre>';
-            echo "<br>este es el arreglo de aulas que estan ocupadas<br>";
-            echo '<pre>';
-            var_dump($arregloAulasARemover);
-            echo  '</pre>';
+            
         }
         $conta++;
     }
+    return redirect('admin/');
 }
     public function destroy($id)
     {

@@ -1,7 +1,11 @@
-
+<div id='clase_error_div'>
+<div class="alert alert-warning">
+  					<strong>{!!Form::label('errors_clase','')!!}</strong> 
+					</div>
+					</div>
 <div class="col-md-6">
 	{!!Form::label('id',trans('messages.codigoDeLaClase'))!!}
-	{!!Form::text('id',null,['class'=>'form-control','required'])!!}
+	{!!Form::text('id',null,['class'=>'form-control','required','disabled'])!!}
 </div>
 <div class="col-md-6">
 	{!!Form::label('nombre_aula',trans('messages.nombreDeLaClase'))!!}
@@ -18,11 +22,11 @@
 </div>
 <div class="col-md-6">
 	{!!Form::label('semestre',trans('messages.semestre'))!!}
-	{!!Form::number('semestre',null,['class'=>'form-control','min'=>'1','max'=>'12'])!!}
+	{!!Form::number('semestre',null,['class'=>'form-control jsemestre','min'=>'1','max'=>'10'])!!}
 </div>
 <div class="col-md-6">
 	{!!Form::label('cant_estudiantes',trans('messages.cantidadDeEstudiantes'))!!}
-	{!!Form::number('cant_estudiantes',null,['class'=>'form-control','min'=>'1','required'])!!}
+	{!!Form::number('cant_estudiantes',null,['class'=>'form-control jestudiantes','min'=>'1','max'=>'44','required'])!!}
 </div>
 <div class="col-md-6">
 	{!!Form::label('requerimientos',trans('messages.requerimientos'))!!}

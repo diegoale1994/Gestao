@@ -18,7 +18,7 @@
 		@include('clase.forms.clase_ocurrencia_form')
 		</div>
 		<div class="panel panel-footer">
-			<center>{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-success'])!!}</center>
+			<center>{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-success btnocu'])!!}</center>
 		{!!Form::close()!!}
 		</div>
 		

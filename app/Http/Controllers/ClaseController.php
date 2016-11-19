@@ -48,19 +48,26 @@ class ClaseController extends Controller
      */
     public function store(Request $request)
     {
-        clase::create([
+
+try { 
+  clase::create([
         'id' => $request['id'],
-        'nombre' => $request['nombre'],
+        'nombre' => ucwords($request['nombre']),
         'grupo' => $request['grupo'],
         'creditos' => $request['creditos'],
         'semestre' => $request['semestre'],
         'cant_estudiantes' => $request['cant_estudiantes'],
         'requerimientos' => $request['requerimientos'],
 ]);
-        
+       
        $this->calculateStoreOcurrence($request);
 
-    return redirect('admin/clase')->with('message',trans('messages.claseCreadaCorrectamente'));
+    return redirect('admin/clase')->with('message',trans('messages.claseCreadaCorrectamente'));   
+} catch(\Illuminate\Database\QueryException $ex){ 
+ return redirect('admin/clase')->with('message',trans('messages.codigoDeClaseRepetido'));   
+}
+
+      
         
     }
 
@@ -89,9 +96,7 @@ class ClaseController extends Controller
     public function edit($id)
     {
         $clase = clase::find($id);
-                if (! $clase) {
-        abort(404);
-}
+       
         return view('clase.edit',['clase'=>$clase]);
     }
 

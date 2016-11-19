@@ -37,14 +37,17 @@ class AulaController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+		try { 
 		aula::create([
 		'id' => $request['id'],
-		'nombre' => $request['nombre'],
+		'nombre' => ucwords($request['nombre']),
 		'cant_equipos' => $request['cant_equipos'],
 		'cant_personas' => $request['cant_personas'],
 		'piso' => $request['piso'],
 ]);
 	return redirect('admin/aula')->with('message',trans('messages.aulaCreadaCorrectamente'));
+} catch(\Illuminate\Database\QueryException $ex){ return redirect('admin/aula')->with('message',trans('messages.codigoDeAulaRepetido'));   
+}
 	}
 
 	/**

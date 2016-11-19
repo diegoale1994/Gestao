@@ -8,6 +8,11 @@
 			<div class="modal-body">
 				{!!Form::open(['route'=>'admin.clase.store', 'method'=>'POST'])!!}
 				<div class="row">
+				<div id='clase_error_div'>
+<div class="alert alert-warning">
+  					<strong>{!!Form::label('errors_clase','')!!}</strong> 
+					</div>
+					</div>
 					<div class="col-md-6">
 						<div class="col-md-6">
 							{!!Form::label('id',trans('messages.codigoDeLaClase'))!!}
@@ -49,11 +54,11 @@
 					    </div>
 					    <div class="form-group">
 					    	{!!Form::label('horaInicio',trans('messages.horaInicial'))!!}
-					    	{!!Form::number('horaInicio',null,['class'=>'form-control','min'=>'7','max'=>'21','required'])!!}
+					    	{!!Form::number('horaInicio',null,['class'=>'form-control clase_hora_inicio','min'=>'7','max'=>'21','required'])!!}
 					    </div>
 					    <div class="form-group">	
 					    	{!!Form::label('horaFinal',trans('messages.horaFinal'))!!}
-					    	{!!Form::number('horaFinal',null,['class'=>'form-control','min'=>'8','max'=>'22','required'])!!}
+					    	{!!Form::number('horaFinal',null,['class'=>'form-control clase_hora_final','min'=>'8','max'=>'22','required'])!!}
 					    </div>
 					    <div class="form-group">
 					    {!!Form::label('ocurrencias',trans('messages.ocurrencias'))!!}
@@ -64,7 +69,7 @@
 			</div>
 			<div class="modal-footer">
 			<center>
-			{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-success'])!!}
+			{!!Form::submit(trans('messages.registrar'),['class'=>'btn btn-success btn_create_class'])!!}
 			<a type="button"class="btn btn-primary " data-toggle="modal">Cancelar</a>
 			{!!Form::close()!!}
 			</center>

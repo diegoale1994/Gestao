@@ -2,6 +2,8 @@
 
 return [
     'GESTAO' => 'GESTAO',
+    'codigoDeClaseRepetido' => 'Code or name of class repeated ! class not created !',
+    'codigoDeAulaRepetido' => 'Code or name of classroom repeated ! classroom not created !',
     'profesores' => 'Teachers',
     'apellido'=>'Last name',
     'estado'=>'Status',
