@@ -20,8 +20,8 @@ $(".form-control.clase_hora_final1").change(function() {
 var hora_final = Number($(".form-control.clase_hora_final1").val());
   if (hora_final>hora_inicio) {
   $(".btn.btn-success.btnocu").prop('disabled', false);
-   if ((hora_final-hora_inicio) >=5) {
-$("label[for='errors_ocu']").html("No puede haber clases de mas de 5 horas!");
+   if ((hora_final-hora_inicio) >=7) {
+$("label[for='errors_ocu']").html("No puede haber clases de mas de 6 horas!");
   $("#ocu_error_div").show(2000);
    $('#ocu_error_div').delay(1000).hide(2000);
 $(".btn.btn-success.btnocu").prop('disabled', true);
@@ -39,8 +39,8 @@ $(".form-control.clase_hora_final").change(function() {
 var hora_final = Number($(".form-control.clase_hora_final").val());
   if (hora_final>hora_inicio) {
   $(".btn.btn-success.btn_create_class").prop('disabled', false);
-   if ((hora_final-hora_inicio) >=5) {
-$("label[for='errors_clase']").html("No puede haber clases de mas de 5 horas!");
+   if ((hora_final-hora_inicio) >=7) {
+$("label[for='errors_clase']").html("No puede haber clases de mas de 6 horas!");
   $("#clase_error_div").show(2000);
    $('#clase_error_div').delay(1000).hide(2000);
 $(".btn.btn-success.btn_create_class").prop('disabled', true);
@@ -57,8 +57,8 @@ $(".form-control.rese_hora_final").change(function() {
 var hora_final = Number($(".form-control.rese_hora_final").val());
   if (hora_final>hora_inicio) {
   $(".btn.btn-primary.btn_rese").prop('disabled', false);
-   if ((hora_final-hora_inicio) >=5) {
-$("label[for='errors_clase']").html("No puede haber clases de mas de 5 horas!");
+   if ((hora_final-hora_inicio) >=7) {
+$("label[for='errors_clase']").html("No puede haber clases de mas de 6 horas!");
   $("#clase_error_div").show(2000);
    $('#clase_error_div').delay(1000).hide(2000);
 $(".btn.btn-primary.btn_rese").prop('disabled', true);
@@ -75,8 +75,8 @@ $(".form-control.clase_hora_inicio1").change(function() {
 var hora_final = Number($(".form-control.clase_hora_final1").val());
 if (hora_final>hora_inicio) {
   $(".btn.btn-success.btnocu").prop('disabled', false);
-   if ((hora_final-hora_inicio) >=5) {
-$("label[for='errors_ocu']").html("No puede haber clases de mas de 5 horas!");
+   if ((hora_final-hora_inicio) >=7) {
+$("label[for='errors_ocu']").html("No puede haber clases de mas de 6 horas!");
   $("#ocu_error_div").show(2000);
    $('#ocu_error_div').delay(1000).hide(2000);
 $(".btn.btn-success.btnocu").prop('disabled', true);
@@ -94,8 +94,8 @@ $(".form-control.clase_hora_inicio").change(function() {
 var hora_final = Number($(".form-control.clase_hora_final").val());
 if (hora_final>hora_inicio) {
   $(".btn.btn-success.btn_create_class").prop('disabled', false);
-   if ((hora_final-hora_inicio) >=5) {
-$("label[for='errors_clase']").html("No puede haber clases de mas de 5 horas!");
+   if ((hora_final-hora_inicio) >=7) {
+$("label[for='errors_clase']").html("No puede haber clases de mas de 6 horas!");
   $("#clase_error_div").show(2000);
    $('#clase_error_div').delay(1000).hide(2000);
 $(".btn.btn-success.btn_create_class").prop('disabled', true);

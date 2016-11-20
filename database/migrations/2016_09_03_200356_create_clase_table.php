@@ -16,7 +16,7 @@ class CreateClaseTable extends Migration {
 		{
 			$table->string('id');
 			$table->primary('id');
-			$table->string('nombre',50)->unique();
+			$table->string('nombre',50);
 			$table->string('grupo',10)->nullable();
 			$table->string('creditos',1)->nullable();
 			$table->string('id_docente')->nullable();
@@ -26,8 +26,6 @@ class CreateClaseTable extends Migration {
 			
 			$table->timestamps();
 		});
-		
-	
 
 	}
 
