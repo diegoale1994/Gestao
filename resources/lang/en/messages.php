@@ -113,5 +113,10 @@ return [
     'ocurrenciaEliminadaCorrectamente'=>'Ocurrence deleted correctly',
     'irAHorario'=>'Go to form',
     'eliminarOcurrencia'=>'Delete ocurrence',
+    'profesorAprobadoCorrectamente'=>'Teacher approved correctly',
+    'aprobar'=>'Approve',
+    'noAprobado'=>'Not approved',
+    'claseEliminadaCorrectamente'=>'Class deleted correctly',
+    'claseAsignadaCorrectamente'=>'Class asigned correctly',
 ];
 ?>

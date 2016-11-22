@@ -112,5 +112,10 @@ return [
     'ocurrenciaEliminadaCorrectamente'=>'Ocurrencia Eliminada Correctamente',
     'irAHorario'=>'Ir a horario',
     'eliminarOcurrencia'=>'Eliminar Ocurrencia',
+    'profesorAprobadoCorrectamente'=>'Profesor aprobado correctamente',
+    'aprobar'=>'Aprobar',
+    'noAprobado'=>'No aprobado',
+    'claseEliminadaCorrectamente'=>'Clase eliminada correctamente',
+    'claseAsignadaCorrectamente'=>'Clase asignada correctamente',
 ];
 ?>
