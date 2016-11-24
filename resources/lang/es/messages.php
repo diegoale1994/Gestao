@@ -117,5 +117,10 @@ return [
     'noAprobado'=>'No aprobado',
     'claseEliminadaCorrectamente'=>'Clase eliminada correctamente',
     'claseAsignadaCorrectamente'=>'Clase asignada correctamente',
+    'docente'=>'Docente',
+    'desvincularDocente'=>'Desvincular docente',
+    'docenteDesvinculado'=>'Docente desvinculado',
+    'eliminarHorario'=>'Eliminar horario',
+    'profesorEliminadoCorrectamente'=>'Profesor eliminado correctamente',
 ];
 ?>

@@ -22,9 +22,12 @@ class ClaseController extends Controller
      */
     public function index()
     {
-    $clases = Clase::all();
+
+    $clases = DB::table('clase')
+            ->leftJoin('persona', 'persona.id', '=', 'clase.id_docente')->select('clase.id','nombre','grupo','creditos','semestre','cant_estudiantes','requerimientos',DB::raw('CONCAT(nombre1," " , apellido1) As docente'))->get();
     return view('clase.index',compact('clases'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +41,14 @@ class ClaseController extends Controller
 
     public function createOcurrence($id){
         return view('clase.create_ocurrence',['clase'=>$id]);
+    }
+
+    public function desvincularDocente($id){
+        $clase = clase::find($id);
+        $clase['id_docente'] = null;
+        $clase -> save();
+        Session::flash('message',trans('messages.docenteDesvinculado'));
+        return Redirect::to('admin/clase');
     }
 
     /**

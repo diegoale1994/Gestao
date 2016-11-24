@@ -104,10 +104,17 @@ $tokens = array();
      */
     public function destroy($id)
     {
-       DB::table('persona')->where('id', '=', $id)->delete();
-        DB::table('docente')->where('persona_id', '=', $id)->delete();
+    DB::table('clase')
+            ->where('id_docente', $id)
+            ->update(array('id_docente' => null));
+      DB::table('docente')->where('persona_id', '=', $id)->delete();
+      DB::table('persona')->where('id', '=', $id)->delete();
+        
 
-         return redirect('admin/profesores')->with('message',trans('messages.profesorEliminadoCorrectamente'));
+     return redirect('admin/profesores')->with('message',trans('messages.profesorEliminadoCorrectamente'));
+
+
+
     }
 }
  function send_notification ($tokens, $message)

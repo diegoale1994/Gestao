@@ -15,10 +15,16 @@
 <div class="col-md-12">
 	<div class="panel panel-success">
 		<div class="panel-heading">
-			<center><center><div class="col-md-8">Opciones Generales</div>
-				<div class="col-md-4">
+			<center><center><div class="col-md-6">Opciones Generales</div>
+				<div class="col-md-3">
 				<button type="button" onClick="window.open('http://www.unicundi.edu.co/documents/admisiones/calendario_acad_2016.PDF')" class="btn btn-warning" ht>{!! trans('messages.VerCalendarioAcademico') !!}</button>
-			</div></center></center>
+
+			</div>
+				<div class="col-md-3">
+				<button type="button" class="btn btn-danger" onclick = "borrarpro()">{!! trans('messages.eliminarHorario') !!}</button>
+
+			</div>
+			</center></center>
 		</div>
 		<div class="panel-body">
 			{!!Form::open(['route'=>['admin.opciones.store'],'method'=>'POST'])!!}

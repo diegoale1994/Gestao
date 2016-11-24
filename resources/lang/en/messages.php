@@ -118,5 +118,10 @@ return [
     'noAprobado'=>'Not approved',
     'claseEliminadaCorrectamente'=>'Class deleted correctly',
     'claseAsignadaCorrectamente'=>'Class asigned correctly',
+    'docente'=>'Teacher',
+    'desvincularDocente'=>'Untie teacher',
+    'docenteDesvinculado'=>'Unlinked teacher',
+    'eliminarHorario'=>'Delete datasheet',
+    'profesorEliminadoCorrectamente'=>'Teacher deleted correctly',
 ];
 ?>

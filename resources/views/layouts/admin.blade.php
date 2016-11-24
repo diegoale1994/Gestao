@@ -82,10 +82,25 @@
 	
 	<script type="text/javascript">
 		function ejecutaralgoritmopro(){
-		var answer = confirm("¿realmente desea imprimir estos datos?")
+		var answer = confirm("¿Realmente desea imprimir estos datos?")
 	if (answer){
 		alert("Saliendo")
 		location='/admin/algoritmo/make_algoritmo';
+	}
+	else{
+		alert("Cancelado!")
+	}
+
+		}
+
+	</script>
+
+	<script type="text/javascript">
+		function borrarpro(){
+		var answer = confirm("¿Realmente eliminar todo el horario?")
+	if (answer){
+		alert("Saliendo")
+		location='/admin/opciones/deleteDatasheet';
 	}
 	else{
 		alert("Cancelado!")

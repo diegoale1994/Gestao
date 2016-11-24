@@ -48,6 +48,7 @@
 
 						 	{!!Form::open(['route'=>['admin.profesores.destroy', $profesor -> id],'method'=>'DELETE']) !!}
 						 	{!!Form::submit(trans('messages.eliminar'),['class'=>'btn btn-danger'])!!}
+						 	{!! Form::close() !!}
 						@endif
 							
 						</td>

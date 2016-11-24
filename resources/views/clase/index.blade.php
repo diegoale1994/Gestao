@@ -107,9 +107,11 @@
 							<th>{{ trans('messages.creditos') }}</th>
 							<th>{{ trans('messages.semestre') }}</th>
 							<th>{{ trans('messages.cantidadDeEstudiantes') }}</th>
+							<th>{{ trans('messages.docente') }}</th>
 							<th>{{ trans('messages.requerimientos') }}</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
+							<th>{{ trans('messages.editar') }}</th>
+							<th>{{ trans('messages.eliminar') }}</th>
+							<th>{{ trans('messages.desvincularDocente') }}</th>
 						
 					</thead>
 					<tbody>
@@ -121,10 +123,13 @@
 							<td>{{ $clase -> creditos }}</td>
 							<td>{{ $clase -> semestre }}</td>
 							<td>{{ $clase -> cant_estudiantes }}</td>
+							<td>{{ $clase -> docente }}</td>
 							<td>{{ $clase -> requerimientos }}</td>
 							<td>{!!link_to_route('admin.clase.edit', $title = trans('messages.editar'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-warning'])!!}
 							</td>
 							<td>{!!link_to_route('admin.clase.createocurrence', $title = trans('messages.anadirOcurrencia'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-primary'])!!}
+							</td>
+							<td>{!!link_to_route('admin.clase.desvinculardocente', $title = trans('messages.desvincularDocente'), $parameters = $clase->id, $attributes = ['class'=>'btn btn-danger'])!!}
 							</td>
 						</tr>
 					@endforeach

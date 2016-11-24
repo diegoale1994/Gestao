@@ -52,6 +52,11 @@ class OpcionesGeneralesController extends Controller
         return Redirect::to('admin');
     }
 
+    public function deleteDatasheet(){
+        DB::table('clase_aula_horario')->delete();    
+        return Redirect::to('admin');
+    }
+
     /**
      * Display the specified resource.
      *
