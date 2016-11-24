@@ -33,7 +33,7 @@ require_once('base.php');
         }
     }
 
-	$message = array("message" => "Cambio observacion: ".$clase_n." para la fecha ".$fecha);
+	$message = array("message" => "Cambio observacion: ".$clase_n."\n para la fecha ".$fecha);
 	$message_status = send_notification($tokens, $message);
     }
 	mysqli_close($con);
