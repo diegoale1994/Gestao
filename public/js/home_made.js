@@ -3,7 +3,14 @@ var equipos1;
 var estudiantes1;
 
 var piso;
-
+$(".btn.btn-success.btnalgo").click(function() {
+     if (confirm('Realmente desea asignar estas clases ?')) {
+       $("#sec1").hide();
+       $("#car").show();
+       window.location.href = "/admin/algoritmo/make_algoritmo";
+    }
+      
+});
 $(".form-control.jestudiantes").on('keydown keyup', function(e){
 
     if ($(this).val() > 45 || $(this).val() <= 0
@@ -179,13 +186,14 @@ $(document).ready(function() {
 personas1 = Number($("#cant_personas").val());
 equipos1 = Number($("#cant_equipos").val());
 estudiantes1 = Number($(".form-control.jestudiantes").val());
-
+$("#car").hide();
 piso = Number($(".form-control.aula_piso").val());
 if ( $("#msg") ) {
    $("#msg").delay(2000).fadeOut("slow");
     
 }
 $("#aula_error_div").hide();
+
 $("#clase_error_div").hide();
 $("#ocu_error_div").hide();
 $("#form_2").submit(function() {

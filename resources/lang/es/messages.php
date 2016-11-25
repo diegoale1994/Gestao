@@ -10,6 +10,7 @@ return [
     'profesores' => 'Profesores',
     'ingresaAdministrador' => 'Ingresa administrador',
     'correo' => 'Correo',
+    'eliminarAsiganacion'=>'Eliminar Asignacion',
     'ingresaCorreo' => 'Ingresa tu correo',
     'contrasena' => 'Contraseña',
     'ingresaContrasena' => 'Ingresa tu contraseña',

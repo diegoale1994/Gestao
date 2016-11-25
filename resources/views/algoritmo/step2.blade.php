@@ -30,10 +30,16 @@
 			</div>
 		</div>
 	</div>
-
+	<center>
+	<div id="car">
+		<img src="/images/car.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+	</div>
+</center>
 @if (session::has('clases_por_asignar'))
-
+<div id ="sec1">
 	
+		
+
 	<div class="col-md-6">
 		<div class="panel panel-success">
 			<div class="panel-heading">
@@ -56,7 +62,7 @@
 				</table>
 			</div>
 			<div class="panel-footer">
-				<button type="button" class="btn btn-success" onclick = "ejecutaralgoritmopro()">{!! trans('messages.asignar') !!}</button>
+				<button type="button" class="btn btn-success btnalgo">{!! trans('messages.asignar') !!}</button>
 			</div>
 		</div>
 	</div>
@@ -86,9 +92,9 @@
 			</div>
 		</div>
 	</div>
-				
-			
+					
+</div>	
 @endif
-
+		
 </div>
 @stop

@@ -6,6 +6,7 @@ return [
     'codigoDeAulaRepetido' => 'Code or name of classroom repeated ! classroom not created !',
     'profesores' => 'Teachers',
     'apellido'=>'Last name',
+    'eliminarAsiganacion'=>'Delete Asignation',
     'estado'=>'Status',
     'aprobado'=>'Approved',
     'ingresaAdministrador' => 'Enter administrative',

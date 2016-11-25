@@ -84,8 +84,9 @@
 		function ejecutaralgoritmopro(){
 		var answer = confirm("¿Realmente desea imprimir estos datos?")
 	if (answer){
-		alert("Saliendo")
-		location='/admin/algoritmo/make_algoritmo';
+		//document.getElementById('sec1').style.visibility='hidden' 
+		document.getElementById('car').style.visibility='visible';
+		//location='/admin/algoritmo/make_algoritmo';
 	}
 	else{
 		alert("Cancelado!")
@@ -97,7 +98,7 @@
 
 	<script type="text/javascript">
 		function borrarpro(){
-		var answer = confirm("¿Realmente eliminar todo el horario?")
+		var answer = confirm("¿Realmente desea eliminar todas las ocurrencias y sus asignaciones?")
 	if (answer){
 		alert("Saliendo")
 		location='/admin/opciones/deleteDatasheet';
@@ -106,6 +107,16 @@
 		alert("Cancelado!")
 	}
 
+		}
+		function borrarnotanpro(){
+			var answer = confirm("¿Realmente eliminar las asignaciones de aulas a clases?")
+	if (answer){
+		alert("Saliendo")
+		location='/admin/opciones/deleteAsignacion';
+	}
+	else{
+		alert("Cancelado!")
+	}
 		}
 
 	</script>
