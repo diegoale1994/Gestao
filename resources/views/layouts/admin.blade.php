@@ -92,6 +92,11 @@
 		alert("Cancelado!")
 	}
 
+function contador(){
+	alert("desde el contador");
+}
+
+
 		}
 
 	</script>

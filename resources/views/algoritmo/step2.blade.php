@@ -31,8 +31,13 @@
 		</div>
 	</div>
 	<center>
-	<div id="car">
+	<div id="car" >
+	<div class="col-md-12">
 		<img src="/images/car.gif" alt="HTML5 Icon" style="width:128px;height:128px;">
+		</div>
+		<div class="col-md-12">
+		<label for="conta" style="font-size:20px"></label>
+		</div>
 	</div>
 </center>
 @if (session::has('clases_por_asignar'))
@@ -62,7 +67,7 @@
 				</table>
 			</div>
 			<div class="panel-footer">
-				<button type="button" class="btn btn-success btnalgo">{!! trans('messages.asignar') !!}</button>
+				<button type="button" class="btn btn-success btnalgo" >{!! trans('messages.asignar') !!}</button>
 			</div>
 		</div>
 	</div>

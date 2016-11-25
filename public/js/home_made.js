@@ -7,6 +7,11 @@ $(".btn.btn-success.btnalgo").click(function() {
      if (confirm('Realmente desea asignar estas clases ?')) {
        $("#sec1").hide();
        $("#car").show();
+   var counter = 0;
+setInterval(function () {
+  ++counter;
+  $("label[for='conta']").html(counter);
+}, 1000);
        window.location.href = "/admin/algoritmo/make_algoritmo";
     }
       
