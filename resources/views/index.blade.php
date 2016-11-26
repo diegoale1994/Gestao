@@ -50,12 +50,8 @@
 	<header id="header" role="banner" >
 		<nav class="navbar navbar-default navbar-fixed-top"  id="tf-menu">
 			<div class="container">
-                <div class="row">
-                <a class="page-scroll" href="{{ route('lang.switch', 'en') }}"><span class="lang-sm lang-lbl" lang="en"></span></a>
-                <a class="page-scroll" href="{{ route('lang.switch', 'es') }}"><span class="lang-sm lang-lbl" lang="es"></span></a>
-                </div>
-				<div class="row">
-					<!-- Logo start -->
+               					<!-- Logo start -->
+                     
 					<div class="navbar-header">
 					    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					        <span class="sr-only">Toggle navigation</span>
@@ -63,21 +59,21 @@
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					    </button>
-					    <div class="navbar-brand">
-						    <a href="#" class="page-scroll">
-						    	
-						    </a> 
-					    </div>                   
+                        <div class="navbar-brand">
+                            <a href="#" class="page-scroll">
+                                <br><img src="images/logo.png" alt="" class="img-responsive" style="width: 8%">
+                            </a> 
+                        </div>                 
 					</div>
                     <!--/ Logo end -->
 					<div class="collapse navbar-collapse clearfix navMenu" role="navigation">
 						<ul class="nav navbar-nav navbar-right">
-				            <li class="active"><a class="page-scroll" href="#slider-part" >Inicio</a></li>
+				            <li class="active"><a class="page-scroll" href="#slider" >Inicio</a></li>
 				            <li><a class="page-scroll" href="#feature" >Acerca de</a></li>
-				            <li><a class="page-scroll" href="#process" >¿Como funciona?</a></li>
-				            <li><a class="page-scroll" href="#overview" >Screenshots</a></li>
-				            <li><a class="page-scroll" href="#benefit" >Beneficios</a></li>
+				            <li><a class="page-scroll" href="#about" >Beneficios</a></li>
+				            <li><a class="page-scroll" href="#overview" >Galeria</a></li>				            
 				            <li><a class="page-scroll" href="#contact" >Contacto</a></li>
+                            <li><a class="page-scroll" href="#login" >Ingresar</a></li>
 				        </ul>
 	      			</div><!--/ Navigation end -->
 				</div><!--/ Row end -->
@@ -87,15 +83,20 @@
     <!-- END MAIN NAV -->
 
      <!-- slider section -->
-    <section class="slider">
+    <section class="slider" id="slider">
         <div class="slider-wrap">
             <div class="texture-overlay"></div>
             <div class="container">
                 <div class="row">
+                    
                     <div class="col-md-4">
-                        <div class="slider-img pull-right hidden-xs">
-                            <img src="images/slider2.png" alt="" class="img-responsive">
+                        <div class="">
+                            <center><img src="images/logo.png" alt="" class="img-responsive"></center>
                         </div>
+                       
+                    </div>
+                    <div class="co-md-8"><br><br><br>
+                        <center><p class="sec-title">Sistema para la Gestión de Salas del centro de Cómputo con apoyo de Realidad Aumentada en La Universidad de Cundinamarca sede Fusagasugá</p></center>
                     </div>
                    
                 </div>
@@ -139,7 +140,7 @@
                 </div>
 
                 <div class="col-md-4 col-sm-4 col-xs-4 visible-md visible-lg wow fadeInDown" data-wow-delay=".3s">
-                    <img src="images/sec-img/img2.png" alt="" class="img-responsive">
+                    <img src="images/logo.png" alt="" class="img-responsive">
                 </div>
 
                 <div class="col-md-4 col-sm-6">
@@ -237,70 +238,15 @@
 	<!-- section about end -->
 	
 
-    <!-- section counter start -->
-    <section id="counter-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                <div class="facts text-center">
-                    <div class="col-md-3 col-xs-12 col-sm-6 columns">
-                        <div class="facts-wrap">
-                            <i class="icon icon-happy"></i>
-                            <div class="fact-content">
-                                <h6>Users</h6>
-                                <div class="line"></div>
-                                <div class="facts-wrap-num">
-                                    <span class="counter">87664</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-12 col-sm-6 columns">
-                        <div class="facts-wrap">
-                            <i class="icon icon-flag"></i>
-                             <div class="fact-content">
-                                <h6>Awarded</h6>
-                                <div class="line"></div>
-                                <div class="facts-wrap-num"><span class="counter"> 27512</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-12 col-sm-6 columns">
-                        <div class="facts-wrap">
-                            <i class="icon icon-download"></i>
-                            <div class="fact-content">
-                                <h6>Downloaded</h6>
-                                <div class="line"></div>
-                                <div class="facts-wrap-num"><span class="counter">65810</span></div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-12 col-sm-6 columns">
-                        <div class="facts-wrap">
-                            <i class="icon icon-envelope"></i>
-                            <div class="fact-content">
-                                <h6>Mails</h6>
-                                <div class="line"></div>
-                                <div class="facts-wrap-num"><span class="counter">46906</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               </div>  
-            </div> <!-- Conatainer End -->
-        </div>  <!-- Fact div ENd -->
-    </section>
-    <!-- section counter end -->
 
 	<!-- scetion screenshot start -->
 	<section id="overview">
 		<div class="container">
 			<div class="row">
     			<div class="heading-inner text-center">
-    				<h2 class="sec-title">droplet <span>gallery</span></h2>
+    				<h2 class="sec-title">Galeria<span>Gestao</span></h2>
                      
-    				<p>Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.</p>
+    				<p>Algunas funcionalidades de GestaoMobile</p>
     			</div>
     		</div> <!-- heading row end -->
 
@@ -317,40 +263,40 @@
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen1.jpg" > <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app.png" > <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen1.jpg" alt="" class="img-responsive">
+                                         <img src="images/app.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen2.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app2.jpg"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen2.jpg" alt="" class="img-responsive">
+                                         <img src="images/app2.jpg" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen3.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app3.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen3.jpg" alt="" class="img-responsive">
+                                         <img src="images/app3.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen4.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app4.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen4.jpg" alt="" class="img-responsive">
+                                         <img src="images/app4.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                             </div> <!-- row end -->
@@ -362,40 +308,40 @@
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen5.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app5.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen5.jpg" alt="" class="img-responsive">
+                                         <img src="images/app5.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen6.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app6.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen6.jpg" alt="" class="img-responsive">
+                                         <img src="images/app6.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen7.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app7.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen7.jpg" alt="" class="img-responsive">
+                                         <img src="images/app7.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                                 <div class="col-xs-12 col-sm-3 col-md-3"> 
                                     <div class="thumbnail">
                                         <div class="caption">
                                             <div class="caption-content">
-                                                <a data-rel="prettyPhoto" href="images/overview/screen8.jpg"> <i class="fa fa-link"></i></a>
+                                                <a data-rel="prettyPhoto" href="images/app8.png"> <i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                         <img src="images/overview/screen8.jpg" alt="" class="img-responsive">
+                                         <img src="images/app8.png" alt="" class="img-responsive">
                                     </div>
                                 </div> <!-- col end -->
                             </div> <!-- row end -->
@@ -417,84 +363,6 @@
 	<!-- scetion screenshot end -->
 	
 
-	<!-- Section Benifit start -->
-	<section id="benefit" class="benifit">
-		<div class="bg-overlay pattern"></div>
-			<div class="container">
-				<div class="col-md-12">
-	    			<div class="heading-inner text-center">
-	    				<h2 class="sec-title"><span>Benefit</span> of the App</h2>
-                        <div class="line-btm c-white"></div>
-	    				<p>Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.</p>
-	    			</div>
-	    		</div> <!-- heading row end -->
-	    		<div class="row">
-	    			<div class="col-md-6 col-sm-6">
-	    				<div class="item-wrapper">
-	    				 	<ul class="item-list-left">
-	    				 		<li class="wow fadeInDown" data-wow-delay=".3s">
-		    				 		 <i class="icon icon-adjustments"></i>
-		    				 		 <div class="item-content">
-			    				 		<h3>Stunning flexibility</h3>
-			    				 		<p>The given template is armed with the number of settings, so you can easily adapt it according to you requirements.</p>
-		    				 		</div>
-	    				 		</li>
-	    				 		<li class="wow fadeInDown" data-wow-delay=".6s">
-		    				 		<i class="icon icon-lightbulb"></i>
-		    				 		<div class="item-content">
-			    				 		<h3>6 Types of Intro</h3>
-			    				 		<p>Today Intro is a very important element of any project. It can be named even a face of the project.</p>
-		    				 		</div>
-	    				 		</li>
-	    				 		<li class="wow fadeInDown" data-wow-delay=".9s">
-		    				 		<i class="icon icon-basket"></i>
-		    				 		<div class="item-content">
-			    				 		<h3>Step on the New Level</h3>
-			    				 		<p>Innovative solutions and simple mathematically calculated design make it actual for a long time.</p>
-		    				 		</div>
-	    				 		</li>
-
-	    				 	</ul>
-	    				 </div> 
-	    			</div> <!-- col-md-6 end -->
-	    			<div class="col-md-6 col-sm-6">
-	    				<div class="item-right-list">
-	    					<div class="row">
-	    						<div class="col-md-5 visible-md visible-lg wow fadeInUp" data-wow-delay=".9s" >
-		    						<div class="item-img">
-		    							<img src="images/slider/slider2.png" alt="" class="img-responsive">
-		    						</div>
-	    						</div>
-	    						<div class="col-md-7">
-		    						<div class="item-content">
-		    							<ul>
-		    								<li class="wow fadeInDown" data-wow-delay=".3s">
-		    									<i class="icon icon-document"></i>
-		    									<h4>Clean Documentation</h4>
-		    									<p> Quibusdam provident libero dolorum, sit deleniti ad iure.</p>
-		    								</li>
-		    								<li class="wow fadeInDown" data-wow-delay=".6s">
-		    									<i class="icon icon-cloud"></i>
-		    									<h4>unlimited storage</h4>
-		    									<p> Quibusdam provident libero dolorum, sit deleniti ad iure.</p>
-		    								</li>
-		    								<li class="wow fadeInDown" data-wow-delay=".9s">
-		    									<i class="icon icon-focus"></i>
-		    									<h4>unique design</h4>
-		    									<p> Quibusdam provident libero dolorum, sit deleniti ad iure.</p>
-		    								</li>
-											
-		    							</ul>
-		    						</div>
-	    						</div>
-	    					</div>
-	    				</div>
-	    			</div>
-	    		</div><!-- row end -->
-		</div> <!-- container end -->
-	</section>
-	<!-- Section Benifit End -->
-
 	<section id="download">
 		<div class="container">
 			<div class="row">
@@ -513,7 +381,7 @@
 				</div> <!-- col-md-8 end -->
 				<div class="col-md-5 wow fadeInRight hidden-sm " data-wow-delay=".3s">
 					<div class="flaoting-img">
-						<img src="images/app1.png" alt="" class="img-responsive">
+						<center><img src="images/logo.png" alt="" class="img-responsive" style="width:50%"></center>
 					</div>
 				</div>
 			</div>  <!-- rowr end  -->
@@ -521,65 +389,15 @@
 	</section>
 	<!-- section download end -->
 
-	<!-- Clients start -->
-	<section id="clients" class="clients landing_page_clients">
-		<div class="container">
-			<div class="row wow fadeInLeft">
-				<div class="col-md-12 col-xs-12">
-			      <div id="client-carousel" class=" owl-carousel owl-theme text-center client-carousel">
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client1.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client2.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client3.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client4.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client5.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client6.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client7.png" alt="client">
-			          </a>
-			        </figure>
-			        <figure class="item client_logo">
-			          <a href="#">
-			            <img src="images/clients/client8.png" alt="client">
-			          </a>
-			        </figure>
-			      </div><!-- Owl carousel end -->
-		    	</div><!-- col-md-12 end -->
-	    	</div><!-- Content row end -->
-		</div><!--/ Container end -->
-	</section><!--/ Clients end -->
+	
 
 	<!-- section Contact start -->
 	<section id="contact" >
-    <div class="bg-overlay pattern"></div>
+        <div class="bg-overlay pattern"></div>
 		<div class="container">
 			<div class="col-md-12">
-    			<div class="heading-inner text-center">
-    				<h2 class="sec-title">Permanece  <span>Connectado</span></h2>
+    			<div class="">
+    				<center><h2 class="sec-title">Permanece  <span>Connectado</span></h2></center>
                     <div class="line-btm c-white"></div>
     				<p>Tus opiniones son importantes para nosotros</p>
     			</div>
@@ -587,7 +405,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<form class="contact-inner">
+					<form class="contact-inner" method="post" action="">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -628,7 +446,7 @@
 
 	<!-- section Footer start  -->
 	<footer id="footer">
-		<div class="container">
+		<div class="container" id="login">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="footer-content text-center">
@@ -646,7 +464,7 @@
                     <hr>
 					<hr>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<div class="copyright">
 								<br><p>&copy; copyright  <span>Gestao</span> - 2016</p>
 							</div>
@@ -655,7 +473,14 @@
 							<div class="copyright">
 								<br><p class="pull-right">Designed and developed by <span>Andrés Nieto - Diego Franco - Edward Robayo</span></p>
 							</div>
-						</div> 
+                            
+						</div>
+                        <div class="col-md-3">
+                            <div class="copyright">
+                                <br><a class="page-scroll" href="{{ route('lang.switch', 'en') }}"><span class="lang-sm lang-lbl" lang="en"></span></a>
+                                <a class="page-scroll" href="{{ route('lang.switch', 'es') }}"><span class="lang-sm lang-lbl" lang="es"></span></a>
+                            </div>                                
+                        </div> 
 					</div>
 				</div>
 			</div> <!-- row end  -->
